@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>No encontrado | Que Piensas</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" media="all" href="http://static.quepiensas.es/common.css" />
+<link rel="stylesheet" media="all" href="http://static.quepiensas.es/tipsy.css" />
+<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" language="javascript">
+<!--
+$(document).ready(function(){
+	function footer(){
+		var offset = $('#footer').offset();
+		var footerHeight = $('#footer').height();
+		var height = window.innerHeight;
+		if(height-offset.top-footerHeight>0){
+			$('#footer').css({'position':'absolute', 'bottom':0, 'width':'100%'});	
+		}
+	}
+	footer()
+	$(window).resize(footer);
+	$('.tooltip').tipsy({gravity: $.fn.tipsy.autoNS, delayIn: 300});
+	});
+-->
+</script>
+</head>
+
+<body>
+<div id="mainWrap">
+
+  <div id="topNavBar">
+      <div id="logo"><a href="http://quepiensas.es" title="Inicio"><img src="http://static.quepiensas.es/img/body/logo-no-bottom.png" alt="Que Piensas?" height="89" width="319" border="0" /></a>
+      <div class="slogan">&iquest;De qui&eacute;n quieres hablar?</div></div>
+    <div id="bar">
+            <div id="barContent">Buscar:
+           	  <div class="form">
+            	<form action="/do/buscar" method="post" enctype="application/x-www-form-urlencoded">
+               	  <input name="search" type="text" value="Nombre completo..." class="input small" />
+
+                  <input name="searchBtn" type="image" src="http://static.quepiensas.es/img/form/btn-inside-small-c.gif" class="insideBtnBig" title="Buscar" />
+                </form>
+           	  </div>
+              <div class="navLinks">
+			  	<a href="/">Volver</a>              </div>
+            </div>
+            <div class="corner1"></div>
+            <div class="corner2"></div>
+
+    </div>
+    </div>
+    
+    <div class="contentWrap" id="col1">
+    	<div class="corner1"></div>
+        <div class="corner2"></div>
+        <div class="corner3"></div>
+        <div class="corner4"></div>
+        <div class="topFade"></div>
+        <div class="bottomFade"></div>
+
+        <div class="content">
+<h1 style="border-bottom:#7dc3ff 1px solid;">Error 403</h1>
+<div class="paddedContent">
+<h2>Peticion no autorizada</h2>
+<p>Ha ocurrido un error inesperado, si ha introducido manualmente la URL, compruebe que esté bien escrita. En caso contrario vuelva atras y vuelva a intentarlo dentro de un tiempo,<br />Disculpe las molestias</p><p style="text-align:center"><a href="javascript:history.back(-1)">Volver</a></p>
+</div>
+	</div></div>
+        </div> <!-- #mainWrap -->
+
+    <div id="footer">
+        <div id="metaLink"><a href="/info/privacidad">Privacidad</a> | <a href="/info/nota-legal">Nota legal</a> | <a href="/info/acerca-de">Acerca de nosotros</a> | <a href="/info/trabajo">Trabajo</a> | <a href="/info/prensa">Prensa</a> | <a href="/info/anunciantes">Anunciantes</a> &bull; &copy; <a href="http://quepiensas.es">QuePiensas.es</a> (2009-2012) Todos los derechos reservados </div>
+
+    </div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3181088-10']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+  })();
+function debug(msg){ return true; }
+</script>
+<script type="text/javascript" language="javascript" src="http://static.quepiensas.es/lib/js/tipsy.js"></script>
+<script type="text/javascript" language="javascript" src="http://static.quepiensas.es/lib/js/functions.js"></script>
+
+
+</body>
+</html>

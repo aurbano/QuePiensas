@@ -1,0 +1,605 @@
+@charset "utf-8";
+/* Global styles for all pages */
+
+/* ------ TAGS ----------- */
+body{
+	background:#a8d7ff url(http://static.quepiensas.es/img/body/bg.gif) repeat-x top;	
+	font-family:Arial, Helvetica, sans-serif;
+	margin:0;
+	padding:0;
+	font-size:14px;
+}
+a, a:link, a:active, a:visited{
+	color:#ef9120;
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+
+h1{
+	color:#3b86c5;
+	text-shadow:#FFFFFF 0 1px;
+	margin:0;
+	padding:0;
+	padding-bottom:5px;
+	text-align:center;
+	font-size:20px;
+}
+h2{
+	color:#154368;
+	font-size:18px;
+	padding-left:15px;
+}
+h2 span{
+	color:#2a83cc;
+	font-size:11px;
+}
+h3{
+	color:#333333;
+	font-size:15px;
+	margin:0;
+	text-shadow:#FFFFFF 0 1px;
+}
+h3 span{
+	color:#CCCCCC;
+	font-size:12px;
+	font-weight:100;
+}
+
+small{
+	color:#999999;
+	font-size:12px;
+	text-shadow:0 1px #FFFFFF;
+}
+
+/* ----- common areas ---- */
+
+.slogan{
+	position:absolute;
+	font-size:12px;
+	top:57px;
+	left:106px;
+	color:#3aa0d3;	
+}
+
+.hide{display:none;}
+
+/* ----- Forms ------------ */
+
+.input{
+	background:#FFFFFF;
+	border:#d7d7d7 1px solid;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	outline:none;
+}
+
+.big{
+	height:40px;
+	width:400px;
+	font-size:15px;
+	color:#CCCCCC;
+	background:#f1f1f1 url(http://static.quepiensas.es/img/form/input-big-bg.gif) repeat-x;
+	text-indent:10px;
+}
+
+.small{
+	height:25px;
+	width:230px;
+	background:url(http://static.quepiensas.es/img/form/input-small-bg.gif) repeat-x top;
+	font-size:13px;
+	color:#999;
+	text-indent:6px;
+}
+.btn{
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	outline:none;
+	padding:4px 10px;
+	cursor:pointer;
+	font-size:12px;
+}
+.btnOrange{
+	border:#853f00 1px solid;
+	background:#ff8b02 url(http://static.quepiensas.es/img/form/btn-orange-bg.gif) top repeat-x;
+	color:#FFFFFF;
+	text-shadow:#FF9428 0 -1px;
+}
+.btnBlue{
+	border:#2e5f88 solid 1px;
+	background:#4e7cad url(http://static.quepiensas.es/img/form/btn-blue-bg.gif) repeat-x top;
+	color:#ffffff;
+	text-shadow:#2e5f88 0 -1px;
+}
+.greyBtn{
+	display:inline-block;
+	margin:1px;
+	height:16px;
+	font-size:13px;
+	font-weight:100;
+	color:#b7b7b7 !important;
+	text-shadow:#fff 1px 1px;
+	border:1px solid #dddddd;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius:2px;
+	background:url(http://static.quepiensas.es/img/form/greyBtn-bg-c.gif) bottom repeat-x;
+}
+.greyBtn:hover{
+	border:1px solid #bebebe;	
+	color:#8a8a8a !important;
+	text-decoration:none !important;
+}
+.formNormal{
+	background:#FFFFFF url(http://static.quepiensas.es/img/form/textarea-shadow.gif) repeat-x top;
+	border:#CCCCCC solid 1px;
+	outline:none;
+	font-family:inherit;
+	color:#242C48;
+}
+textarea.formNormal{
+	width:95%;
+	height:55px;
+	margin:0 auto;
+	padding:10px;
+	resize: none;
+	font-size:13px;
+}
+input.formNormal{
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding:5px;
+	width:220px;
+}
+input[disabled="disabled"], input[disabled] {
+	border: 1px solid #999;
+	background: #CCC;
+	color: white;
+	text-shadow: none;
+}
+label{
+	color:#999999;
+	font-size:11px;
+	margin-left:13px;
+	display:inline-block;
+	text-shadow:#FFFFFF 0 1px;
+}
+label.private{
+	background:#FFFFFF;
+	border:#CCCCCC solid 1px;
+	padding:5px;
+	display:inline-block;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+label input{
+	display:block;
+}
+fieldset{
+	border:#E2E2E2 1px solid;
+	margin:10px;
+	padding:10px;
+	position:relative;
+}
+legend{
+	color:#999999;
+	font-size:11px;	
+	text-shadow:#FFFFFF 0 1px;
+}
+.bigInputWrap{
+	position:relative;
+	background:#FFFFFF url(http://static.quepiensas.es/img/form/input-big-bg-repeat.gif) repeat-x top;
+	height:41px;
+}
+.bigInputWrap b{
+	display:block;
+	position:absolute;
+	top:0;
+	left:-5px;
+	height:41px;
+	width:5px;
+	background:url(http://static.quepiensas.es/img/form/big-input-left-corner.png) top right no-repeat;
+}
+.bigInputWrap .insideBtnGo{
+	position:absolute;
+	top:0;
+	right:-5px;
+}
+.bigInputWrap .clearInput{
+	background:transparent;
+	border:0 none;
+	outline:none;
+	padding:5px;
+	font-size:16px;
+	width:95%;
+	margin-top:4px;
+}
+
+/* ----- SOCIAL BUTTONS ---- */
+.fb-login-button{
+	width:150px;
+	height:22px;
+	text-indent:2000px;
+	overflow:hidden;
+	background:url(http://static.quepiensas.es/img/social/facebook_signin.png) no-repeat;
+	display:inline-block;
+	font-size:100px;
+}
+.twitterLogin{
+	width:150px;
+	height:22px;
+	text-indent:2000px;
+	overflow:hidden;
+	background:url(http://static.quepiensas.es/img/social/twitter_signin.png) no-repeat;
+	display:inline-block;
+	font-size:100px;
+}
+.fb-login-button:hover, .twitterLogin:hover{
+	background-position:0 -24px;
+}
+.fb-login-button:active, .twitterLogin:active{
+	background-position:0 -48px;
+}
+
+/* ----- FOOTER ----------- */
+#footer #topBar{
+	border-top:#FFFFFF 1px solid;
+	background:url(http://static.quepiensas.es/img/body/footer-dark-bg-alpha.png) repeat;
+	border-bottom:#265781 5px solid;
+	color:#a8d7ff;
+	padding:6px;
+	text-align:center;
+	font-size:14px;
+}
+#footer #metaNav{
+	background:#265781 url(http://static.quepiensas.es/img/body/footer-stripes-bg.gif);
+	color:#a8d7ff;
+	text-align:center;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+#footer #metaNav ul{
+	margin: 0;
+	padding: 0;
+	padding-top:11px;
+	list-style: none;
+	border: none;
+	white-space: nowrap;
+}
+#footer #metaNav ul li{
+	margin: 0;
+	padding: 0;
+	display:inline;
+}
+#footer #metaNav ul li a,#footer #metaNav ul li a:active,#footer #metaNav ul li a:visited,#footer #metaNav ul li a:link {
+	font-size:20px;
+	color:#CAEDFF;
+	text-decoration:none;
+	display:inline-block;
+	margin-right:20px;
+	padding:6px;
+	border:transparent 1px solid;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+#footer #metaNav ul li a:hover{
+	background:#466f93;
+	color:#FFFFFF;
+	border:#507da3 1px solid;
+}
+#footer #metaLink{
+	background:url(http://static.quepiensas.es/img/body/footer-metalinks-bg.png);
+	border-top:#265781 5px solid;
+	color:#75a9d5;
+	font-size:13px;
+	text-align:left;
+	padding:6px;	
+}
+#footer #metaLink a,#footer #metaLink a:active,#footer #metaLink a:visited,#footer #metaLink a:link {
+	color:#75a9d5;
+	text-decoration:none;
+}
+#footer #metaLink a:hover{
+	color:#aed2f1;
+}
+#footer #moreInfoText{
+	margin-bottom:15px;
+}
+#footer #moreInfoText p{
+	padding:0 20px;
+}
+/* --------- BOXES -------------- */
+.greyBox{
+	background:#F5F5F5 url(http://static.quepiensas.es/img/body/greyBox-topFade.gif) repeat-x bottom; 
+	border:#CCCCCC solid 1px;
+	margin:0 15px 15px 15px;
+	padding:10px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	position:relative;
+}
+/* ---------- CLASES ------------ */
+.errorMsg, .errorBox{	
+	color:#FF0000;
+	font-size:12px;
+	margin:3px;
+	margin-left:15px;
+}
+.errorBox{
+	background:#265781 url(http://static.quepiensas.es/img/body/footer-stripes-bg.gif);
+	border:#265781 solid 1px;
+	color:#FFFFFF;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius:10px;
+	padding:10px;
+	margin:10px;
+	margin-top:0px;
+	text-align:center;
+}
+.infoBox{
+	background:url(http://static.quepiensas.es/img/body/logo-grey-transparent.png)	no-repeat left center;
+	color:#666;
+	margin:10px;
+	padding:35px 5px;
+	padding-left:190px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius:20px;
+	text-align:center;
+	border:#E5E5E5 solid 1px;
+}
+#debug{
+	background:#FFFFFF;
+	position:absolute;
+	top:0;
+	right:0;
+	border:#CCCCCC solid 1px;
+	font-size:12px;
+	font-family:"Courier New", Courier, monospace;
+	max-height:500px;
+	overflow:auto;
+	z-index:999;
+	line-height:normal;
+	padding:5px;
+	max-width:600px;
+}
+#debug p{
+	margin:0;
+}
+.ok{
+	background-color:#FFEFB0;	
+	margin: 5px auto;
+    padding: 5px;
+    text-align: center;
+    width: 300px;
+}
+/* CONTENT */
+@charset "utf-8";
+/* CSS Document */
+#mainWrap{
+	width:960px;
+	margin:24px auto 100px;
+	position:relative;
+}
+#topNavBar{
+	position:relative;
+}
+#logo{
+	position:absolute;
+	top:-20px;
+	left:24px;
+	z-index:2;
+}
+#bar{
+	height:46px;
+	background:url(http://static.quepiensas.es/img/body/topbar-bg.png) repeat-x;
+	position:relative;
+	overflow:visible;
+	margin-left:345px;
+	margin-right:10px;
+}
+#bar .corner1{
+	position:absolute;
+	top:0;
+	left:-16px;
+	width:16px;
+	height:46px;
+	background:url(http://static.quepiensas.es/img/body/topBar-corners.png) no-repeat left;
+	z-index:1;
+}
+#bar .corner2{
+	position:absolute;
+	top:0;
+	right:-16px;
+	width:16px;
+	height:46px;
+	background:url(http://static.quepiensas.es/img/body/topBar-corners.png) no-repeat right;
+	z-index:1;
+}
+#barContent{
+	font-size:18px;
+	line-height:48px;
+	color:#2f90be;
+	text-shadow:#FFFFFF 0 1px;
+}
+.form{
+	position:absolute;
+	top:9px;
+	left:-7px;
+	z-index:9;
+}
+#profileLink{
+	position:absolute;
+	right:0;
+	display:inline;
+	font-size:17px;
+}
+.navLinks{
+	position:absolute;
+	left:260px;
+	top:0;
+	font-size:16px;
+}
+.navLinks a{
+	padding:10px 15px;
+	border-right:1px solid #f2f2f2;
+	border-left:1px solid #fff;
+	position:relative;
+	display: inline-block;
+	margin: 4px 0;
+	line-height: 18px;
+}
+.navLinks .new{
+	position: absolute;
+	right: -11px;
+	top: -11px;
+	padding: 0px 6px;
+	border-radius: 11px;
+	border: 2px solid whiteSmoke;
+	background: #2F90BE;
+	font-size: 11px;
+	color: white;
+	text-shadow: none;
+	z-index:1000;
+}
+.navLinks a:hover .new{
+	background:#164e68;
+}
+.navLinks a:hover{
+	background:#f2f2f2;
+	text-decoration:none;
+	text-shadow:#ccc;
+	border-left:1px solid #ccc;
+	color:#333;
+}
+.insideBtnBig{
+	height:29px;
+	position:absolute;
+	border:none;
+	width:38px;
+	top:0px;
+	right:-30px;
+	cursor:pointer;
+}
+.contentWrap{
+	position:relative;
+	margin:50px auto;
+	width:700px;
+	background:url(http://static.quepiensas.es/img/body/content-bg.png) repeat-y;
+}
+.contentWrap .content{
+	margin:0 4px 0 4px;
+	text-align:justify;
+	min-height:182px;
+	background:url(http://static.quepiensas.es/img/body/content-bg-fade.gif) repeat-x top;
+}
+.paddedContent{
+	padding:15px;	
+}
+.contentWrap .corner1{
+	position:absolute;
+	width:32px;
+	height:33px;
+	background:url(http://static.quepiensas.es/img/body/content-corners.png) top left no-repeat;
+	top:-33px;
+	left:0;
+}
+.contentWrap .corner2{
+	position:absolute;
+	width:32px;
+	height:33px;
+	background:url(http://static.quepiensas.es/img/body/content-corners.png) top right no-repeat;
+	top:-33px;
+	right:0;
+}
+.contentWrap .corner3{
+	position:absolute;
+	width:32px;
+	height:33px;
+	background:url(http://static.quepiensas.es/img/body/content-corners.png) bottom left no-repeat;
+	bottom:-33px;
+	left:0;
+}
+.contentWrap .corner4{
+	position:absolute;
+	width:32px;
+	height:33px;
+	background:url(http://static.quepiensas.es/img/body/content-corners.png) bottom right no-repeat;
+	bottom:-33px;
+	right:0;
+}
+.contentWrap .topFade{
+	position:absolute;
+	width:636px;
+	height:33px;
+	background:url(http://static.quepiensas.es/img/body/content-borders.png) top repeat-x;
+	top:-33px;
+	left:32px;
+}
+.contentWrap .bottomFade{
+	position:absolute;
+	width:636px;
+	height:33px;
+	background:url(http://static.quepiensas.es/img/body/content-borders.png) bottom repeat-x;
+	bottom:-33px;
+	left:32px;
+}
+#aboutInfo{
+	border-top:#FFFFFF solid 1px;
+	border-bottom:#899dae 1px solid;
+	background:#a6c8e3 url(http://static.quepiensas.es/img/body/stripes-light-blue-bg.gif);
+	padding:5px;
+	margin-bottom:15px;
+}
+#aboutInfo ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: none;
+	white-space: nowrap;
+}
+#aboutInfo ul li{
+	padding:3px;
+	margin:0;
+	margin-right:30px;
+	position:relative;
+	text-shadow:#CAD8F7 0 1px;
+	color:#013058;
+	display:inline-block;
+}
+#aboutInfo ul li span{
+	display:inline-block;
+	margin-left:10px;
+	text-shadow:none;
+	color:#FFFFFF;
+}
+#opiniones{
+	padding:5px;
+}
+#opiniones h3{
+	padding-left:25px;
+	margin:0;
+}
+#opiniones .opinion{
+	margin:5px;
+	margin-bottom:15px;
+	position:relative;
+}
+#opiniones .level1{
+	margin-left:40px;	
+}
+#opiniones .level2{
+	margin-left:80px;	
+}
+#opiniones .opinion .msg{
+	color:#072941;
+	background:#f2f9fd;
+	border:#dff3ff 1px solid;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding:10px;
+	font-size:13px;
+}

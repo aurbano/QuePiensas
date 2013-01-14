@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Que piensas de mi?</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="stylesheet" media="all" href="common.css" />
+<style type="text/css" media="all">
+#mainWrap{
+	width:550px;
+	margin:150px auto;
+	position:relative;
+	overflow:visible;
+	z-index:999;
+}
+#logo{
+	position:absolute;
+	width:319px;
+	height:99px;
+	top:-76px;
+	left:110px;
+	background:url(img/body/logo-only.png) no-repeat;
+	z-index:99;
+}
+#content{
+	background:url(img/body/index-main-box-bg.gif) repeat-x;
+	width:550px;
+	margin:0 auto;
+	height:82px;
+}
+.corner1{
+	position:absolute;
+	top:-4px;
+	left:0;
+	width:45px;
+	height:90px;
+	background:url(img/body/index-main-box-corners.gif) no-repeat left;
+	z-index:2;
+}
+.corner2{
+	position:absolute;
+	top:-4px;
+	right:0;
+	width:45px;
+	height:90px;
+	background:url(img/body/index-main-box-corners.gif) no-repeat right;
+	z-index:2;
+}
+.innerContent{
+	font-size:25px;
+	color:#135b96;
+	text-shadow:#FFFFFF 0 1px;
+	z-index:99;
+	position:absolute;
+	top:25px;
+	left:25px;
+}
+#infoBox{
+	width:490px;
+	margin:0 auto;
+	background:url(img/body/index-infoBox-bg.png) repeat-y;
+	color:#5783a9;
+	text-align:center;
+	position:relative;
+	padding-bottom:15px;
+}
+.moreInfo{
+	width:491px;
+	text-align:center;
+	background:url(img/body/index-infoBox-moreInfo.png) no-repeat bottom;
+	color:#FFFFFF;
+	font-size:10px;
+	height:28px;
+	line-height:20px;
+	cursor:pointer;
+	position:absolute;
+	bottom:-28px;
+	left:0px;
+}
+.form{
+	position:absolute;
+	top:-7px;
+	left:92px;
+	overflow:visible;
+}
+.insideBtnBig{
+	height:47px;
+	position:absolute;
+	background:url(img/form/btn-inside-big.gif) no-repeat;
+	border:none;
+	width:52px;
+	top:0px;
+	right:-10px;
+	cursor:pointer;
+}
+</style>
+<script type="text/javascript" language="javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="lib/js/functions.js"></script>
+<script type="text/javascript" language="javascript">
+<!--
+$(document).ready(function(){
+	$('.hidden').hide();
+	$('.moreInfo').click(function(){
+		if($('#moreInfoText').hasClass('hidden')){
+			$('#moreInfoText').slideDown('slow').removeClass('hidden');
+			$('.moreInfo').html('Menos informaci&oacute;n');	
+		}else{
+			$('#moreInfoText').slideUp('slow').addClass('hidden');
+			$('.moreInfo').html('M&aacute;s informaci&oacute;n');
+		}
+	});
+});
+-->
+</script>
+</head>
+
+<body>
+<div id="mainWrap">
+	<div id="logo"><div class="slogan">&iquest;De qui&eacute;n quieres hablar?</div></div>
+    <div id="box">
+    	<div id="content">
+        	<div class="innerContent">
+            Buscar:
+            <div class="form">
+            	<form action="process.php" method="post" enctype="text/plain">
+                	<input name="search" type="text" value="Nombre completo..." class="input big" />
+                    <input name="searchBtn" type="button" class="insideBtnBig" title="Buscar" />
+                </form>
+            </div>
+            </div>
+        </div>
+        <div class="corner1"></div>
+    	<div class="corner2"></div>
+    </div>
+    <div id="infoBox">
+    	<div style="line-height:40px;">Di lo que quieras, sobre quien quieras! <br /> No hace falta registrarse, ni siquiera decir quién eres!</div>
+        <div class="hidden" id="moreInfoText">
+          <p>En Que Piensas podrás hablar sobre cualquier persona, diciendo tu nombre o no. Si quieres que te puedan responder sólo tienes que dejar tu email (El cual siempre será privado y nadie lo verá) de esta manera, y a través de nosotros, la gente te podrá enviar mensajes y ponerse en contacto contigo.Si luego quieres decir quién eres ya es cosa tuya!</p>
+          <p>Si alguien ha opinado sobre ti y no te gusta lo que han dicho tan solo tienes que ponerte en contacto con nosotros, identificándote, y eliminaremos los comentarios.</p>
+        </div>
+        <div class="moreInfo">M&aacute;s informaci&oacute;n</div>
+    </div>
+</div>
+<div id="footer">
+	<div id="topBar">EL ANONIMATO NUNCA FUE TAN INTERESANTE!</div>
+    <div id="metaNav">
+    	<ul>
+       	  <li><a href="#">&iquest;C&oacute;mo funciona?</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Privacidad</a></li>
+        </ul>
+    </div>
+    <div id="metaLink"><a href="#">Privacidad</a> | <a href="#">Nota legal</a> | <a href="#">Acerca de nosotros</a> | <a href="#">Trabajo</a> | <a href="#">Prensa</a> | <a href="#">Anunciantes</a> &bull; &copy; <a href="http://quepiensas.es">QuePiensas.es</a> (2009-2012) Todos los derechos reservados </div>
+</div>
+</body>
+</html>

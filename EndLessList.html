@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>EndlessList</title>
+<style>
+body{
+margin:2px;
+padding:2px;
+font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+#lista{
+	border: 3px solid #EEE;
+	height: 400px;
+	width: 635px;
+	overflow-y: scroll;
+}
+ul{
+	margin:0;
+	padding:0;
+	list-style:none
+}
+li {
+border:1px solid #aaa;
+margin:10px;
+padding:5px;
+}
+li:hover {
+border:1px solid #66f;
+}
+#debug{
+	position:fixed;
+	top:5px;
+	right:5px;
+	display:inline-block;
+	border:1px solid #CCC;
+	background-color:#FFF;
+	
+	}
+</style>
+
+<script src='http://code.jquery.com/jquery-latest.min.js' type='text/javascript'></script>
+<script type="text/javascript">
+var n = 0;
+$(document).ready(function() {
+	$("#lista").scroll(function () {
+		$("#debug").html(
+						 "height:" + $("#lista").height()+ "<br />" +
+						 "scrollTop:" + $("#lista").scrollTop()+ "<br />" +
+						 "offsetTop:" + $("#lista").offset().top+ "<br />" +
+						 "#container.height:" + $("#container").height()+ "<br />"
+						);
+		
+		if($("#lista").height() + $("#lista").scrollTop() + 200 > $("#container").height()){
+			for(i=0;i<10;i++)
+				$("<li />").text("New " + n++).appendTo("#container");
+		}
+	});
+	$(window).scroll(function () {
+		$("#debug").html(
+						 "height:" + $(window).height()+ "<br />" +
+						 "scrollTop:" + $(window).scrollTop()+ "<br />" +
+						 "offsetTop:" + $("#lista2").offset().top+ "<br />" +
+						 "#lista2.height:" + $("#lista2").height()+ "<br />"
+						);
+		
+		if($(window).height() + $(window).scrollTop()   + 200 > $("#lista2").height()+ $("#lista2").offset().top){
+			for(i=0;i<10;i++)
+				$("<li />").text("New " + n++).appendTo("#lista2");
+		}
+	});
+		
+});
+
+
+</script>
+</head>
+
+<body>
+
+<h1>Endless List</h1>
+<div id="debug"></div>
+<div id="lista">
+	<ul id="container">
+		<li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li>
+	</ul>
+</div>
+<h1>Endless List</h1>
+<ul id="lista2">
+	<li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li><li>New</li>
+</ul>
+</body>
+</html>

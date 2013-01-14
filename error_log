@@ -1,0 +1,705 @@
+[17-Feb-2010 17:35:33] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home8/djsmusic/public_html/quepiensas/persona.php on line 2
+[19-Feb-2010 15:12:31] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 6
+[22-Feb-2010 17:18:21] PHP Fatal error:  Call to a member function db() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php on line 52
+[22-Feb-2010 17:20:11] PHP Fatal error:  Class 'User' not found in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 50
+[22-Feb-2010 17:30:26] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php(103) : eval()'d code on line 1
+[22-Feb-2010 17:30:26] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php(103) : eval()'d code on line 1
+[22-Feb-2010 17:30:26] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php(103) : eval()'d code on line 1
+[22-Feb-2010 17:30:49] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php(103) : eval()'d code on line 1
+[22-Feb-2010 17:30:49] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php(103) : eval()'d code on line 1
+[22-Feb-2010 17:30:49] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php(103) : eval()'d code on line 1
+[22-Feb-2010 17:34:35] PHP Parse error:  syntax error, unexpected T_EVAL, expecting '(' in /home8/djsmusic/public_html/quepiensas/test.php on line 4
+[22-Feb-2010 17:34:49] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/test.php(4) : eval()'d code on line 1
+[22-Feb-2010 17:35:20] PHP Parse error:  syntax error, unexpected T_ECHO in /home8/djsmusic/public_html/quepiensas/test.php on line 5
+[22-Feb-2010 17:36:14] PHP Parse error:  syntax error, unexpected T_ECHO in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php on line 104
+[22-Feb-2010 17:41:29] PHP Fatal error:  Call to a member function db() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php on line 92
+[22-Feb-2010 17:55:49] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php on line 71
+[22-Feb-2010 17:57:01] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php on line 71
+[22-Feb-2010 17:57:23] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php on line 71
+[22-Feb-2010 17:58:43] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php on line 71
+[22-Feb-2010 18:09:29] PHP Parse error:  syntax error, unexpected '{' in /home8/djsmusic/public_html/quepiensas/lib/php/user.class.php on line 34
+[28-Feb-2010 17:41:14] PHP Warning:  arsort() expects parameter 1 to be array, null given in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 18
+[28-Feb-2010 17:41:14] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 26
+[28-Feb-2010 17:41:14] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 34
+[28-Feb-2010 17:41:48] PHP Warning:  arsort() expects parameter 1 to be array, null given in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 18
+[28-Feb-2010 17:41:48] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 26
+[28-Feb-2010 17:41:48] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 34
+[28-Feb-2010 17:43:44] PHP Fatal error:  Call to undefined method DB::numResults() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 15
+[28-Feb-2010 17:45:54] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 29
+[28-Feb-2010 17:45:54] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 37
+[28-Feb-2010 17:51:05] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 29
+[28-Feb-2010 17:51:05] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 37
+[28-Feb-2010 18:22:44] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php on line 85
+[28-Feb-2010 18:22:44] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php:85) in /home8/djsmusic/public_html/quepiensas/persona.php on line 12
+[28-Feb-2010 18:23:04] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home8/djsmusic/public_html/quepiensas/lib/content/top.php on line 22
+[28-Feb-2010 18:23:08] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home8/djsmusic/public_html/quepiensas/lib/content/top.php on line 22
+[28-Feb-2010 18:23:11] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home8/djsmusic/public_html/quepiensas/lib/content/top.php on line 22
+[28-Feb-2010 18:23:31] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home8/djsmusic/public_html/quepiensas/lib/content/top.php on line 22
+[28-Feb-2010 18:23:36] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home8/djsmusic/public_html/quepiensas/lib/content/top.php on line 22
+[28-Feb-2010 18:53:19] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 29
+[28-Feb-2010 18:53:19] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 37
+[01-Mar-2010 21:06:21] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 29
+[01-Mar-2010 21:06:21] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 37
+[03-Mar-2010 11:08:37] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 29
+[03-Mar-2010 11:08:37] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 37
+[04-Mar-2010 18:24:28] PHP Parse error:  syntax error, unexpected '{' in /home8/djsmusic/public_html/quepiensas/ajax.php on line 22
+[04-Mar-2010 20:11:46] PHP Fatal error:  Call to undefined method Session::isPerson() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 30
+[04-Mar-2010 20:12:09] PHP Fatal error:  Call to a member function db() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 117
+[04-Mar-2010 20:12:30] PHP Fatal error:  Call to a member function execute() on a non-object in /home8/djsmusic/public_html/quepiensas/ajax.php on line 32
+[04-Mar-2010 20:15:34] PHP Fatal error:  Call to undefined method User::set() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 27
+[04-Mar-2010 20:37:33] PHP Parse error:  syntax error, unexpected '{' in /home8/djsmusic/public_html/quepiensas/persona.php on line 71
+[04-Mar-2010 21:03:11] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 29
+[04-Mar-2010 21:03:11] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 37
+[05-Mar-2010 12:33:49] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 29
+[05-Mar-2010 12:33:49] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 37
+[08-Mar-2010 19:13:03] PHP Warning:  Wrong parameter count for nl2br() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 22
+[11-Mar-2010 14:26:11] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 29
+[11-Mar-2010 14:26:11] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 37
+[12-Mar-2010 14:33:26] PHP Warning:  Wrong parameter count for nl2br() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 22
+[15-Mar-2010 12:15:03] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 55
+[15-Mar-2010 12:30:21] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 44
+[15-Mar-2010 12:30:21] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 79
+[15-Mar-2010 12:35:21] PHP Parse error:  syntax error, unexpected '.' in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 35
+[15-Mar-2010 17:26:39] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 50
+[15-Mar-2010 18:10:19] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 53
+[15-Mar-2010 18:10:25] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 53
+[15-Mar-2010 18:14:31] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 53
+[15-Mar-2010 18:15:01] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/busqueda.php on line 53
+[15-Mar-2010 18:15:56] PHP Warning:  Wrong parameter count for nl2br() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 22
+[15-Mar-2010 18:16:16] PHP Warning:  Wrong parameter count for nl2br() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 22
+[24-May-2011 08:36:03] PHP Warning:  include(db.class.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 4
+[24-May-2011 08:36:03] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'db.class.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php') in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 4
+[24-May-2011 08:36:03] PHP Warning:  include(getip.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 7
+[24-May-2011 08:36:03] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'getip.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php') in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 7
+[24-May-2011 08:36:03] PHP Fatal error:  Call to undefined function  ip() in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 165
+[24-May-2011 08:36:32] PHP Warning:  include(getip.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 7
+[24-May-2011 08:36:32] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'getip.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php') in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 7
+[24-May-2011 08:36:32] PHP Fatal error:  Call to undefined function  ip() in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 165
+[24-May-2011 08:43:29] PHP Fatal error:  Call to a member function execute() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/user.php on line 25
+[24-May-2011 08:50:48] PHP Fatal error:  Call to a member function db() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 105
+[24-May-2011 09:46:12] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 188
+[24-May-2011 09:46:46] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 188
+[24-May-2011 09:47:35] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 188
+[24-May-2011 09:48:14] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 189
+[24-May-2011 09:48:49] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 189
+[24-May-2011 09:49:26] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 188
+[24-May-2011 09:50:05] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 189
+[24-May-2011 09:50:35] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 188
+[24-May-2011 09:51:11] PHP Fatal error:  Call to a member function debug() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 179
+[24-May-2011 09:51:15] PHP Fatal error:  Call to a member function debug() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 179
+[24-May-2011 09:51:16] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home8/djsmusic/public_html/quepiensas/lib/session.php on line 189
+[24-May-2011 10:18:41] PHP Warning:  include(lib/session.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/index.php on line 7
+[24-May-2011 10:18:41] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'lib/session.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php') in /home8/djsmusic/public_html/quepiensas/index.php on line 7
+[24-May-2011 10:19:24] PHP Warning:  include(lib/session.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/index.php on line 7
+[24-May-2011 10:19:24] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'lib/session.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php') in /home8/djsmusic/public_html/quepiensas/index.php on line 7
+[24-May-2011 14:13:52] PHP Fatal error:  Cannot access private property User::$name in /home8/djsmusic/public_html/quepiensas/persona.php on line 32
+[24-May-2011 14:14:42] PHP Fatal error:  Cannot access private property User::$name in /home8/djsmusic/public_html/quepiensas/persona.php on line 65
+[24-May-2011 14:14:57] PHP Fatal error:  Cannot access private property User::$name in /home8/djsmusic/public_html/quepiensas/persona.php on line 65
+[24-May-2011 14:57:23] PHP Fatal error:  Call to undefined method Session::validateEmail() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 25
+[24-May-2011 15:01:55] PHP Fatal error:  Call to undefined method Session::validateEmail() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 25
+[24-May-2011 15:21:08] PHP Parse error:  syntax error, unexpected '@' in /home8/djsmusic/public_html/quepiensas/lib/php/session.php(210) : eval()'d code on line 1
+[24-May-2011 15:21:08] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/lib/php/session.php(210) : eval()'d code on line 1
+[24-May-2011 15:21:53] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/lib/php/session.php(210) : eval()'d code on line 1
+[24-May-2011 15:21:53] PHP Parse error:  syntax error, unexpected $end in /home8/djsmusic/public_html/quepiensas/lib/php/session.php(210) : eval()'d code on line 1
+[24-May-2011 15:25:11] PHP Warning:  filter_var() expects parameter 2 to be long, string given in /home8/djsmusic/public_html/quepiensas/lib/php/session.php(212) : eval()'d code on line 1
+[24-May-2011 15:25:11] PHP Fatal error:  Call to undefined method User::now() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 25
+[24-May-2011 15:27:15] PHP Fatal error:  Call to undefined method Session::isPerson() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 29
+[24-May-2011 17:08:46] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home8/djsmusic/public_html/quepiensas/process.php on line 23
+[24-May-2011 17:29:07] PHP Catchable fatal error:  Object of class Person could not be converted to string in /home8/djsmusic/public_html/quepiensas/newPerson.php on line 15
+[25-May-2011 11:36:03] PHP Warning:  include(lib/php/distance.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/process.php on line 20
+[25-May-2011 11:36:03] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'lib/php/distance.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php') in /home8/djsmusic/public_html/quepiensas/process.php on line 20
+[25-May-2011 11:36:03] PHP Fatal error:  Call to undefined function  distance() in /home8/djsmusic/public_html/quepiensas/process.php on line 21
+[25-May-2011 11:36:30] PHP Warning:  Missing argument 1 for distance(), called in /home8/djsmusic/public_html/quepiensas/process.php on line 21 and defined in /home8/djsmusic/public_html/quepiensas/lib/php/distance.php on line 3
+[25-May-2011 11:43:25] PHP Fatal error:  Call to a member function getExecTime() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 114
+[25-May-2011 11:53:19] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php:200) in /home8/djsmusic/public_html/quepiensas/process.php on line 22
+[29-May-2011 14:32:35] PHP Catchable fatal error:  Object of class User could not be converted to string in /home8/djsmusic/public_html/quepiensas/lib/php/auth.php on line 54
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 49
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 50
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 51
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 49
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 50
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 51
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 49
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 50
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 51
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 49
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 50
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 51
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 49
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 50
+[31-May-2011 08:16:35] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 51
+[31-May-2011 08:25:29] PHP Warning:  Wrong parameter count for strtolower() in /home8/djsmusic/public_html/quepiensas/buscar.php on line 53
+[31-May-2011 08:25:29] PHP Warning:  Wrong parameter count for strtolower() in /home8/djsmusic/public_html/quepiensas/buscar.php on line 53
+[31-May-2011 08:25:29] PHP Warning:  Wrong parameter count for strtolower() in /home8/djsmusic/public_html/quepiensas/buscar.php on line 53
+[31-May-2011 08:25:29] PHP Warning:  Wrong parameter count for strtolower() in /home8/djsmusic/public_html/quepiensas/buscar.php on line 53
+[31-May-2011 08:25:29] PHP Warning:  Wrong parameter count for strtolower() in /home8/djsmusic/public_html/quepiensas/buscar.php on line 53
+[31-May-2011 09:04:45] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php:200) in /home8/djsmusic/public_html/quepiensas/buscar.php on line 51
+[31-May-2011 09:05:32] PHP Parse error:  syntax error, unexpected ']' in /home8/djsmusic/public_html/quepiensas/buscar.php on line 73
+[31-May-2011 09:06:58] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php:200) in /home8/djsmusic/public_html/quepiensas/buscar.php on line 51
+[31-May-2011 09:07:27] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 70
+[31-May-2011 09:09:49] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 70
+[02-Jun-2011 13:13:45] PHP Fatal error:  Call to a member function logged() on a non-object in /home8/djsmusic/public_html/quepiensas/login.php on line 4
+[01-Dec-2011 09:27:07] PHP Fatal error:  Using $this when not in object context in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 250
+[01-Dec-2011 09:27:12] PHP Fatal error:  Using $this when not in object context in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 250
+[01-Dec-2011 09:27:16] PHP Fatal error:  Using $this when not in object context in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 250
+[01-Dec-2011 09:27:20] PHP Fatal error:  Using $this when not in object context in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 250
+[01-Dec-2011 09:27:22] PHP Fatal error:  Using $this when not in object context in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 250
+[01-Dec-2011 09:27:24] PHP Fatal error:  Using $this when not in object context in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 250
+[01-Dec-2011 09:27:34] PHP Fatal error:  Using $this when not in object context in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 250
+[01-Dec-2011 09:27:44] PHP Fatal error:  Using $this when not in object context in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 250
+[01-Dec-2011 09:27:49] PHP Fatal error:  Using $this when not in object context in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 250
+[01-Dec-2011 10:18:37] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 70
+[01-Dec-2011 10:22:47] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 71
+[01-Dec-2011 10:38:53] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 71
+[01-Dec-2011 10:39:46] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 71
+[01-Dec-2011 10:40:47] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 71
+[01-Dec-2011 10:47:29] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 71
+[01-Dec-2011 11:04:32] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 71
+[01-Dec-2011 11:25:21] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 11:25:24] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 11:26:32] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 11:26:33] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 11:26:36] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 11:26:39] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 11:26:46] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 11:26:54] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 11:27:29] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 11:31:33] PHP Warning:  Cannot use a scalar value as an array in /home8/djsmusic/public_html/quepiensas/info.php on line 16
+[01-Dec-2011 12:00:52] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/lib/content/footer.php on line 47
+[01-Dec-2011 12:01:17] PHP Warning:  Invalid argument supplied for foreach() in /home8/djsmusic/public_html/quepiensas/lib/content/footer.php on line 47
+[01-Dec-2011 12:07:48] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 71
+[02-Dec-2011 05:10:12] PHP Warning:  require_once(lib/php/facebook/facebook.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/test.php on line 4
+[02-Dec-2011 05:10:12] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'lib/php/facebook/facebook.php' (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/test.php on line 4
+[02-Dec-2011 05:10:15] PHP Warning:  require_once(lib/php/facebook/facebook.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/test.php on line 4
+[02-Dec-2011 05:10:15] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'lib/php/facebook/facebook.php' (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/test.php on line 4
+[02-Dec-2011 05:14:46] CSRF state token does not match one provided.
+[02-Dec-2011 05:32:45] PHP Fatal error:  Class name must be a valid object or a string in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[02-Dec-2011 05:32:46] PHP Fatal error:  Class name must be a valid object or a string in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[02-Dec-2011 05:32:58] PHP Fatal error:  Class name must be a valid object or a string in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[02-Dec-2011 05:39:36] PHP Fatal error:  Call to undefined method Facebook::getSession() in /home8/djsmusic/public_html/quepiensas/register.php on line 5
+[02-Dec-2011 05:42:24] PHP Fatal error:  Call to a member function g() on a non-object in /home8/djsmusic/public_html/quepiensas/register.php on line 49
+[02-Dec-2011 05:46:06] PHP Fatal error:  Call to a member function g() on a non-object in /home8/djsmusic/public_html/quepiensas/register.php on line 49
+[02-Dec-2011 05:46:11] PHP Fatal error:  Call to a member function g() on a non-object in /home8/djsmusic/public_html/quepiensas/register.php on line 49
+[02-Dec-2011 05:46:17] PHP Fatal error:  Call to a member function g() on a non-object in /home8/djsmusic/public_html/quepiensas/register.php on line 49
+[02-Dec-2011 06:30:39] PHP Fatal error:  Call to undefined function  cookieid() in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 253
+[02-Dec-2011 06:30:43] PHP Fatal error:  Call to undefined function  cookieid() in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 253
+[02-Dec-2011 06:31:44] PHP Fatal error:  Call to undefined function  cookieid() in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 202
+[02-Dec-2011 06:35:28] PHP Warning:  include(lib/session.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/reset.php on line 1
+[02-Dec-2011 06:35:28] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'lib/session.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/reset.php on line 1
+[02-Dec-2011 06:35:28] PHP Fatal error:  Call to a member function logout() on a non-object in /home8/djsmusic/public_html/quepiensas/reset.php on line 1
+[02-Dec-2011 06:45:45] PHP Warning:  mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (11) in /home8/djsmusic/public_html/quepiensas/lib/php/db.class.php on line 32
+[02-Dec-2011 06:52:19] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/test.php:51) in /home8/djsmusic/public_html/quepiensas/test.php on line 52
+[02-Dec-2011 06:52:22] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/test.php:51) in /home8/djsmusic/public_html/quepiensas/test.php on line 52
+[02-Dec-2011 06:52:25] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/test.php:51) in /home8/djsmusic/public_html/quepiensas/test.php on line 52
+[02-Dec-2011 06:52:36] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/test.php:51) in /home8/djsmusic/public_html/quepiensas/test.php on line 52
+[02-Dec-2011 06:52:56] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/test.php:51) in /home8/djsmusic/public_html/quepiensas/test.php on line 52
+[02-Dec-2011 06:53:01] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/test.php:51) in /home8/djsmusic/public_html/quepiensas/test.php on line 52
+[02-Dec-2011 07:01:45] PHP Fatal error:  Function name must be a string in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 224
+[02-Dec-2011 07:02:12] PHP Fatal error:  Call to undefined function  queryuniquevalue() in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 224
+[02-Dec-2011 07:03:48] PHP Fatal error:  Call to a member function sessionCookie() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 249
+[02-Dec-2011 07:05:41] PHP Warning:  include(lib/session.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/test.php on line 2
+[02-Dec-2011 07:05:41] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'lib/session.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/test.php on line 2
+[02-Dec-2011 07:05:41] PHP Fatal error:  Call to a member function debug() on a non-object in /home8/djsmusic/public_html/quepiensas/test.php on line 3
+[02-Dec-2011 07:11:02] PHP Warning:  include(lib/session.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/test.php on line 2
+[02-Dec-2011 07:11:02] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'lib/session.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/test.php on line 2
+[02-Dec-2011 07:11:02] PHP Fatal error:  Call to a member function debug() on a non-object in /home8/djsmusic/public_html/quepiensas/test.php on line 3
+[02-Dec-2011 07:13:41] PHP Fatal error:  Call to undefined method Session::addSecret() in /home8/djsmusic/public_html/quepiensas/fbAuth.php on line 17
+[02-Dec-2011 07:26:03] CSRF state token does not match one provided.
+[02-Dec-2011 07:30:00] CSRF state token does not match one provided.
+[04-Dec-2011 06:33:59] CSRF state token does not match one provided.
+[04-Dec-2011 06:47:42] CSRF state token does not match one provided.
+[04-Dec-2011 06:53:12] PHP Catchable fatal error:  Object of class User could not be converted to string in /home8/djsmusic/public_html/quepiensas/test.php on line 12
+[04-Dec-2011 06:53:15] PHP Catchable fatal error:  Object of class User could not be converted to string in /home8/djsmusic/public_html/quepiensas/test.php on line 12
+[04-Dec-2011 07:00:17] PHP Fatal error:  Call to a member function api() on a non-object in /home8/djsmusic/public_html/quepiensas/profile.php on line 25
+[04-Dec-2011 08:10:00] PHP Fatal error:  Call to a member function debug() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/person.php on line 69
+[04-Dec-2011 08:10:02] PHP Fatal error:  Call to a member function debug() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/person.php on line 69
+[04-Dec-2011 08:10:03] PHP Fatal error:  Call to a member function debug() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/person.php on line 69
+[05-Dec-2011 03:04:32] CSRF state token does not match one provided.
+[05-Dec-2011 04:12:13] PHP Fatal error:  Call to undefined method Session::addSecret() in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 204
+[05-Dec-2011 04:12:33] PHP Fatal error:  Call to undefined method Session::addSecret() in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 204
+[07-Dec-2011 09:46:48] CSRF state token does not match one provided.
+[07-Dec-2011 09:46:54] CSRF state token does not match one provided.
+[07-Dec-2011 09:46:54] CSRF state token does not match one provided.
+[07-Dec-2011 09:46:57] CSRF state token does not match one provided.
+[07-Dec-2011 09:46:57] CSRF state token does not match one provided.
+[07-Dec-2011 11:03:49] CSRF state token does not match one provided.
+[07-Dec-2011 11:04:26] CSRF state token does not match one provided.
+[07-Dec-2011 11:14:40] CSRF state token does not match one provided.
+[07-Dec-2011 11:30:07] CSRF state token does not match one provided.
+[07-Dec-2011 11:30:07] CSRF state token does not match one provided.
+[07-Dec-2011 11:37:25] CSRF state token does not match one provided.
+[07-Dec-2011 11:37:25] CSRF state token does not match one provided.
+[07-Dec-2011 11:37:41] CSRF state token does not match one provided.
+[07-Dec-2011 11:37:41] CSRF state token does not match one provided.
+[07-Dec-2011 11:42:13] CSRF state token does not match one provided.
+[07-Dec-2011 11:42:13] CSRF state token does not match one provided.
+[07-Dec-2011 11:42:20] CSRF state token does not match one provided.
+[07-Dec-2011 11:42:20] CSRF state token does not match one provided.
+[08-Dec-2011 11:54:12] CSRF state token does not match one provided.
+[08-Dec-2011 11:54:12] CSRF state token does not match one provided.
+[08-Dec-2011 12:14:12] CSRF state token does not match one provided.
+[08-Dec-2011 12:14:12] CSRF state token does not match one provided.
+[08-Dec-2011 12:34:51] CSRF state token does not match one provided.
+[08-Dec-2011 12:34:51] CSRF state token does not match one provided.
+[08-Dec-2011 13:26:50] CSRF state token does not match one provided.
+[08-Dec-2011 13:27:14] CSRF state token does not match one provided.
+[08-Dec-2011 13:27:35] CSRF state token does not match one provided.
+[08-Dec-2011 13:27:35] CSRF state token does not match one provided.
+[08-Dec-2011 13:31:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:31:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:31:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:31:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:41] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:41] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:41] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:41] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:42] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:32:58] CSRF state token does not match one provided.
+[08-Dec-2011 13:33:18] CSRF state token does not match one provided.
+[08-Dec-2011 13:33:18] CSRF state token does not match one provided.
+[08-Dec-2011 13:33:18] CSRF state token does not match one provided.
+[08-Dec-2011 13:33:18] CSRF state token does not match one provided.
+[08-Dec-2011 13:33:18] CSRF state token does not match one provided.
+[08-Dec-2011 13:33:18] CSRF state token does not match one provided.
+[08-Dec-2011 13:33:18] CSRF state token does not match one provided.
+[08-Dec-2011 13:34:46] CSRF state token does not match one provided.
+[08-Dec-2011 13:34:46] CSRF state token does not match one provided.
+[08-Dec-2011 13:34:46] CSRF state token does not match one provided.
+[08-Dec-2011 13:34:47] CSRF state token does not match one provided.
+[08-Dec-2011 13:34:47] CSRF state token does not match one provided.
+[08-Dec-2011 13:34:47] CSRF state token does not match one provided.
+[08-Dec-2011 13:40:43] CSRF state token does not match one provided.
+[08-Dec-2011 13:40:43] CSRF state token does not match one provided.
+[08-Dec-2011 13:40:43] CSRF state token does not match one provided.
+[08-Dec-2011 13:40:43] CSRF state token does not match one provided.
+[09-Dec-2011 13:15:28] PHP Fatal error:  Call to undefined method Session::facebook() in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[12-Dec-2011 16:57:43] PHP Fatal error:  Call to undefined method Session::facebook() in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[12-Dec-2011 17:29:20] CSRF state token does not match one provided.
+[13-Dec-2011 04:51:35] PHP Fatal error:  Call to undefined method Session::facebook() in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[13-Dec-2011 04:51:38] PHP Fatal error:  Call to undefined method Session::facebook() in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[13-Dec-2011 04:51:39] PHP Fatal error:  Call to undefined method Session::facebook() in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[13-Dec-2011 04:51:53] PHP Fatal error:  Call to undefined method Session::facebook() in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[13-Dec-2011 04:52:13] PHP Fatal error:  Call to undefined method Session::facebook() in /home8/djsmusic/public_html/quepiensas/register.php on line 3
+[15-Dec-2011 08:23:09] CSRF state token does not match one provided.
+[15-Dec-2011 08:44:40] CSRF state token does not match one provided.
+[15-Dec-2011 08:54:45] CSRF state token does not match one provided.
+[15-Dec-2011 09:02:23] CSRF state token does not match one provided.
+[15-Dec-2011 09:02:23] CSRF state token does not match one provided.
+[15-Dec-2011 09:02:24] CSRF state token does not match one provided.
+[15-Dec-2011 09:02:24] CSRF state token does not match one provided.
+[15-Dec-2011 10:24:35] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 10:26:09] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 10:26:12] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 10:26:24] CSRF state token does not match one provided.
+[15-Dec-2011 10:45:47] PHP Fatal error:  Call to undefined method FB::fbLogin() in /home8/djsmusic/public_html/quepiensas/login.php on line 21
+[15-Dec-2011 10:45:51] PHP Fatal error:  Call to undefined method FB::fbLogin() in /home8/djsmusic/public_html/quepiensas/login.php on line 21
+[15-Dec-2011 11:01:34] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:01:40] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:02:03] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:02:14] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:02:35] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:02:41] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:02:45] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:02:54] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:03:35] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:04:28] PHP Fatal error:  Call to a member function getAuthenticateUrl() on a non-object in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:05:13] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:06:03] PHP Warning:  include(EpiCurl.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 12
+[15-Dec-2011 11:06:03] PHP Warning:  include(EpiCurl.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 12
+[15-Dec-2011 11:06:03] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'EpiCurl.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 12
+[15-Dec-2011 11:06:03] PHP Warning:  include(EpiOAuth.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 13
+[15-Dec-2011 11:06:03] PHP Warning:  include(EpiOAuth.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 13
+[15-Dec-2011 11:06:03] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'EpiOAuth.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 13
+[15-Dec-2011 11:06:03] PHP Warning:  include(EpiTwitter.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 14
+[15-Dec-2011 11:06:03] PHP Warning:  include(EpiTwitter.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 14
+[15-Dec-2011 11:06:03] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'EpiTwitter.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 14
+[15-Dec-2011 11:06:03] PHP Warning:  include(twitter.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 15
+[15-Dec-2011 11:06:03] PHP Warning:  include(twitter.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 15
+[15-Dec-2011 11:06:03] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'twitter.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 15
+[15-Dec-2011 11:06:03] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 52
+[15-Dec-2011 11:06:03] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 53
+[15-Dec-2011 11:06:03] PHP Notice:  Undefined index:  logged in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 309
+[15-Dec-2011 11:06:03] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:06:03] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:06:03] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:06:03] PHP Notice:  Undefined property: FB::$fb in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 21
+[15-Dec-2011 11:06:03] PHP Fatal error:  Class 'Twitter' not found in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 334
+[15-Dec-2011 11:06:08] PHP Warning:  include(EpiCurl.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 12
+[15-Dec-2011 11:06:08] PHP Warning:  include(EpiCurl.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 12
+[15-Dec-2011 11:06:08] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'EpiCurl.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 12
+[15-Dec-2011 11:06:08] PHP Warning:  include(EpiOAuth.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 13
+[15-Dec-2011 11:06:08] PHP Warning:  include(EpiOAuth.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 13
+[15-Dec-2011 11:06:08] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'EpiOAuth.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 13
+[15-Dec-2011 11:06:08] PHP Warning:  include(EpiTwitter.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 14
+[15-Dec-2011 11:06:08] PHP Warning:  include(EpiTwitter.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 14
+[15-Dec-2011 11:06:08] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'EpiTwitter.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 14
+[15-Dec-2011 11:06:08] PHP Warning:  include(twitter.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 15
+[15-Dec-2011 11:06:08] PHP Warning:  include(twitter.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 15
+[15-Dec-2011 11:06:08] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'twitter.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 15
+[15-Dec-2011 11:06:08] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 52
+[15-Dec-2011 11:06:08] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 53
+[15-Dec-2011 11:06:08] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:06:08] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:06:08] PHP Notice:  Undefined property: FB::$fb in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 21
+[15-Dec-2011 11:06:08] PHP Fatal error:  Class 'Twitter' not found in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 334
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 52
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 53
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined index:  logged in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 309
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined property: FB::$fb in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 21
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined index:  logged in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 309
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined variable: extraCss in /home8/djsmusic/public_html/quepiensas/lib/content/top.php on line 8
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined index:  cols in /home8/djsmusic/public_html/quepiensas/lib/content/top.php on line 9
+[15-Dec-2011 11:06:44] PHP Notice:  Undefined index:  logged in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 309
+[15-Dec-2011 11:06:44] PHP Notice:  Use of undefined constant scope - assumed 'scope' in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 106
+[15-Dec-2011 11:06:44] PHP Notice:  Use of undefined constant redirect_uri - assumed 'redirect_uri' in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 107
+[15-Dec-2011 11:06:44] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:07:05] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 52
+[15-Dec-2011 11:07:05] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 53
+[15-Dec-2011 11:07:05] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:07:05] PHP Notice:  Undefined index:  debug in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 182
+[15-Dec-2011 11:07:05] PHP Notice:  Undefined property: FB::$fb in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 21
+[15-Dec-2011 11:07:05] PHP Notice:  Undefined variable: fbid in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 35
+[15-Dec-2011 11:07:05] PHP Notice:  Undefined property: FB::$fb in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 21
+[15-Dec-2011 11:07:05] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:07:35] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:07:39] CSRF state token does not match one provided.
+[15-Dec-2011 11:08:06] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:08:10] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:08:17] CSRF state token does not match one provided.
+[15-Dec-2011 11:08:25] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:08:36] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:12:38] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:12:45] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:16:15] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:16:18] PHP Fatal error:  Call to undefined method Twitter::getAuthenticateUrl() in /home8/djsmusic/public_html/quepiensas/login.php on line 23
+[15-Dec-2011 11:49:10] PHP Warning:  Missing argument 1 for Twitter::checkTWuser(), called in /home8/djsmusic/public_html/quepiensas/twAuth.php on line 9 and defined in /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php on line 36
+[15-Dec-2011 11:49:10] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php:36) in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 281
+[15-Dec-2011 11:49:12] PHP Fatal error:  Uncaught OAuthException: An active access token must be used to query information about the current user.
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/facebook/base_facebook.php on line 1039
+[15-Dec-2011 11:52:19] PHP Warning:  Missing argument 1 for Twitter::checkTWuser(), called in /home8/djsmusic/public_html/quepiensas/twAuth.php on line 9 and defined in /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php on line 36
+[15-Dec-2011 11:52:19] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php:36) in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 281
+[15-Dec-2011 11:54:26] PHP Warning:  Missing argument 1 for Twitter::checkTWuser(), called in /home8/djsmusic/public_html/quepiensas/twAuth.php on line 9 and defined in /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php on line 36
+[15-Dec-2011 11:54:26] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php:36) in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 281
+[15-Dec-2011 11:58:21] PHP Fatal error:  Class 'Twitter' not found in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 321
+[15-Dec-2011 11:58:38] PHP Warning:  Missing argument 1 for Twitter::checkTWuser(), called in /home8/djsmusic/public_html/quepiensas/twAuth.php on line 10 and defined in /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php on line 44
+[15-Dec-2011 11:58:38] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php:44) in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 281
+[15-Dec-2011 12:01:54] PHP Warning:  Missing argument 1 for Twitter::checkTWuser(), called in /home8/djsmusic/public_html/quepiensas/twAuth.php on line 10 and defined in /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php on line 46
+[15-Dec-2011 12:01:54] PHP Fatal error:  Call to undefined method Twitter::email() in /home8/djsmusic/public_html/quepiensas/twAuth.php on line 15
+[15-Dec-2011 12:02:49] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <error>Invalid / expired Token</error>
+  <request>/oauth/access_token</request>
+</hash>
+' in /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php:249
+Stack trace:
+#0 /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php(228): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home8/djsmusic/public_html/quepiensas/twAuth.php(13): EpiOAuthResponse->__get('oauth_token')
+#2 {main}
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php on line 249
+[15-Dec-2011 12:10:19] PHP Fatal error:  Call to undefined method Twitter::email() in /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php on line 71
+[15-Dec-2011 12:10:44] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php:249
+Stack trace:
+#0 /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home8/djsmusic/public_html/quepiensas/login.php(23): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php on line 249
+[15-Dec-2011 12:10:50] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php:249
+Stack trace:
+#0 /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home8/djsmusic/public_html/quepiensas/login.php(23): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home8/djsmusic/public_html/quepiensas/lib/php/EpiOAuth.php on line 249
+[15-Dec-2011 12:32:13] CSRF state token does not match one provided.
+[15-Dec-2011 12:35:23] CSRF state token does not match one provided.
+[15-Dec-2011 12:41:00] CSRF state token does not match one provided.
+[15-Dec-2011 12:44:50] CSRF state token does not match one provided.
+[15-Dec-2011 13:20:20] CSRF state token does not match one provided.
+[15-Dec-2011 15:02:11] CSRF state token does not match one provided.
+[15-Dec-2011 15:05:49] CSRF state token does not match one provided.
+[16-Dec-2011 03:07:59] CSRF state token does not match one provided.
+[16-Dec-2011 03:09:15] CSRF state token does not match one provided.
+[16-Dec-2011 03:10:44] CSRF state token does not match one provided.
+[16-Dec-2011 03:12:53] CSRF state token does not match one provided.
+[16-Dec-2011 03:14:23] CSRF state token does not match one provided.
+[16-Dec-2011 03:16:28] CSRF state token does not match one provided.
+[16-Dec-2011 05:48:42] CSRF state token does not match one provided.
+[16-Dec-2011 06:06:04] CSRF state token does not match one provided.
+[16-Dec-2011 06:22:33] CSRF state token does not match one provided.
+[16-Dec-2011 06:23:40] PHP Fatal error:  Call to undefined method FB::loginLink() in /home8/djsmusic/public_html/quepiensas/profile.php on line 27
+[16-Dec-2011 06:23:57] PHP Fatal error:  Call to undefined method FB::loginLink() in /home8/djsmusic/public_html/quepiensas/profile.php on line 27
+[16-Dec-2011 06:24:07] CSRF state token does not match one provided.
+[16-Dec-2011 06:25:45] PHP Fatal error:  Call to undefined method FB::loginLink() in /home8/djsmusic/public_html/quepiensas/profile.php on line 27
+[16-Dec-2011 06:29:54] CSRF state token does not match one provided.
+[16-Dec-2011 06:29:54] CSRF state token does not match one provided.
+[16-Dec-2011 06:29:55] CSRF state token does not match one provided.
+[16-Dec-2011 06:31:04] CSRF state token does not match one provided.
+[16-Dec-2011 06:31:29] PHP Warning:  Missing argument 2 for Twitter::addTWuser(), called in /home8/djsmusic/public_html/quepiensas/twAuth.php on line 32 and defined in /home8/djsmusic/public_html/quepiensas/lib/php/twitter.php on line 73
+[16-Dec-2011 06:44:19] CSRF state token does not match one provided.
+[16-Dec-2011 06:47:02] CSRF state token does not match one provided.
+[16-Dec-2011 07:28:29] CSRF state token does not match one provided.
+[16-Dec-2011 07:28:29] CSRF state token does not match one provided.
+[16-Dec-2011 07:28:29] CSRF state token does not match one provided.
+[16-Dec-2011 07:31:55] CSRF state token does not match one provided.
+[16-Dec-2011 07:31:55] CSRF state token does not match one provided.
+[16-Dec-2011 07:31:55] CSRF state token does not match one provided.
+[16-Dec-2011 07:31:56] CSRF state token does not match one provided.
+[16-Dec-2011 07:31:56] CSRF state token does not match one provided.
+[16-Dec-2011 07:33:31] CSRF state token does not match one provided.
+[16-Dec-2011 07:33:31] CSRF state token does not match one provided.
+[16-Dec-2011 07:33:31] CSRF state token does not match one provided.
+[16-Dec-2011 07:33:31] CSRF state token does not match one provided.
+[16-Dec-2011 07:33:31] CSRF state token does not match one provided.
+[16-Dec-2011 07:34:40] CSRF state token does not match one provided.
+[16-Dec-2011 07:37:57] CSRF state token does not match one provided.
+[16-Dec-2011 08:07:05] PHP Warning:  include(lib/php/funciones.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/profile.php on line 9
+[16-Dec-2011 08:07:05] PHP Warning:  include(lib/php/funciones.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/profile.php on line 9
+[16-Dec-2011 08:07:05] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'lib/php/funciones.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home8/djsmusic/public_html/quepiensas/profile.php on line 9
+[16-Dec-2011 08:07:05] PHP Fatal error:  Call to undefined function  imgprofile() in /home8/djsmusic/public_html/quepiensas/profile.php on line 99
+[16-Dec-2011 08:08:32] PHP Warning:  getimagesize(200) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/funciones.php on line 6
+[16-Dec-2011 08:08:32] PHP Warning:  Division by zero in /home8/djsmusic/public_html/quepiensas/lib/php/funciones.php on line 9
+[16-Dec-2011 08:09:27] PHP Warning:  getimagesize(200) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/funciones.php on line 6
+[16-Dec-2011 08:09:27] PHP Warning:  Division by zero in /home8/djsmusic/public_html/quepiensas/lib/php/funciones.php on line 9
+[16-Dec-2011 08:10:11] PHP Warning:  getimagesize(200) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home8/djsmusic/public_html/quepiensas/lib/php/funciones.php on line 6
+[16-Dec-2011 08:10:11] PHP Warning:  Division by zero in /home8/djsmusic/public_html/quepiensas/lib/php/funciones.php on line 9
+[16-Dec-2011 08:17:54] CSRF state token does not match one provided.
+[16-Dec-2011 08:30:36] CSRF state token does not match one provided.
+[17-Dec-2011 03:21:57] CSRF state token does not match one provided.
+[17-Dec-2011 03:21:57] CSRF state token does not match one provided.
+[17-Dec-2011 03:21:57] CSRF state token does not match one provided.
+[17-Dec-2011 03:21:57] CSRF state token does not match one provided.
+[17-Dec-2011 03:21:57] CSRF state token does not match one provided.
+[17-Dec-2011 11:33:08] CSRF state token does not match one provided.
+[17-Dec-2011 13:10:39] CSRF state token does not match one provided.
+[17-Dec-2011 13:50:03] CSRF state token does not match one provided.
+[17-Dec-2011 13:54:02] CSRF state token does not match one provided.
+[17-Dec-2011 14:00:19] CSRF state token does not match one provided.
+[17-Dec-2011 14:01:51] CSRF state token does not match one provided.
+[17-Dec-2011 14:03:21] CSRF state token does not match one provided.
+[17-Dec-2011 14:06:50] CSRF state token does not match one provided.
+[17-Dec-2011 14:09:12] CSRF state token does not match one provided.
+[17-Dec-2011 14:10:52] CSRF state token does not match one provided.
+[17-Dec-2011 14:26:12] PHP Warning:  POST Content-Length of 11982087 bytes exceeds the limit of 10485760 bytes in Unknown on line 0
+[17-Dec-2011 15:41:53] CSRF state token does not match one provided.
+[18-Dec-2011 13:54:56] CSRF state token does not match one provided.
+[19-Dec-2011 14:44:07] CSRF state token does not match one provided.
+[19-Dec-2011 14:45:03] CSRF state token does not match one provided.
+[19-Dec-2011 14:45:30] CSRF state token does not match one provided.
+[19-Dec-2011 14:47:00] CSRF state token does not match one provided.
+[19-Dec-2011 14:57:34] CSRF state token does not match one provided.
+[19-Dec-2011 14:57:53] CSRF state token does not match one provided.
+[19-Dec-2011 15:36:20] CSRF state token does not match one provided.
+[19-Dec-2011 15:40:20] CSRF state token does not match one provided.
+[19-Dec-2011 16:04:01] CSRF state token does not match one provided.
+[19-Dec-2011 16:18:34] CSRF state token does not match one provided.
+[19-Dec-2011 17:14:12] CSRF state token does not match one provided.
+[19-Dec-2011 17:18:52] PHP Fatal error:  Class 'User' not found in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 319
+[19-Dec-2011 17:21:06] CSRF state token does not match one provided.
+[19-Dec-2011 17:22:15] CSRF state token does not match one provided.
+[19-Dec-2011 17:24:16] CSRF state token does not match one provided.
+[19-Dec-2011 17:26:32] CSRF state token does not match one provided.
+[19-Dec-2011 17:32:01] CSRF state token does not match one provided.
+[19-Dec-2011 17:36:39] CSRF state token does not match one provided.
+[19-Dec-2011 17:36:53] CSRF state token does not match one provided.
+[19-Dec-2011 17:39:02] CSRF state token does not match one provided.
+[19-Dec-2011 17:39:21] CSRF state token does not match one provided.
+[19-Dec-2011 17:41:37] CSRF state token does not match one provided.
+[20-Dec-2011 09:08:51] CSRF state token does not match one provided.
+[20-Dec-2011 09:09:35] CSRF state token does not match one provided.
+[20-Dec-2011 09:09:35] CSRF state token does not match one provided.
+[20-Dec-2011 09:09:35] CSRF state token does not match one provided.
+[20-Dec-2011 09:09:35] CSRF state token does not match one provided.
+[20-Dec-2011 09:09:36] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:05] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:05] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:05] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:05] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:05] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:18] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:18] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:18] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:18] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:18] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:33] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:38] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:38] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:38] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:38] CSRF state token does not match one provided.
+[20-Dec-2011 09:13:38] CSRF state token does not match one provided.
+[20-Dec-2011 09:16:27] CSRF state token does not match one provided.
+[21-Dec-2011 14:09:48] CSRF state token does not match one provided.
+[21-Dec-2011 14:40:07] CSRF state token does not match one provided.
+[21-Dec-2011 14:41:37] CSRF state token does not match one provided.
+[21-Dec-2011 14:42:46] CSRF state token does not match one provided.
+[21-Dec-2011 15:13:39] CSRF state token does not match one provided.
+[23-Dec-2011 10:45:22] CSRF state token does not match one provided.
+[23-Dec-2011 10:53:15] CSRF state token does not match one provided.
+[23-Dec-2011 11:01:47] CSRF state token does not match one provided.
+[23-Dec-2011 11:13:53] PHP Parse error:  syntax error, unexpected $end, expecting T_FUNCTION in /home8/djsmusic/public_html/quepiensas/lib/php/user.php on line 284
+[23-Dec-2011 11:18:38] CSRF state token does not match one provided.
+[23-Dec-2011 11:42:13] CSRF state token does not match one provided.
+[23-Dec-2011 11:51:07] PHP Fatal error:  Class 'User' not found in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 319
+[23-Dec-2011 11:51:10] CSRF state token does not match one provided.
+[23-Dec-2011 11:51:10] CSRF state token does not match one provided.
+[23-Dec-2011 11:59:35] CSRF state token does not match one provided.
+[23-Dec-2011 12:20:26] CSRF state token does not match one provided.
+[23-Dec-2011 12:32:27] CSRF state token does not match one provided.
+[23-Dec-2011 12:33:27] CSRF state token does not match one provided.
+[25-Dec-2011 10:42:25] CSRF state token does not match one provided.
+[25-Dec-2011 10:47:22] PHP Fatal error:  Call to a member function debug() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 21
+[25-Dec-2011 10:47:22] PHP Fatal error:  Call to a member function debug() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 21
+[25-Dec-2011 11:00:32] PHP Catchable fatal error:  Object of class Session could not be converted to string in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 184
+[25-Dec-2011 11:00:36] PHP Catchable fatal error:  Object of class Session could not be converted to string in /home8/djsmusic/public_html/quepiensas/lib/php/session.php on line 184
+[25-Dec-2011 11:23:23] PHP Fatal error:  Call to a member function queryUniqueObject() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/fb.class.php on line 95
+[25-Dec-2011 11:29:44] CSRF state token does not match one provided.
+[25-Dec-2011 11:30:26] CSRF state token does not match one provided.
+[25-Dec-2011 11:36:34] CSRF state token does not match one provided.
+[25-Dec-2011 11:39:38] CSRF state token does not match one provided.
+[25-Dec-2011 11:40:01] CSRF state token does not match one provided.
+[25-Dec-2011 11:40:01] CSRF state token does not match one provided.
+[25-Dec-2011 11:40:44] CSRF state token does not match one provided.
+[02-Jan-2012 19:47:53] CSRF state token does not match one provided.
+[05-Jan-2012 09:09:26] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:26] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:26] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:26] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:26] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:26] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:27] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:27] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:27] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:27] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:27] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:27] CSRF state token does not match one provided.
+[31-Jan-2012 03:18:27] CSRF state token does not match one provided.
+[31-Jan-2012 03:37:32] CSRF state token does not match one provided.
+[31-Jan-2012 04:10:04] CSRF state token does not match one provided.
+[31-Jan-2012 04:10:04] CSRF state token does not match one provided.
+[31-Jan-2012 04:10:04] CSRF state token does not match one provided.
+[31-Jan-2012 04:10:04] CSRF state token does not match one provided.
+[31-Jan-2012 04:10:04] CSRF state token does not match one provided.
+[31-Jan-2012 04:10:05] CSRF state token does not match one provided.
+[31-Jan-2012 04:10:05] CSRF state token does not match one provided.
+[31-Jan-2012 04:10:05] CSRF state token does not match one provided.
+[31-Jan-2012 04:10:05] CSRF state token does not match one provided.
+[31-Jan-2012 04:15:52] CSRF state token does not match one provided.
+[31-Jan-2012 04:16:13] CSRF state token does not match one provided.
+[31-Jan-2012 04:25:47] CSRF state token does not match one provided.
+[31-Jan-2012 04:40:45] CSRF state token does not match one provided.
+[31-Jan-2012 04:52:44] CSRF state token does not match one provided.
+[31-Jan-2012 04:52:44] CSRF state token does not match one provided.
+[31-Jan-2012 04:52:44] CSRF state token does not match one provided.
+[31-Jan-2012 04:52:45] CSRF state token does not match one provided.
+[31-Jan-2012 04:58:26] CSRF state token does not match one provided.
+[31-Jan-2012 04:58:26] CSRF state token does not match one provided.
+[31-Jan-2012 04:58:26] CSRF state token does not match one provided.
+[31-Jan-2012 04:58:26] CSRF state token does not match one provided.
+[31-Jan-2012 04:58:26] CSRF state token does not match one provided.
+[31-Jan-2012 04:58:26] CSRF state token does not match one provided.
+[31-Jan-2012 04:58:26] CSRF state token does not match one provided.
+[31-Jan-2012 04:58:27] CSRF state token does not match one provided.
+[31-Jan-2012 05:01:12] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:21] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:21] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:21] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:22] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:22] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:23] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:23] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:23] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:23] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:23] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:23] CSRF state token does not match one provided.
+[31-Jan-2012 05:03:24] CSRF state token does not match one provided.
+[31-Jan-2012 05:06:14] CSRF state token does not match one provided.
+[31-Jan-2012 05:06:14] CSRF state token does not match one provided.
+[31-Jan-2012 05:06:14] CSRF state token does not match one provided.
+[31-Jan-2012 05:06:14] CSRF state token does not match one provided.
+[31-Jan-2012 05:06:15] CSRF state token does not match one provided.
+[31-Jan-2012 05:06:15] CSRF state token does not match one provided.
+[31-Jan-2012 05:06:15] CSRF state token does not match one provided.
+[31-Jan-2012 05:06:15] CSRF state token does not match one provided.
+[31-Jan-2012 05:06:15] CSRF state token does not match one provided.
+[31-Jan-2012 05:34:36] CSRF state token does not match one provided.
+[31-Jan-2012 05:34:36] CSRF state token does not match one provided.
+[31-Jan-2012 05:34:36] CSRF state token does not match one provided.
+[31-Jan-2012 05:34:36] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:42] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:42] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:42] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:43] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:43] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:44] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:44] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:44] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:44] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:44] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:45] CSRF state token does not match one provided.
+[31-Jan-2012 05:42:45] CSRF state token does not match one provided.
+[31-Jan-2012 11:05:20] CSRF state token does not match one provided.
+[31-Jan-2012 11:05:20] CSRF state token does not match one provided.
+[31-Jan-2012 11:05:20] CSRF state token does not match one provided.
+[31-Jan-2012 11:05:20] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:34] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:34] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:34] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:35] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:35] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:35] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:35] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:35] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:36] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:36] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:36] CSRF state token does not match one provided.
+[01-Feb-2012 10:01:36] CSRF state token does not match one provided.
+[02-Feb-2012 16:27:13] CSRF state token does not match one provided.
+[22-Feb-2012 09:34:29] CSRF state token does not match one provided.
+[22-Feb-2012 09:34:36] CSRF state token does not match one provided.
+[08-Mar-2012 08:10:44] CSRF state token does not match one provided.
+[08-Mar-2012 08:11:00] CSRF state token does not match one provided.
+[08-Mar-2012 08:11:14] CSRF state token does not match one provided.
+[08-Mar-2012 08:11:34] CSRF state token does not match one provided.
+[08-Mar-2012 08:12:19] CSRF state token does not match one provided.
+[08-Mar-2012 08:12:33] CSRF state token does not match one provided.
+[19-Mar-2012 03:21:28] CSRF state token does not match one provided.
+[19-Mar-2012 03:21:37] CSRF state token does not match one provided.
+[09-Apr-2012 19:29:47] CSRF state token does not match one provided.
+[24-Apr-2012 18:30:21] CSRF state token does not match one provided.
+[24-Apr-2012 18:36:55] CSRF state token does not match one provided.
+[01-May-2012 17:43:26] CSRF state token does not match one provided.
+[01-May-2012 18:49:21] CSRF state token does not match one provided.
+[04-May-2012 16:44:42] CSRF state token does not match one provided.
+[04-May-2012 16:56:13] CSRF state token does not match one provided.
+[04-May-2012 17:22:52] CSRF state token does not match one provided.
+[04-May-2012 17:25:28] CSRF state token does not match one provided.
+[04-May-2012 17:45:23] CSRF state token does not match one provided.
+[04-May-2012 20:09:31] CSRF state token does not match one provided.
+[06-May-2012 13:20:33] CSRF state token does not match one provided.
+[14-May-2012 18:52:42] CSRF state token does not match one provided.
+[14-May-2012 18:59:43] CSRF state token does not match one provided.
+[15-May-2012 20:42:20] CSRF state token does not match one provided.
+[27-May-2012 13:59:50] CSRF state token does not match one provided.

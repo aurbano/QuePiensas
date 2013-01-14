@@ -1,0 +1,1 @@
+<?php include('lib/php/session.php'); $sess->logout(); header('Location: /'); ?>

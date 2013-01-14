@@ -1,0 +1,76 @@
+/* CSS Document */
+
+#loginBox{ 
+	display:none;
+	width:268px;
+	text-align:center;
+}
+.social{
+	width:286px;
+	height:46px;
+	overflow:hidden;
+	background:url(http://static.quepiensas.es/img/social/generic-social.png);
+	display:inline-block;
+	font-size:12px;
+	font-weight:bold;
+	line-height:40px;
+	color:#fff !important;
+	margin:3px 0;
+	text-align:left;
+}
+.social:hover{text-decoration:none;}
+.social img{
+	float:left;
+	padding:10px 16px;
+	margin:0 34px 0 0;
+}
+.social.fb{background-color:#3b5998;}
+.social.tw{background-color:#00A5F0;}
+.social.fb:hover{background-color:#2C57A5;}
+.social.tw:hover{background-color:#009be1;}
+#loginBox #loginForm label{
+	font-size:10px;
+	display:inline-block;
+	padding-top:7px;
+	text-align:left;
+	margin:0 15px;
+}
+#loginBox .loginInput{
+	background:#FFFFFF url(http://static.quepiensas.es/img/form/textarea-shadow.gif) repeat-x top;
+	border:#CCCCCC solid 1px;
+	outline:none;
+	font-family:inherit;
+	color:#242C48;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	padding:8px 6px;
+	width:254px;
+}
+#loginBox #loginForm #aviso{font-size:10px; display:inline-block; padding-top:8px; color:#888;}
+#loginBox #loginForm #loginBtn{
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	outline:none;
+	width:268px;
+	cursor:pointer;
+	font-size:12px;
+	display:inline-block;
+	padding:8px 6px 9px 6px;
+	text-align:center;
+	margin:7px 0 0 0;
+	font-weight:100;
+	color:#999 !important;
+	text-shadow:#fff 1px 1px;
+	border:1px solid #ccc;
+	background:url(img/form/greyBtn-bg-c.gif) bottom repeat-x;
+}
+#loginBox #loginForm #loginBtn:hover{
+	border-color:#999;
+	color:#555 !important;
+}
+	
+.errorMsg{
+	font-size:12px;
+	
+}

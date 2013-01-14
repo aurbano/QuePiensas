@@ -1,0 +1,59 @@
+#countdown_dashboard {
+	height:49px;
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
+	padding: 2px 0 7px 0;
+	margin:20px 0;
+}
+
+.dash {
+	width: auto;
+	height: 50px;
+	background: transparent url('../images/dash.png') 0 0 no-repeat;
+	float: left;
+	margin-left: 5px;
+	padding-left: 15px;
+	position: relative;
+	color: #333;
+}
+.weeks_dash {
+	background: transparent url('../images/dark_weeks_dash.png') 0 0 no-repeat;
+}
+.days_dash {
+	background: transparent url('../images/dark_days_dash.png') 0 0 no-repeat;
+}
+.hours_dash {
+	background: transparent url('../images/dark_hours_dash.png') 0 0 no-repeat;
+}
+.minutes_dash {
+	background: transparent url('../images/dark_minutes_dash.png') 0 0 no-repeat;
+}
+.seconds_dash {
+	background: transparent url('../images/dark_seconds_dash.png') 0 0 no-repeat;
+}
+.dash_title{
+	font-family:Arial,Verdana;
+	font-size: 20px;
+	position: relative;
+	left: 5px;
+	top: 14px;
+	font-variant:small-caps;
+}
+.dash .digit {
+	font: bold 35pt Arial;
+	font-weight: bold;
+	float: left;
+	width: 25px;
+	text-align: center;
+	position: relative;
+	color:#3AA0D3;
+}
+
+#loading {
+	text-align: center;
+	margin: 10px;
+	display: none;
+	position: absolute;
+	width: 100%;
+	top: 60px;
+}

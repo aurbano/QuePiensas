@@ -1,0 +1,4 @@
+<FILES ~ "(.*)">
+Order allow,deny
+Allow from all
+</FILES>

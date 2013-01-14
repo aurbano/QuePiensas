@@ -1,0 +1,80 @@
+/* CSS Document */
+ul.messages, ul.thread{
+	list-style:none;
+	margin:0 -15px;
+	padding:0;
+}
+ul.messages .replyBox{ margin-bottom:25px; margin-left:30px; }
+ul.messages .replyBox textarea{ width:625px; }
+ul.messages{ border-top:1px solid #ccc; }
+ul.messages li{ border-bottom:#eee 1px solid; }
+ul.messages li:last-child{ border-bottom:none; }
+ul.messages > li a.header{
+	display:block;
+	padding:5px 30px;
+	text-decoration:none;
+	color:#333;
+	position:relative;
+	ove2rflow:hidden;
+	font-size:12px;
+}
+ul.messages > li a.read{ background:url(http://static.quepiensas.es/img/icons/privado.png) no-repeat 10px 4px; }
+ul.messages > li a.unread{ background:#E5ECFF url(http://static.quepiensas.es/img/icons/privado.png) no-repeat 10px -18px; }
+
+ul.messages > li a.read:hover{
+	background-color:#fcfcfc;
+	text-decoration:inherit;	
+}
+ul.messages > li a.unread:hover{
+	background:#fcfcfc;
+	text-decoration:inherit;	
+}
+ul.messages > li a.header .timestamp{
+	position:absolute;
+	top:5px;
+	right:15px;
+	color:#999;
+	font-size:11px;
+}
+ul.messages > li a.header .count{
+	color:#999;	
+}
+ul.messages > li a.header .extract{
+	position:absolute;
+	top:5px;
+	left:200px;
+}
+ul.messages ul.thread{
+	display:none;
+	list-style: none;
+	margin-left: 30px;
+	margin-bottom: 10px;
+	font-size: 13px;
+	border-left: solid 3px #EEE;
+	padding-left: 15px;
+	margin-right: 15px;
+}
+ul.thread > li{
+	position: relative;
+	min-height: 40px;
+	padding-top: 25px;
+	padding-left: 60px;
+	margin-top: 12px;
+}
+ul.thread > li .header{
+	position:absolute;
+	top:0;
+	left:60px;
+}
+ul.thread > li .header small{ font-size:11px; }
+ul.thread > li > img{
+	position:absolute;
+	top:0;
+	left:0;
+	outline:1px solid #ddd;
+	border:1px solid #fff;
+}
+ul.thread > li .msgContent{
+	margin-bottom:12px;
+	line-height: 17px; 
+}
