@@ -22,11 +22,11 @@ ul.messages > li a.read{ background:url(http://static.quepiensas.es/img/icons/pr
 ul.messages > li a.unread{ background:#E5ECFF url(http://static.quepiensas.es/img/icons/privado.png) no-repeat 10px -18px; }
 
 ul.messages > li a.read:hover{
-	background-color:#fcfcfc;
+	background-color:#fcfcfc url(http://static.quepiensas.es/img/icons/privado.png) no-repeat 10px 4px;
 	text-decoration:inherit;	
 }
 ul.messages > li a.unread:hover{
-	background:#fcfcfc;
+	background:#fcfcfc url(http://static.quepiensas.es/img/icons/privado.png) no-repeat 10px -18px;;
 	text-decoration:inherit;	
 }
 ul.messages > li a.header .timestamp{
