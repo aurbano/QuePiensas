@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  *	Archivo de gestion de las llamadas de AJAX. Es decir, todas las respuestas que salgan de este archivo
  *  tienen que salir en XML, JSON, o un dato solo. No se puede redirigir con header.
  *  Las siguientes variables son necesarias:

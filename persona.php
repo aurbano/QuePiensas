@@ -29,7 +29,7 @@ $persona->addRelation(1);
 // Inicio de base de datos
 
 $db=$sess->db();
-$following = $db->queryUniqueValue('SELECT follow FROM relations WHERE pid='.$id.' AND usid='.$user->id());
+if($sess->logged()) $following = $db->queryUniqueValue('SELECT follow FROM relations WHERE pid='.$id.' AND usid='.$user->id());
 $followingNum = $db->queryUniqueValue('SELECT COUNT(*) FROM relations WHERE follow=1 AND pid='.$id);
 $commentsNum = $db->queryUniqueValue('SELECT count(*) FROM comments,personas WHERE comments.pid=personas.id AND personas.id='.$id);
 
