@@ -134,7 +134,7 @@ small{
 }
 .formNormal{
 	background:#FFFFFF url(http://static.quepiensas.es/img/form/textarea-shadow.gif) repeat-x top;
-	border:#CCCCCC solid 1px;
+	border:#999 solid 1px;
 	outline:none;
 	font-family:inherit;
 	color:#242C48;
