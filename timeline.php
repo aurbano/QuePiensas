@@ -28,7 +28,7 @@ include('lib/content/top.php');
 	<h3>Novedades</h3>
     <!-- Comentarios -->
     <?php
-    	$tl = new Timeline(2,$user->id);
+    	$tl = new Timeline(2,$user->id());
 		$tl->displayTimeline();
 	?>
 </div>

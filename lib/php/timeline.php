@@ -137,7 +137,7 @@ class Timeline{
 			if(!($sess instanceof Session)) return false;
 			$db = $sess->db();	
 		}
-		if($this->type == 2 && $this->identifier<1) $this->identifier = $user->id;
+		if($this->type == 2 && $this->identifier<1) $this->identifier = $user->id();
 		// Check data
 		if($this->identifier < 1){if($echo){ echo '-1'; } return -1; }
 		// Build resource from MySQL

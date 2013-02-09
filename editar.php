@@ -7,7 +7,7 @@ if(!$sess->logged()){
 
 include('lib/php/style.php');
 $color = '#FFF';
-if($user->pic() == 'http://img.quepiensas.es/noimage.png') $color = colorID($user->id);
+if($user->pic() == 'http://img.quepiensas.es/noimage.png') $color = colorID($user->id());
 
 $content['title'] = 'Editar perfil';
 $content['js'][] = 'editar';
@@ -118,9 +118,9 @@ include('lib/content/top.php');
             <ul id="changePicList">
 				<?php if($user->fb()){ ?><li><a href="#changePic" rel="facebook"><img src="<?php echo $fb->pic('square'); ?>" width="60" alt="Facebook" /><br />Facebook</a></li><?php } ?>
                 <?php if($user->tw()){ ?><li><a href="#changePic" rel="twitter"><img src="<?php echo $tw->pic('normal'); ?>" width="60" alt="Twitter" /><br />Twitter</a></li><?php } ?>
-                <?php if($user->hasPic()){ ?><li><a href="#changePic" rel="uploaded"><img src="<?php echo 'http://img.quepiensas.es/'.$user->id.'.gif'; ?>" width="60" alt="Subida" /><br />QuePiensas</a></li><? } ?>
+                <?php if($user->hasPic()){ ?><li><a href="#changePic" rel="uploaded"><img src="<?php echo 'http://img.quepiensas.es/'.$user->id().'.gif'; ?>" width="60" alt="Subida" /><br />QuePiensas</a></li><? } ?>
             	<li><form action="/processUpload.php" method="post" id="picChangeForm" enctype="multipart/form-data" style="display:inline"><label for="picChanger"><img src="http://static.quepiensas.es/img/form/addPic.gif" width="60" alt="Subir foto" /><br />Subir foto<div style="display: block; position: fixed; visibility: hidden;"><input type="file" name="pic" id="picChanger" /></div></label></form></li>
-                <li><a href="#changePic" rel="nopic"><img src="http://img.quepiensas.es/noimage.png" width="60" alt="Sin foto" style="background-color:<?php echo colorID($user->id); ?>" /><br />No mostrar</a></li>
+                <li><a href="#changePic" rel="nopic"><img src="http://img.quepiensas.es/noimage.png" width="60" alt="Sin foto" style="background-color:<?php echo colorID($user->id()); ?>" /><br />No mostrar</a></li>
             </ul>
         </div>
     </div>

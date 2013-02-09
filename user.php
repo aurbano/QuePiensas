@@ -18,7 +18,7 @@ $db=$sess->db();
 		die();
 	}
 	// Actualizar visitas
-	if($_GET['id'] !== $user->id) $db->execute('UPDATE `users` SET `visits` = `visits`+1 WHERE id = \''.$_GET['id'].'\'');
+	if($_GET['id'] !== $user->id()) $db->execute('UPDATE `users` SET `visits` = `visits`+1 WHERE id = \''.$_GET['id'].'\'');
 // ----------------------------
 
 include('lib/php/funciones.php');

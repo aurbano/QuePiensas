@@ -17,7 +17,7 @@ $limit = 20;
 if($_GET['p']>0 && $sess->valid($_GET['p'],'int')){ $limit = $limit*$_GET['p'].',20'; }
 
 	// Privados
-	$msg = $db->query('SELECT msg.`id`, msg.`com`, msg.`to`, msg.`from`, msg.`msg`, msg.status, msg.ident, IF(thread=0,msg.id,msg.thread) AS th, (SELECT COUNT(*) FROM msg WHERE msg.thread = th OR msg.id=th) AS total, (SELECT name FROM users WHERE id = msg.`to`) AS toName, (SELECT name FROM users WHERE id = msg.`from`) AS fromName, msg.timestamp, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',`msg`.`from`,\'-square.png\') WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\') WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM (SELECT * FROM msg ORDER BY timestamp DESC) AS msg, users WHERE `users`.`id` = `from` AND (`from` = '.$user->id.' OR `to` = '.$user->id.') GROUP BY th ORDER BY timestamp DESC LIMIT '.$limit);
+	$msg = $db->query('SELECT msg.`id`, msg.`com`, msg.`to`, msg.`from`, msg.`msg`, msg.status, msg.ident, IF(thread=0,msg.id,msg.thread) AS th, (SELECT COUNT(*) FROM msg WHERE msg.thread = th OR msg.id=th) AS total, (SELECT name FROM users WHERE id = msg.`to`) AS toName, (SELECT name FROM users WHERE id = msg.`from`) AS fromName, msg.timestamp, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',`msg`.`from`,\'-square.png\') WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\') WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM (SELECT * FROM msg ORDER BY timestamp DESC) AS msg, users WHERE `users`.`id` = `from` AND (`from` = '.$user->id().' OR `to` = '.$user->id().') GROUP BY th ORDER BY timestamp DESC LIMIT '.$limit);
 	
 	if($_GET['p']>0 && $db->numRows($msg)<1){
 		// Algun capullo metiendo una pagina manualmente que no existe
@@ -59,7 +59,7 @@ include('lib/content/top.php');
 			$extract = stripslashes($a->msg);
 			if(strlen($extract)>50) $extract = substr($extract,0,50).'...';
 			$unread = 'read';
-			if($user->id == $a->to &&($a->status == 0 || $a->status == 2)) $unread = 'unread';
+			if($user->id() == $a->to &&($a->status == 0 || $a->status == 2)) $unread = 'unread';
 			// IDENT GUIDE
 			//	# ->	To			Current User
 			//	0 ->	Public		Public
@@ -76,7 +76,7 @@ include('lib/content/top.php');
 				$name = 'Anónimo';
 			}
 			$linkStyle = '';
-			if($user->id == $a->from) $linkStyle = 'color:#333';
+			if($user->id() == $a->from) $linkStyle = 'color:#333';
     		echo '<li id="'.$a->th.'"><a href="#showMsg" data-com="'.$a->com.'" class="header '.$unread.'" rel=""><span class="name">'.$name.'</span> <span class="count">('.$a->total.')</span> <span class="extract">'.$extract.'</span><span class="timestamp">'.dispTimeHour($a->timestamp).'</span></a><ul class="thread"><li><img src="'.$a->pic.'" width="50" style="background:'.$color.'" /><div class="header">'.$from.' <small>'.dispTimeHour($a->timestamp).'</small></div><div class="msgContent">'.nl2br(parse(stripslashes($a->msg))).'</div></li></ul></li>';
      	  } }else{ echo '<div class="errorBox">No tienes mensajes privados</div>'; } ?>
     </ul>

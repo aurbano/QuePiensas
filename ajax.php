@@ -62,7 +62,7 @@ switch($type){
 		$name = $_POST['name'];
 		// Nombre de usuario que postea:
 		if($name=='anonimo' || $name == 'annimo'){ $name = ''; }else{ $user->set('name',$name); }
-		$name = '<a href="/user/'.$user->id.'" title="Ir a su perfil">'.$name.'</a>'; // Enlace
+		$name = '<a href="/user/'.$user->id().'" title="Ir a su perfil">'.$name.'</a>'; // Enlace
 		if($_POST['ident'] == '0') $name = 'Anonimo'; // Modo Anonimo
 		$rid = $_POST['rid']; // Respuesta
 		$msgType = 0; // Publico=0, Privado=1
@@ -74,8 +74,8 @@ switch($type){
 					$pic = $user->pic();
 					if($_POST['ident']=='0') $pic = 'http://img.quepiensas.es/noimage.png';
 					if(strlen($name)<1 || !$name) $name = 'Anónimo';
-					if($new) finish($msg[1],true,'/'.$p->pid,array('time'=>'Ahora mismo','pid'=>$p->pid,'name'=>$name,'pic'=>$pic,'usid'=>$user->id,'id'=>$msg[0]));
-					finish($msg[1],true,'/'.$p->pid,array('time'=>'Ahora mismo','name'=>$name,'pic'=>$pic,'usid'=>$user->id,'id'=>$msg[0]));
+					if($new) finish($msg[1],true,'/'.$p->pid,array('time'=>'Ahora mismo','pid'=>$p->pid,'name'=>$name,'pic'=>$pic,'usid'=>$user->id(),'id'=>$msg[0]));
+					finish($msg[1],true,'/'.$p->pid,array('time'=>'Ahora mismo','name'=>$name,'pic'=>$pic,'usid'=>$user->id(),'id'=>$msg[0]));
 				}else{
 					finish('No se pudo guardar el comentario');
 				}
@@ -84,7 +84,7 @@ switch($type){
 				// Se envia al autor de $rid
 				$db = $sess->db();
 				$to = $db->queryUniqueValue('SELECT usid FROM comments WHERE id = \''.$rid.'\'');
-				if($to == $user->id) finish('No puedes enviarte un mensaje privado a ti mismo!');
+				if($to == $user->id()) finish('No puedes enviarte un mensaje privado a ti mismo!');
 				if(!$to) finish('No existe el usuario a quien respondes');
 				if($ident == 0) $ident = 2;
 				if($ident == 1) $ident = 0;
@@ -157,17 +157,17 @@ switch($type){
 		break;
 	case 'follow':
 		if(!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id']<1) finish('Por favor intentalo mas tarde');
-		if($db->queryUniqueValue('SELECT follow FROM relations WHERE pid='.$_POST['id'].' AND usid='.$user->id)!==false){
-			$db->execute('UPDATE relations SET follow=1 WHERE pid='.$_POST['id'].' AND usid='.$user->id);
+		if($db->queryUniqueValue('SELECT follow FROM relations WHERE pid='.$_POST['id'].' AND usid='.$user->id())!==false){
+			$db->execute('UPDATE relations SET follow=1 WHERE pid='.$_POST['id'].' AND usid='.$user->id());
 		}else{
-			$db->execute('INSERT INTO relations (pid,usid,relation, follow, timestamp) VALUES ('.$_POST['id'].','.$user->id.',2,1,'.time().')');
+			$db->execute('INSERT INTO relations (pid,usid,relation, follow, timestamp) VALUES ('.$_POST['id'].','.$user->id().',2,1,'.time().')');
 		}
 		finish('',true);
 		break;
 	case 'unfollow':
 		if(!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id']<1) finish('Por favor intentalo mas tarde');
 		else{
-			$db->execute('UPDATE relations SET follow=0 WHERE pid='.$_POST['id'].' AND usid='.$user->id);
+			$db->execute('UPDATE relations SET follow=0 WHERE pid='.$_POST['id'].' AND usid='.$user->id());
 		}
 		finish('',true);
 		break;
@@ -190,7 +190,7 @@ switch($type){
 				$comment = $db->queryUniqueObject('SELECT personas.name AS pname, comments.id, comments.msg, comments.pid, comments.timestamp, comments.ident, comments.state, comments.spam, users.name, users.id AS usid, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'-square.png\') WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\') WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM personas, comments, users WHERE comments.id = '.$com.' AND comments.usid = users.id AND comments.pid = personas.id');
 				
 				$curUser = 0;
-				if($comment->usid == $user->id) $curUser = 1;
+				if($comment->usid == $user->id()) $curUser = 1;
 				$usid = 0;
 				$uname = 'Anonimo';
 				if($comment->ident = 1){
@@ -216,13 +216,13 @@ switch($type){
 		if($com > 0) inResponse($com);
 		if($db->numRows($msg) > 0){
 			while($a = $db->fetchNextObject($msg)){
-				if($a->to !== $user->id && $a->from !== $user->id){
+				if($a->to !== $user->id() && $a->from !== $user->id()){
 					echo '<error>No puedes ver los privados de otra gente...</error>';
 					break;
 				}
 				// Mostrarlo en plan XML
 				$curUser = 0;
-				if($a->from == $user->id) $curUser = 1;
+				if($a->from == $user->id()) $curUser = 1;
 				echo '<msg id="'.$a->id.'" color="'.colorID($a->from).'" type="msg" usid="'.$a->from.'" curUser="'.$curUser.'" user="'.$a->name.'" src="'.$a->pic.'"><timestamp>'.dispTimeHour($a->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(stripslashes($a->msg))).']]></content></msg>';
 				inResponse($a->com);
 			}
@@ -236,14 +236,14 @@ switch($type){
 		// Comprobamos que el usuario tiene derecho a responder
 		// El primer mensaje del thread debe ser de o para este usuario:
 		$db = $sess->db();
-		$info = $db->queryUniqueObject('SELECT `to`, `from` FROM `msg` WHERE `id` = \''.$thread.'\' AND (`to` = \''.$user->id.'\' OR `from` = \''.$user->id.'\')');
+		$info = $db->queryUniqueObject('SELECT `to`, `from` FROM `msg` WHERE `id` = \''.$thread.'\' AND (`to` = \''.$user->id().'\' OR `from` = \''.$user->id().'\')');
 		if(!$info) finish('jajaja, NO.');
 		// ID del destinatario:
 		$to = $info->to;
-		if($to == $user->id) $to = $info->from;
+		if($to == $user->id()) $to = $info->from;
 		// A responder :D
 		if($pm = $user->sendPM($to,$_POST['msg'],$thread)){
-			finish('',true,'/do/messages',array('time'=>dispTimeHour(time()),'name'=>$user->g('name'),'pic'=>$user->pic(),'usid'=>$user->id,'id'=>$pm,'msg'=>$_POST['msg']));
+			finish('',true,'/do/messages',array('time'=>dispTimeHour(time()),'name'=>$user->g('name'),'pic'=>$user->pic(),'usid'=>$user->id(),'id'=>$pm,'msg'=>$_POST['msg']));
 		}else{
 			finish('No se pudo enviar el mensaje');
 		}
@@ -259,9 +259,9 @@ switch($type){
 		if(!$sess->logged()) finish('Debes iniciar sesion');
 		// Buscamos privados no leidos:
 		$db = $sess->db();
-		$privs = $db->queryUniqueValue('SELECT COUNT(*) FROM msg WHERE `to` = \''.$user->id.'\' AND (`status`=0 OR `status`=2)');
+		$privs = $db->queryUniqueValue('SELECT COUNT(*) FROM msg WHERE `to` = \''.$user->id().'\' AND (`status`=0 OR `status`=2)');
 		// Respuestas no leidas
-		$new = $db->queryUniqueValue('SELECT COUNT(*) FROM (SELECT comments.id FROM comments, replies WHERE comments.id = replies.id AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$user->id.') AND comments.state=0) AS comments');
+		$new = $db->queryUniqueValue('SELECT COUNT(*) FROM (SELECT comments.id FROM comments, replies WHERE comments.id = replies.id AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$user->id().') AND comments.state=0) AS comments');
 		finish('',true,false,array('msgs'=>$privs,'nuevo'=>$new));
 	case 'loadComments':
 		// Loads new comments, depends on TL_TYPE and VAR
@@ -299,17 +299,17 @@ switch($type){
 		if(strlen($_POST['email']) > 0 && strlen($user->g('email'))<1 && $sess->valid($_POST['email'],'email') && strlen($_POST['pass'])>0){
 			// Generando una cuenta Que Piensas
 			$update .= ' AND SET email = \''.addslashes($_POST['email']).'\'';
-			$auth->changePass($user->id,$_POST['pass']);
+			$auth->changePass($user->id(),$_POST['pass']);
 		}
 		
 		// Ejecutar cambios
 		$update = substr($update,5); // Quita el primer AND
 		$db = $sess->db();
-		if(strlen($update)>0) $db->execute('UPDATE users '.$update.' WHERE id = '.$user->id.' LIMIT 1');
+		if(strlen($update)>0) $db->execute('UPDATE users '.$update.' WHERE id = '.$user->id().' LIMIT 1');
 		
 		// Cambiar la contraseña
 		if(strlen($_POST['oldpass']) > 0 && $_POST['pass1'] == $_POST['pass2']){
-			if($auth->login($user->g('email'),$_POST['oldpass'])>0) $auth->changePass($user->id,$_POST['pass1']);
+			if($auth->login($user->g('email'),$_POST['oldpass'])>0) $auth->changePass($user->id(),$_POST['pass1']);
 			else $sess->set_msg('La contraseña actual no es correcta');
 		}else if($_POST['pass1']!==$_POST['pass2']){
 			$sess->set_msg('La contraseña nueva y la repetida no coinciden, inténtalo de nuevo');	

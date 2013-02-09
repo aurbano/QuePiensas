@@ -18,9 +18,9 @@ class User{
 	/**
 	 * User ID
 	 * @var User ID, 0 if the user is not logged in
-	 * @access public
+	 * @access private
 	 */
-	var		$id;
+	private	$id;
 	/**
 	 * Facebook ID
 	 * @var User ID, 0 if not linked
@@ -111,10 +111,22 @@ class User{
 				$ip = 'INET_ATON(\''.ip().'\')';
 				$db->execute('INSERT INTO `users` (`id`, `email`, `pass`, `ip`, `ltime`, `jtime`) VALUES (NULL, \'\', \'0\', '.$ip.', \''.time().'\', \''.time().'\');');
 				$this->set('id',$db->lastInsertedId());
-				$sess->debug('Created new user: ID='.$user->id);
+				$sess->debug('Created new user: ID='.$user->id());
 			}
 			$this->getLoc($this->id,ip());
 		}
+	}
+	
+	/**
+	 * Returns the current User ID
+	 * 
+	 * Probably one of the most important functions here, since we allow anonymous users we will
+	 * call this funcion whenever an ID is needed. If the current user is anonymous, his ID won't be
+	 * created until we need it, so this function takes care of that.
+	 * @return int User ID
+	 */
+	function id(){
+		return $this->id;
 	}
 	
 	/**
@@ -411,14 +423,14 @@ class User{
 		if(!($db instanceof DB) || !($user instanceof User)) return false;
 		if(!($thread = $sess->valid($thread,'int'))) return false;
 		// Check permission and current status
-		$status = $db->queryUniqueObject('SELECT `status` FROM `msg` WHERE (`id` = \''.$thread.'\' OR `thread` = \''.$thread.'\') AND (`to` = \''.$user->id.'\' OR `from` = \''.$user->id.'\') ORDER BY id DESC');
+		$status = $db->queryUniqueObject('SELECT `status` FROM `msg` WHERE (`id` = \''.$thread.'\' OR `thread` = \''.$thread.'\') AND (`to` = \''.$user->id().'\' OR `from` = \''.$user->id().'\') ORDER BY id DESC');
 		if(!$status) return false;
 		$status = $status->status;
 		// Actualiza el status, si yo soy el 
 		$nextStatus = false;
 		if($status == 0) $nextStatus = 1;
 		if($status == 2) $nextStatus = 3;
-		if($nextStatus) $db->execute('UPDATE msg SET status = \''.$nextStatus.'\' WHERE (`thread` = \''.$thread.'\' OR `id` = \''.$thread.'\')  AND `to`=\''.$user->id.'\' AND `status` = \''.$status.'\'');
+		if($nextStatus) $db->execute('UPDATE msg SET status = \''.$nextStatus.'\' WHERE (`thread` = \''.$thread.'\' OR `id` = \''.$thread.'\')  AND `to`=\''.$user->id().'\' AND `status` = \''.$status.'\'');
 		return true;
 	}
 	/**

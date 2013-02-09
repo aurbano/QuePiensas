@@ -199,7 +199,7 @@
 			$start .= ')</p>';
 		}
 		global $user;
-		$userInfo = "<h3>User info:</h3><ul><li>ID: {$user->id}</li></ul>";
+		$userInfo = "<h3>User info:</h3><ul><li>ID: {$user->id()}</li></ul>";
 		$debugger = '<html><body><h1>Error SQL:</h1><p>'.$start.'</p><hr />'.$userInfo.'<hr />'.$this->debugQuery($query, "Error", true).'<p style=\"margin: 2px;\">'.mysql_error().'</p></div></body></html>';
 		// Enviamos el error por email:
 		$headers = "From: error@quepiensas.es\r\n";

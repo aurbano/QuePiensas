@@ -101,7 +101,7 @@ class Person{
 		if(preg_match("/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/", $msg,$links)) $spam = sizeof($links); // Numero de links => votos de spam iniciales
 		if($spam<4) $spam = 0;
 		// Insercion
-		$q = $db->execute('INSERT INTO `comments` (`id`, `pid`, `usid`, `msg`, `timestamp`,`spam`, `ident`) VALUES (NULL, \''.$this->pid.'\', \''.$user->id.'\', \''.$msg.'\', \''.time().'\',\''.$spam.'\', \''.$ident.'\');');
+		$q = $db->execute('INSERT INTO `comments` (`id`, `pid`, `usid`, `msg`, `timestamp`,`spam`, `ident`) VALUES (NULL, \''.$this->pid.'\', \''.$user->id().'\', \''.$msg.'\', \''.time().'\',\''.$spam.'\', \''.$ident.'\');');
 		if(!$q) return false;
 		$cid = $db->lastInsertedId();
 		if($rep>0 && $cid>0){
@@ -128,7 +128,7 @@ class Person{
 		if(!$name || strlen($name)<1) return false;
 		// Remove multiple spaces in name:
 		$name = preg_replace("/[[:blank:]]+/"," ",$name);
-		$db->execute('INSERT INTO `personas` (`id`, `usid`, `name`, `visits`, `timestamp`) VALUES (NULL, \''.$user->id.'\', \''.$name.'\', \'0\', \''.time().'\');');
+		$db->execute('INSERT INTO `personas` (`id`, `usid`, `name`, `visits`, `timestamp`) VALUES (NULL, \''.$user->id().'\', \''.$name.'\', \'0\', \''.time().'\');');
 		$pid = $db->lastInsertedId();
 		$sess->debug('Creada persona pid='.$pid);
 		return $pid;
@@ -184,11 +184,11 @@ class Person{
 			$db = $sess->db();
 			if(!($db instanceof DB)) return false;
 		}
-		$current = $db->queryUniqueValue('SELECT relation FROM relations WHERE pid = \''.$this->pid.'\' AND usid = \''.$user->id.'\'');
+		$current = $db->queryUniqueValue('SELECT relation FROM relations WHERE pid = \''.$this->pid.'\' AND usid = \''.$user->id().'\'');
 		if($current && $current>0){
-			return $db->execute('UPDATE `relations` SET relation = \''.($current+$count).'\' WHERE pid = \''.$this->pid.'\' AND usid = \''.$user->id.'\' LIMIT 1;');
+			return $db->execute('UPDATE `relations` SET relation = \''.($current+$count).'\' WHERE pid = \''.$this->pid.'\' AND usid = \''.$user->id().'\' LIMIT 1;');
 		}else{
-			return $db->execute('INSERT INTO `relations` (`pid`, `usid`, `relation`, `follow`, `timestamp`) VALUES (\''.$this->pid.'\', \''.$user->id.'\',3, \'0\', \''.time().'\');');
+			return $db->execute('INSERT INTO `relations` (`pid`, `usid`, `relation`, `follow`, `timestamp`) VALUES (\''.$this->pid.'\', \''.$user->id().'\',3, \'0\', \''.time().'\');');
 		}
 	}
 };

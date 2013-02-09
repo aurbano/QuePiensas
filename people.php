@@ -11,7 +11,7 @@ $id = $sess->clean($_GET['id']);
 // Inicio de base de datos
 $db=$sess->db();
 // Seguidores
-$related = $db->query('SELECT personas.id, personas.name, personas.visits, (SELECT COUNT(*) FROM comments WHERE pid=personas.id) as comments, (SELECT COUNT(*) FROM relations WHERE pid=personas.id AND follow=1) as followers FROM relations, personas WHERE relations.usid='.$user->id.' AND relations.pid = personas.id AND relations.follow = 0 ORDER BY relations.relation DESC LIMIT '.$limit);
+$related = $db->query('SELECT personas.id, personas.name, personas.visits, (SELECT COUNT(*) FROM comments WHERE pid=personas.id) as comments, (SELECT COUNT(*) FROM relations WHERE pid=personas.id AND follow=1) as followers FROM relations, personas WHERE relations.usid='.$user->id().' AND relations.pid = personas.id AND relations.follow = 0 ORDER BY relations.relation DESC LIMIT '.$limit);
 
 	if($_GET['p']>0 && $db->numRows($followers)<1){
 		// Algun capullo metiendo una pagina manualmente que no existe

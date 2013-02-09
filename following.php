@@ -23,7 +23,7 @@ $db=$sess->db();
 	if($_GET['p']>0 && $sess->valid($_GET['p'],'int')){ $inPage = true; $limit = $limit*$_GET['p'].',20'; }
 	
 	//Cargamos following
-	$following = $db->query('SELECT personas.id, personas.name, relations.follow, (SELECT COUNT(*) FROM relations WHERE relations.follow=1 AND relations.pid=personas.id) AS seguidores, (SELECT COUNT(*) FROM comments WHERE comments.pid=personas.id) AS comments, (SELECT relations.follow FROM relations WHERE personas.id=relations.pid AND relations.usid='.$user->id.') as following FROM personas, relations WHERE personas.id=relations.pid AND relations.follow=1 AND relations.usid='.$_GET['id'].' LIMIT '.$limit);
+	$following = $db->query('SELECT personas.id, personas.name, relations.follow, (SELECT COUNT(*) FROM relations WHERE relations.follow=1 AND relations.pid=personas.id) AS seguidores, (SELECT COUNT(*) FROM comments WHERE comments.pid=personas.id) AS comments, (SELECT relations.follow FROM relations WHERE personas.id=relations.pid AND relations.usid='.$user->id().') as following FROM personas, relations WHERE personas.id=relations.pid AND relations.follow=1 AND relations.usid='.$_GET['id'].' LIMIT '.$limit);
 	
 	if($_GET['p']>0 && $db->numRows($following)<1){
 		// Algun capullo metiendo una pagina manualmente que no existe
@@ -39,7 +39,7 @@ $db=$sess->db();
 	// ----------------------------
 	
 	// Actualizar visitas
-	if($_GET['id'] !== $user->id) $db->execute('UPDATE `users` SET `visits` = `visits`+1 WHERE id = \''.$_GET['id'].'\'');
+	if($_GET['id'] !== $user->id()) $db->execute('UPDATE `users` SET `visits` = `visits`+1 WHERE id = \''.$_GET['id'].'\'');
 // ----------------------------
 
 include('lib/php/funciones.php');

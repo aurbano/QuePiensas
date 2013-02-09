@@ -9,7 +9,7 @@ if(!$sess->logged()){
 
 // Lista de ID de comentarios que hace falta actualizar
 $db = $sess->db();
-$newMsgs = $db->query('SELECT comments.id FROM comments, replies WHERE comments.id = replies.id AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$user->id.') AND comments.state=0');
+$newMsgs = $db->query('SELECT comments.id FROM comments, replies WHERE comments.id = replies.id AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$user->id().') AND comments.state=0');
 if($db->numRows($newMsgs)>0){
 	// Create list
 	while($a = $db->fetchNextObject($newMsgs)){
@@ -44,7 +44,7 @@ include('lib/content/top.php');
 <div class="paddedContent">
 	<p>Respuestas a tus comentarios</p>
     <?php
-    	$tl = new Timeline(4,$user->id);
+    	$tl = new Timeline(4,$user->id());
 		$tl->displayTimeline();
 	?>
 </div>

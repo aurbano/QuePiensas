@@ -12,7 +12,7 @@ include('lib/php/style.php');
 include('lib/php/timeline.php');
 
 $color = '#FFF';
-if($user->pic() == 'http://img.quepiensas.es/noimage.png') $color = colorID($user->id);
+if($user->pic() == 'http://img.quepiensas.es/noimage.png') $color = colorID($user->id());
 
 // Inicio de base de datos
 $db=$sess->db();
@@ -22,9 +22,9 @@ $db=$sess->db();
 
 // INFORMACION Y ESTADISTICAS
 	// Following:
-	$following = $db->queryUniqueValue('SELECT COUNT(*) FROM relations WHERE usid = \''.$user->id.'\' AND follow=1');
+	$following = $db->queryUniqueValue('SELECT COUNT(*) FROM relations WHERE usid = \''.$user->id().'\' AND follow=1');
 	// Comment count
-	$commentCount = $db->queryUniqueValue('SELECT COUNT(*) FROM comments WHERE usid = \''.$user->id.'\'');
+	$commentCount = $db->queryUniqueValue('SELECT COUNT(*) FROM comments WHERE usid = \''.$user->id().'\'');
 	if(!$commentCount) $commentCount = 0;
 // ----------------------------
 
@@ -193,7 +193,7 @@ include('lib/content/top.php');
         </div>
         
         <div id="info">
-            <a href="/user/following/<?php echo $user->id; ?>" class="stats">
+            <a href="/user/following/<?php echo $user->id(); ?>" class="stats">
                 <font><?php echo $following; ?></font>
                 Siguiendo
             </a>
@@ -229,7 +229,7 @@ include('lib/content/top.php');
 	
 	<h3>Últimos comentarios</h3>
     <?php
-	$tl = new Timeline(1,$user->id);
+	$tl = new Timeline(1,$user->id());
 	$tl->displayTimeline(true,$user->pic('square'));
 	?>
 <p align="center"><a href="/do/reset">Cerrar sesión</a></p>
@@ -263,10 +263,10 @@ include('lib/content/top.php');
             <ul id="changePicList">
 				<?php if($user->fb()){ ?><li><a href="#changePic" rel="facebook"><img src="<?php echo $fb->pic('square'); ?>" width="60" alt="Facebook" /><br />Facebook</a></li><?php } ?>
                 <?php if($user->tw()){ ?><li><a href="#changePic" rel="twitter"><img src="<?php echo $tw->pic('normal'); ?>" width="60" alt="Twitter" /><br />Twitter</a></li><?php } ?>
-                <?php if($user->hasPic()){ ?><li><a href="#changePic" rel="uploaded"><img src="<?php echo 'http://img.quepiensas.es/'.$user->id.'.gif'; ?>" width="60" alt="Subida" /><br />QuePiensas</a></li><? } ?>
+                <?php if($user->hasPic()){ ?><li><a href="#changePic" rel="uploaded"><img src="<?php echo 'http://img.quepiensas.es/'.$user->id().'.gif'; ?>" width="60" alt="Subida" /><br />QuePiensas</a></li><? } ?>
                 <li id="chromeChanger" style="display:none"><form action="/processUpload.php" method="post" id="picChangeForm" enctype="multipart/form-data" style="display:inline"><label for="picChanger"><img src="http://static.quepiensas.es/img/form/addPic.gif" width="60" alt="Subir foto" /><br />Subir foto<div style="display: block; position: fixed; visibility: hidden;"><input type="file" name="pic" id="picChanger" /></div></label></form></li>
                 <li id="normalChanger"><a href="#changePicForm" class="fBox"><img src="http://static.quepiensas.es/img/form/addPic.gif" width="60" alt="Subir foto" /><br />Subir foto</a></li>
-                <li><a href="#changePic" rel="nopic"><img src="http://img.quepiensas.es/noimage.png" width="60" alt="Sin foto" style="background-color:<?php echo colorID($user->id); ?>" /><br />No mostrar</a></li>
+                <li><a href="#changePic" rel="nopic"><img src="http://img.quepiensas.es/noimage.png" width="60" alt="Sin foto" style="background-color:<?php echo colorID($user->id()); ?>" /><br />No mostrar</a></li>
             </ul>
         </div>
     </div>

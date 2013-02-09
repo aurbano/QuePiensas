@@ -19,14 +19,14 @@ include('lib/php/uploader.php');
 $up = new Uploader(200000,'gif,png,jpeg,jpg');
 // Eliminamos una posible foto anterior de ese usuario:
 if($user->hasPic()){
-	if(!unlink('img/user/uploads/'.$user->id.'.gif')){
+	if(!unlink('img/user/uploads/'.$user->id().'.gif')){
 		$sess->set_msg('No ha sido posible subir tu foto, intentalo mas tarde');
 		header('Location: '.$sess->referrer); // Redireccion a la pagina anterior
 		die('No ha sido posible eliminar tu foto anterior');
 	}
 }
 // Subimos el archivo
-if($up->upload('pic','img/user/uploads/',$user->id.'.gif')){
+if($up->upload('pic','img/user/uploads/',$user->id().'.gif')){
 	// Siempre en gif, no se si eso influira para jpeg por ejemplo, hay que mirarlo
 	// y unificar formatos o algo
 	// Ahora hay que seleccionar la imagen subida como foto de perfil
