@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  *  Class to integrate with Twitter's API.
  *    Authenticated calls are done using OAuth and require access tokens for a user.
  *    API calls which do not require authentication do not require tokens (i.e. search/trends)
@@ -8,6 +8,8 @@
  *    http://wiki.github.com/jmathai/epicode/epitwitter
  * 
  *  @author Jaisen Mathai <jaisen@jmathai.com>
+ * @package Social
+ * @subpackage Twitter
  */
 class EpiTwitter extends EpiOAuth
 {

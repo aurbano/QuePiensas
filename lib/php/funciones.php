@@ -1,4 +1,11 @@
 <?php
+/**
+ * Some global namespaced functions
+ */
+ 
+/**
+ * Generate the right hand menu
+ */
 function menu(){
 	return '<h3>Perfil</h3>
 			<ul class="links">

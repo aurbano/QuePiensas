@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \EpiOAuth</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Database.html"><i class="icon-folder-open"></i> Database</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
+<li><a href="../packages/Files.html"><i class="icon-folder-open"></i> Files</a></li>
+<li><a href="../packages/Security.html"><i class="icon-folder-open"></i> Security</a></li>
+<li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
+<li><a href="../packages/Social.html"><i class="icon-folder-open"></i> Social</a></li>
+<li><a href="../packages/Users.html"><i class="icon-folder-open"></i> Users</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">81</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
+        </span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_getAccessToken" title="getAccessToken :: "><span class="description">getAccessToken()
+        </span><pre>getAccessToken()</pre></a></li>
+<li class="method public "><a href="#method_getAuthenticateUrl" title="getAuthenticateUrl :: "><span class="description">getAuthenticateUrl()
+        </span><pre>getAuthenticateUrl()</pre></a></li>
+<li class="method public "><a href="#method_getAuthorizationUrl" title="getAuthorizationUrl :: "><span class="description">getAuthorizationUrl()
+        </span><pre>getAuthorizationUrl()</pre></a></li>
+<li class="method public "><a href="#method_getRequestToken" title="getRequestToken :: "><span class="description">getRequestToken()
+        </span><pre>getRequestToken()</pre></a></li>
+<li class="method public "><a href="#method_httpRequest" title="httpRequest :: "><span class="description">httpRequest()
+        </span><pre>httpRequest()</pre></a></li>
+<li class="method public "><a href="#method_setToken" title="setToken :: "><span class="description">setToken()
+        </span><pre>setToken()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_addOAuthHeaders" title="addOAuthHeaders :: "><span class="description">addOAuthHeaders()
+        </span><pre>addOAuthHeaders()</pre></a></li>
+<li class="method protected "><a href="#method_encode_rfc3986" title="encode_rfc3986 :: "><span class="description">encode_rfc3986()
+        </span><pre>encode_rfc3986()</pre></a></li>
+<li class="method protected "><a href="#method_generateNonce" title="generateNonce :: "><span class="description">generateNonce()
+        </span><pre>generateNonce()</pre></a></li>
+<li class="method protected "><a href="#method_generateSignature" title="generateSignature :: "><span class="description">generateSignature()
+        </span><pre>generateSignature()</pre></a></li>
+<li class="method protected "><a href="#method_httpGet" title="httpGet :: "><span class="description">httpGet()
+        </span><pre>httpGet()</pre></a></li>
+<li class="method protected "><a href="#method_httpPost" title="httpPost :: "><span class="description">httpPost()
+        </span><pre>httpPost()</pre></a></li>
+<li class="method protected "><a href="#method_normalizeUrl" title="normalizeUrl :: "><span class="description">normalizeUrl()
+        </span><pre>normalizeUrl()</pre></a></li>
+<li class="method protected "><a href="#method_prepareParameters" title="prepareParameters :: "><span class="description">prepareParameters()
+        </span><pre>prepareParameters()</pre></a></li>
+<li class="method protected "><a href="#method_signString" title="signString :: "><span class="description">signString()
+        </span><pre>signString()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul><li class="property public "><a href="#property_version" title="$version :: "><span class="description"></span><pre>$version</pre></a></li></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_accessTokenUrl" title="$accessTokenUrl :: "><span class="description"></span><pre>$accessTokenUrl</pre></a></li>
+<li class="property protected "><a href="#property_authenticateUrl" title="$authenticateUrl :: "><span class="description"></span><pre>$authenticateUrl</pre></a></li>
+<li class="property protected "><a href="#property_authorizeUrl" title="$authorizeUrl :: "><span class="description"></span><pre>$authorizeUrl</pre></a></li>
+<li class="property protected "><a href="#property_consumerKey" title="$consumerKey :: "><span class="description"></span><pre>$consumerKey</pre></a></li>
+<li class="property protected "><a href="#property_consumerSecret" title="$consumerSecret :: "><span class="description"></span><pre>$consumerSecret</pre></a></li>
+<li class="property protected "><a href="#property_requestTokenUrl" title="$requestTokenUrl :: "><span class="description"></span><pre>$requestTokenUrl</pre></a></li>
+<li class="property protected "><a href="#property_signatureMethod" title="$signatureMethod :: "><span class="description"></span><pre>$signatureMethod</pre></a></li>
+<li class="property protected "><a href="#property_token" title="$token :: "><span class="description"></span><pre>$token</pre></a></li>
+<li class="property protected "><a href="#property_tokenSecret" title="$tokenSecret :: "><span class="description"></span><pre>$tokenSecret</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\EpiOAuth"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/EpiOAuth.html">EpiOAuth</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Assync OAuth</p>
+<div class="details">
+<div class="long_description"><p>@author Jaisen Mathai <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#106;&#x61;&#105;&#x73;e&#110;&#x40;&#106;&#x6d;&#97;&#x74;&#x68;&#97;&#x69;&#46;&#x63;o&#109;">&#106;&#x61;&#105;&#x73;e&#110;&#x40;&#106;&#x6d;&#97;&#x74;&#x68;&#97;&#x69;&#46;&#x63;o&#109;</a></p></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Social.Twitter.html">Social</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Twitter</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>__construct()
+        </h2>
+<pre>__construct($consumerKey, $consumerSecret, $signatureMethod) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$consumerKey</h4></div>
+<div class="subelement argument"><h4>$consumerSecret</h4></div>
+<div class="subelement argument"><h4>$signatureMethod</h4></div>
+</div></div>
+</div>
+<a id="method_getAccessToken"></a><div class="element clickable method public method_getAccessToken" data-toggle="collapse" data-target=".method_getAccessToken .collapse">
+<h2>getAccessToken()
+        </h2>
+<pre>getAccessToken() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getAuthenticateUrl"></a><div class="element clickable method public method_getAuthenticateUrl" data-toggle="collapse" data-target=".method_getAuthenticateUrl .collapse">
+<h2>getAuthenticateUrl()
+        </h2>
+<pre>getAuthenticateUrl() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getAuthorizationUrl"></a><div class="element clickable method public method_getAuthorizationUrl" data-toggle="collapse" data-target=".method_getAuthorizationUrl .collapse">
+<h2>getAuthorizationUrl()
+        </h2>
+<pre>getAuthorizationUrl() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getRequestToken"></a><div class="element clickable method public method_getRequestToken" data-toggle="collapse" data-target=".method_getRequestToken .collapse">
+<h2>getRequestToken()
+        </h2>
+<pre>getRequestToken() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_httpRequest"></a><div class="element clickable method public method_httpRequest" data-toggle="collapse" data-target=".method_httpRequest .collapse">
+<h2>httpRequest()
+        </h2>
+<pre>httpRequest($method, $url, $params) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$method</h4></div>
+<div class="subelement argument"><h4>$url</h4></div>
+<div class="subelement argument"><h4>$params</h4></div>
+</div></div>
+</div>
+<a id="method_setToken"></a><div class="element clickable method public method_setToken" data-toggle="collapse" data-target=".method_setToken .collapse">
+<h2>setToken()
+        </h2>
+<pre>setToken($token, $secret) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$token</h4></div>
+<div class="subelement argument"><h4>$secret</h4></div>
+</div></div>
+</div>
+<a id="method_addOAuthHeaders"></a><div class="element clickable method protected method_addOAuthHeaders" data-toggle="collapse" data-target=".method_addOAuthHeaders .collapse">
+<h2>addOAuthHeaders()
+        </h2>
+<pre>addOAuthHeaders($ch, $url, $oauthHeaders) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$ch</h4></div>
+<div class="subelement argument"><h4>$url</h4></div>
+<div class="subelement argument"><h4>$oauthHeaders</h4></div>
+</div></div>
+</div>
+<a id="method_encode_rfc3986"></a><div class="element clickable method protected method_encode_rfc3986" data-toggle="collapse" data-target=".method_encode_rfc3986 .collapse">
+<h2>encode_rfc3986()
+        </h2>
+<pre>encode_rfc3986($string) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$string</h4></div>
+</div></div>
+</div>
+<a id="method_generateNonce"></a><div class="element clickable method protected method_generateNonce" data-toggle="collapse" data-target=".method_generateNonce .collapse">
+<h2>generateNonce()
+        </h2>
+<pre>generateNonce() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_generateSignature"></a><div class="element clickable method protected method_generateSignature" data-toggle="collapse" data-target=".method_generateSignature .collapse">
+<h2>generateSignature()
+        </h2>
+<pre>generateSignature($method, $url, $params) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$method</h4></div>
+<div class="subelement argument"><h4>$url</h4></div>
+<div class="subelement argument"><h4>$params</h4></div>
+</div></div>
+</div>
+<a id="method_httpGet"></a><div class="element clickable method protected method_httpGet" data-toggle="collapse" data-target=".method_httpGet .collapse">
+<h2>httpGet()
+        </h2>
+<pre>httpGet($url, $params) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$url</h4></div>
+<div class="subelement argument"><h4>$params</h4></div>
+</div></div>
+</div>
+<a id="method_httpPost"></a><div class="element clickable method protected method_httpPost" data-toggle="collapse" data-target=".method_httpPost .collapse">
+<h2>httpPost()
+        </h2>
+<pre>httpPost($url, $params) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$url</h4></div>
+<div class="subelement argument"><h4>$params</h4></div>
+</div></div>
+</div>
+<a id="method_normalizeUrl"></a><div class="element clickable method protected method_normalizeUrl" data-toggle="collapse" data-target=".method_normalizeUrl .collapse">
+<h2>normalizeUrl()
+        </h2>
+<pre>normalizeUrl($url) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$url</h4></div>
+</div></div>
+</div>
+<a id="method_prepareParameters"></a><div class="element clickable method protected method_prepareParameters" data-toggle="collapse" data-target=".method_prepareParameters .collapse">
+<h2>prepareParameters()
+        </h2>
+<pre>prepareParameters($method, $url, $params) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$method</h4></div>
+<div class="subelement argument"><h4>$url</h4></div>
+<div class="subelement argument"><h4>$params</h4></div>
+</div></div>
+</div>
+<a id="method_signString"></a><div class="element clickable method protected method_signString" data-toggle="collapse" data-target=".method_signString .collapse">
+<h2>signString()
+        </h2>
+<pre>signString($string) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$string</h4></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_version"> </a><div class="element clickable property public property_version" data-toggle="collapse" data-target=".property_version .collapse">
+<h2></h2>
+<pre>$version </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_accessTokenUrl"> </a><div class="element clickable property protected property_accessTokenUrl" data-toggle="collapse" data-target=".property_accessTokenUrl .collapse">
+<h2></h2>
+<pre>$accessTokenUrl </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_authenticateUrl"> </a><div class="element clickable property protected property_authenticateUrl" data-toggle="collapse" data-target=".property_authenticateUrl .collapse">
+<h2></h2>
+<pre>$authenticateUrl </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_authorizeUrl"> </a><div class="element clickable property protected property_authorizeUrl" data-toggle="collapse" data-target=".property_authorizeUrl .collapse">
+<h2></h2>
+<pre>$authorizeUrl </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_consumerKey"> </a><div class="element clickable property protected property_consumerKey" data-toggle="collapse" data-target=".property_consumerKey .collapse">
+<h2></h2>
+<pre>$consumerKey </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_consumerSecret"> </a><div class="element clickable property protected property_consumerSecret" data-toggle="collapse" data-target=".property_consumerSecret .collapse">
+<h2></h2>
+<pre>$consumerSecret </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_requestTokenUrl"> </a><div class="element clickable property protected property_requestTokenUrl" data-toggle="collapse" data-target=".property_requestTokenUrl .collapse">
+<h2></h2>
+<pre>$requestTokenUrl </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_signatureMethod"> </a><div class="element clickable property protected property_signatureMethod" data-toggle="collapse" data-target=".property_signatureMethod .collapse">
+<h2></h2>
+<pre>$signatureMethod </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_token"> </a><div class="element clickable property protected property_token" data-toggle="collapse" data-target=".property_token .collapse">
+<h2></h2>
+<pre>$token </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_tokenSecret"> </a><div class="element clickable property protected property_tokenSecret" data-toggle="collapse" data-target=".property_tokenSecret .collapse">
+<h2></h2>
+<pre>$tokenSecret </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-02-09T14:13:47+01:00.<br></footer></div>
+</div>
+</body>
+</html>

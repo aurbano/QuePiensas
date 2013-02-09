@@ -1,8 +1,12 @@
 <?php
-// CRON JOB:
-// Elimina entradas de la tabla restore (Usada para restaurar la contraseña)
-// si ya han pasado más de tres días desde que se solicito la restauracion.
-include('db.php'); // Conexion a base de datos
+/**
+ * CRON JOB page, deletes old password restores
+ */
+
+/**
+ * Connect to the database
+ */
+include('db.php');
 
 // Perform query
 $db->execute('DELETE FROM `restore` WHERE `timestamp` < '.(time()-259200));

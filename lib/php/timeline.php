@@ -1,30 +1,54 @@
 <?php
-/*  Timeline Class :: Genera un timeline
- *  Opciones de configuracion en el constructor
- *  
+/**
+ * Timeline management
  */
  
  
 // Parseador de comentarios:
 if(!function_exists('parse')) include('lib/php/linker.php');
 
+/**
+ * Timeline management class
+ *
+ * This class takes care of all aspects of a Twitter-like timeline. Even handles pagination, replies... etc
+ * @author Alejandro U. Alvarez
+ * @version 1.0
+ * @package Display
+ */
 class Timeline{
 	
-	protected $type; // El tipo de Timeline que estamos generando
-						// 	0 => Timeline tipo twitter "{User}"
-						// 	1 => Timeline de un perfil privado "Dijiste de {User}"
-						// 	2 => Timeline de novedadoes "{User} dijo de {Person}"
-						// 	3 => Timeline de perfil publico "Dijo de {User}"
-						//	4 => Timeline de respuestas a tus comentarios "{User} dijo de {Person}"
-						//	5 => Conversacion "{User dijo de {Person}"
-	protected $identifier;		// Identifica el Timeline si hace falta (ID de usuario... )
-	protected $query;			// La query que saca los comentarios
-	protected $commentsPerPage;	// Comentarios por pagina
-	protected $offset;			// Offset inicial ("paginacion")
+	/** Numeric timeline type
+	 *
+	 * These are the possible types:
+	 *  0. Twitter style timeline "{User}"
+	 *	1. Private profile timeline "You said about {Person}"
+	 *	2. News timeline "{User} said about {Person}"
+	 *	3. Public profile timeline "Said about {User}"
+	 *	4. Replies to your comments timeline "{User} said about {Person}"
+	 *	5. Conversation "{User} said about {Person}"
+	 */
+	protected $type;
+	/** Identifies the timeline if needed (User ID, Person ID...)
+	 */
+	protected $identifier;
+	/** The query being used to load comments
+	 */
+	protected $query;
+	/** Comments to be displayed per page
+	 */
+	protected $commentsPerPage;
+	/** Initial offset, for pagination
+	 */
+	protected $offset;
 	
-	// En tipos 1 y 3 la foto hay que pasarla por parametro	
-	
-	// Constructor
+	/** Timeline constructor
+	 *
+	 * Types 1 and 3 require the picture to be passed by parameter
+	 * @param int Timeline type, defaults to 0
+	 * @param int Timeline identifier, defaults to 0
+	 * @param int Comments per page, defaults to 20
+	 * @param int Pagination offset, defaults to 0
+	 */
 	function Timeline($type=0,$identifier=0,$limit=20,$offset=0){
 		$this->type = $type;
 		$this->identifier = $identifier;
@@ -32,10 +56,11 @@ class Timeline{
 		$this->offset = $offset;
 	}
 	
+	/**
+	 * Builds timeline query, depends on type and identifier
+	 * @access private
+	 */
 	protected function buidQuery(){
-		// Genera la query que saca los comentarios
-		// Depende del tipo de Timeline y la variable
-		//
 		$limit = $this->commentsPerPage;
 		if($this->offset > 0) $limit = ($this->offset*$this->commentsPerPage).','.$this->commentsPerPage;
 		//
@@ -62,7 +87,13 @@ class Timeline{
 		}
 	}
 	
-	// Mostrar Timeline
+	/**
+	 * Displays the timeline. This function directly prints the data
+	 *
+	 * This should be called after the constructor directly on the page.
+	 * @param boolean Whether the comments should be parsed
+	 * @param string User profile picture, only needed for some types
+	 */
 	public function displayTimeline($parseComments=true,$pic=false){
 		global $sess, $user;
 		// Configuracion para cargar comentarios antiguos
@@ -90,6 +121,15 @@ class Timeline{
 		echo '<div style="position:absolute; font-size:12px; top:3px; right:3px;"><a href="#cancel" style="margin-right:10px; font-size:11px">Cancelar</a> <input name="save" type="submit" value="Publicar" class="btn btnBlue" /></div></div></form></div></div>';
 	}
 	
+	/** 
+	 * Displays comments, it's like display timeline but this function only displays comments, without wrapping HTML
+	 *
+	 * It's meant to be used in AJAX calls that want to get more comments for an already displayed timeline
+	 * @param boolean Whether the comments should be parsed
+	 * @param string User profile picture, depending on the timeline type it may not be required
+	 * @param boolean Whether you want the comments printed or returned
+	 * @return string Comments, if $echo is set to false
+	 */
 	public function displayComments($parseComments=true,$paramPic=false,$echo=true){
 		// Muestra comentarios	
 		global $db, $user, $sess;

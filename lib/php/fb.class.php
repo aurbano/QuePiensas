@@ -1,30 +1,78 @@
 <?php
-// Facebook Connection class
-// By Alejandro U. Alvarez
-// Version 2
-// Requires SESSION class for debugging
+/**
+ * Facebook abstraction layer
+ */
 
+/**
+ * Include the Facebook API
+ */
 try{
-	include('facebook/facebook.php'); // Facebook API
+	include('facebook/facebook.php');
 }catch(Exception $e){  }
 
+/**
+ * Facebook Abstraction layer
+ * It uses the official Facebook PHP API
+ * @author Alejandro U. Alvarez
+ * @version 2.0
+ * @package Social
+ * @subpackage Facebook
+ */
 class FB{
+	/**
+	 * Facebook API object
+	 */
 	var $facebook;
+	/**
+	 * Facebook account ID
+	 */
 	var $fbid = false;
+	/**
+	 * Facebook App ID
+	 * @access protected
+	 */
 	protected $appid = '174758345954243';
+	/**
+	 * Facebook App secret
+	 * @access protected
+	 */
 	protected $secret = '4ea51f49f6c49bcca3c42ad97e045174';
+	/**
+	 * Facebook user name
+	 * @access protected
+	 */
 	protected $name;
+	/**
+	 * Facebook associated email address
+	 * @access protected
+	 */
 	protected $email;
+	/**
+	 * Facebook profile picture: Original size
+	 * @access protected
+	 */
 	protected $pic_big;
+	/**
+	 * Facebook profile picture: Squared version
+	 * @access protected
+	 */
 	protected $pic_square;
 	
-	// Constructor
+	/**
+	 * Creates a new Facebook Object
+	 * @param int facebook Account ID
+	 * @return object Facebook Object
+	 */
 	function FB($fbid=false){
 		// In case we need to rebuild
 		return $this->init($fbid);
 	}
 	
-	// Start up
+	/**
+	 * Initialize Facebook Object
+	 * @param int Facebook Account ID
+	 * @see FB
+	 */
 	function init($fbid=false){
 		global $sess;
 		$sess->debug('Facebook constructor');
@@ -46,13 +94,24 @@ class FB{
 		$this->loadFromSession();
 	}
 	
-// USUAL CLASS FUNCTIONS
+	/**
+	 * Get an attribute from facebook
+	 * @param string Attribute name
+	 * @return string Attribute value
+	 */
 	function get($what){
 		if(isset($_SESSION['facebook'][$what]) && strlen($_SESSION['facebook'][$what])>0) return $this->$what = $_SESSION['facebook'][$what];
 		if($this->getFromFacebook($what)) return $this->$what;
 		return $this->getDB($what);
 	}
 	
+	/**
+	 * Set an attribute
+	 * @param string Attribute name
+	 * @param string Attribute value
+	 * @param boolean Whether to update the Database
+	 * @return string Attribute value
+	 */
 	function set($what,$data,$updateDB=false){
 		$this->$what = $_SESSION['facebook'][$what] = $data;
 		if(!$updateDB) return $this->$what;
@@ -61,6 +120,9 @@ class FB{
 		return $this->$what;
 	}
 	
+	/**
+	 * Load a Facebook account from a user Session
+	 */
 	function loadFromSession(){
 		// Loads FB data from Session
 		// To ensure session integrity, it depends on fbid
@@ -71,7 +133,12 @@ class FB{
 		}
 	}
 	
-	// Update DB cache (Fields & values can be arrays)
+	/**
+	 * Update DB cache (Fields & values can be arrays)
+	 * @param array Fields to be updated, it can also be a string to update only one field
+	 * @param array Values, in the same format as the fields
+	 * @return boolean Whether the operation was successful
+	 */
 	function updateDB($fields,$values){
 		// Build update query
 		if(!$this->fbid || $this->fbid<1) return false;
@@ -93,7 +160,12 @@ class FB{
 		return $db->execute('UPDATE `facebook` SET '.$update.' WHERE `fbid`= \''.$this->fbid.'\'');
 	}
 	
-	// Get from Facebook API
+	/**
+	 * Get data from Facebook
+	 * @param string Data to be fetched
+	 * @access private
+	 * @return string Data from facebook, false if not available
+	 */
 	function getFromFacebook($data){
 		$fb = $this->init();
 		try{  
@@ -104,7 +176,12 @@ class FB{
 		return false;
 	}
 	
-	// Load data from DB cache
+	/**
+	 * Get data from Database cache
+	 * @param string Data to be fetched
+	 * @access private
+	 * @return string Data from DB, false if not available
+	 */
 	function getDB($what=false){
 		// Carga los datos de la base de datos
 		// Para disponer de ellos si no has iniciado sesion
@@ -126,7 +203,10 @@ class FB{
 		if($what) return $this->$what;
 	}
 	
-	// Determine whether user has logged in Facebook
+	/**
+	 * Determine whether user has logged in Facebook
+	 * @return boolean Facebook session state
+	 */
 	function logged(){
 		global $user;
 		if($this->fbid==$this->facebook->getUser()){
@@ -136,7 +216,11 @@ class FB{
 		return false;
 	}
 	
-	// Check if FB user is on database
+	/**
+	 * Check if FB user is on database
+	 * @param int [Optional] Facebook account ID
+	 * @return int QuePiensas user ID if found, false otherwise
+	 */
 	function checkFBuser($fbid=false){
 		global $sess, $db;
 		if(!($sess instanceof Session)) return false;
@@ -148,8 +232,10 @@ class FB{
 		return $usid;
 	}
 	
-	// Store data for another facebook user
-	// Checked means if I have already checked if user existed in DB
+	/**
+	 * Update or Insert data for a facebook user (Using REPLACE)
+	 * @param boolean Whether checkFBuser has been run
+	 */
 	function addFBuser($checked=false){
 		global $sess, $db;
 		if(!($sess instanceof Session)) return false;
@@ -163,6 +249,10 @@ class FB{
 		$db->execute('REPLACE INTO `facebook` (`fbid`, `name`, `email`, `pic_big`, `pic_square`, `code`, `access_token`) VALUES (\''.$this->fbid.'\', \''.$this->name().'\', \''.$this->email().'\', \''.$this->pic().'\', \''.$this->pic('square').'\', \''.$_SESSION['fb_'.$this->appid.'_code'].'\', \''.$_SESSION['fb_'.$this->appid.'_access_token'].'\');');
 	}
 	
+	/**
+	 * Check if a facebook account is already in the database
+	 * @param int Facebook account id
+	 */
 	function checkDB($fbid=false){
 		if(!$fbid && $this->logged()) $fbid = $this->fbid;
 		global $sess, $db;
@@ -175,21 +265,29 @@ class FB{
 		return false;
 	}
 	
-// Protected data variables
-	
-	// Return name
+	/**
+	 * Get Facebook name
+	 * @return string Facebook name
+	 */
 	function name(){
 		if(!$this->name) return $this->get('name');
 		return $this->name;	
 	}
 	
-	// Return FB email
+	/**
+	 * Get Facebook associated email
+	 * @return string associated email
+	 */
 	function email(){
 		if(!$this->email) return $this->get('email');
 		return $this->email;	
 	}
 	
-	// Return pic URL
+	/**
+	 * Get Facebook profile picture
+	 * @param string Image type: big or square
+	 * @return string User profile pic
+	 */
 	function pic($type='big'){
 		global $sess;
 		$types = array('big','square');
@@ -202,7 +300,11 @@ class FB{
 		return $this->getDB($what);
 	}
 	
-	// Get profile picture
+	/**
+	 * Get Facebook profile picture from facebook
+	 * @param string Image type: big or square
+	 * @return string User profile pic
+	 */
 	function getPic($type='big'){
 		$types = array('big','square');
 		if(!in_array($type,$types)) $type = 'big';
@@ -222,7 +324,10 @@ class FB{
 		return $this->set($which, $this->$which);
 	}
 	
-	// Return login link
+	/**
+	 * Get Facebook login link
+	 * @return string Login link or # if not available
+	 */
 	function fbLogin(){
 		// Get login URL
 		$params = array(
@@ -235,7 +340,10 @@ class FB{
 		return $link;	
 	}
 	
-	// Genera un archivo de texto con los amigos que tienes
+	/**
+	 * Generate a txt file with all friends from the user
+	 * @return true
+	 */
 	function getFriends(){
 		if(!$this->fbid || $this->fbid < 1) return false;
 		try{

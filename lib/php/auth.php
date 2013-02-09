@@ -1,21 +1,27 @@
 <?php
-/* AUTH Security System
- * La clase Auth gestion toda la seguridad de C13, mediante el sistema
- * de secciones y subsecciones. La tabla auth contiene las definiciones
- * de seguridad de todas las areas de C13 que tengan acceso restringido
- * Aqui NO se gestionan sesiones o identificacion, unicamente hay funciones
- * para seguridad
- * SECURITY WRAPPER
+/**
+ * Auth security class
  */
-
-// PRE and POST constants
-// NEVER, EVER, EEEEVER CHANGE!
-define("PRE", "!qp&$(");
-define("POST", "_sa-63}{");
-
-class Auth{
-	// Security handling for C13
-	
+/**
+ * AUTH Security System: Handle all security concerns of the website.
+ *
+ * Auth class manages all security in the website. It handles session ops (login/logout/register)
+ * as well as permission checks for subsections and actions.
+ * This doesn't manage session control, it only ensures that whatever is stored in session
+ * is valid and secure.
+ * @author Alejandro U. Alvarez
+ * @version 1.2
+ * @package Security
+ */
+class Auth{	
+	/**
+	 * Secure login using email/pass
+	 *
+	 * All variables are escaped and validated here
+	 * @param string User email
+	 * @param string User password
+	 * @return boolean True if login was successful
+	 */
 	function login($email,$pass){
 		// Checks login
 		global $db, $sess;
@@ -38,6 +44,17 @@ class Auth{
 		return false;
 	}
 	
+	/**
+	 * Register a new user
+	 *
+	 * All variables are escaped and validated here
+	 * @param string Email
+	 * @param string Name
+	 * @param string Password
+	 * @param boolean Whether the email has already been checked to avoid duplicates
+	 * @param boolean Whether an actiation mail should be sent to the provided email
+	 * @return boolean True if registration was successful
+	 */
 	function register($email,$name,$pass,$checkedEmail=false,$rev=false){
 		global $db, $sess;
 		if(!($sess instanceof Session)) return false;
@@ -62,6 +79,14 @@ class Auth{
 		}else return $this->addUser($name, $email, $pass);
 	}
 	
+	/**
+	 * Send an activation mail to the provided user
+	 * @param int User ID
+	 * @param string	User name
+	 * @param string	Email address
+	 * @param secret	Secret code to be used for verification
+	 * @return boolean	Whether the email was sent
+	 */
 	function sendActivationMail($id,$name,$email,$secret){
 		global $sess;
 		if($id < 1 || !is_numeric($id) || strlen($email)<1 || strlen($secret)<1) return false;
@@ -71,6 +96,11 @@ class Auth{
 		return mail($email,'Activacion Que Piensas',$msg,"From:no-reply@quepiensas.es\r\n");
 	}
 	
+	/**
+	 * Checks if an email already exists on the database
+	 * @param string Email address to be checked
+	 * @return boolean Whether the email is already in use
+	 */
 	function emailExists($email){
 		global $db, $sess;
 		if(!($sess instanceof Session)) return false;
@@ -81,6 +111,15 @@ class Auth{
 		return false;
 	}
 	
+	/**
+	 * Add a username, similar to register but used to add users automatically
+	 * @param string User name
+	 * @param string Email address
+	 * @param string Password
+	 * @param int Facebook account ID
+	 * @param int Twitter account ID
+	 * @regurn boolean Whether the account was created
+	 */
 	function addUser($name,$email,$pass=0,$fbuser=0,$twuser=0){
 		global $db, $sess;
 		if(!($sess instanceof Session)) return false;
@@ -97,6 +136,12 @@ class Auth{
 		return false;
 	}
 	
+	/**
+	 * Changes a user password
+	 * @param int User ID
+	 * @param string New password
+	 * @return boolean Whether the password was changed
+	 */
 	function changePass($usid,$pass){
 		global $db, $sess;
 		if(!($sess instanceof Session)) return false;
@@ -106,3 +151,13 @@ class Auth{
 		return $db->execute('UPDATE users SET pass = UNHEX(\''.$pass.'\') WHERE id = \''.$usid.'\' LIMIT 1');
 	}
 };
+/**
+ * Salt for passwords, initial part. Never change once live
+ * @const PRE
+ */
+define("PRE", "!qp&$(");
+/**
+ * Salt for passwords, last part. Never change once live
+ * @const POST
+ */
+define("POST", "_sa-63}{");

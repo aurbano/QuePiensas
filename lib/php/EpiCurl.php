@@ -1,4 +1,10 @@
 <?php
+/**
+ * Assync cURL
+ * @author Jaisen Mathai <jaisen@jmathai.com>
+ * @package Social
+ * @subpackage Twitter
+ */
 class EpiCurl
 {
   const timeout = 3;
@@ -120,9 +126,3 @@ class EpiCurlManager
     return $responses[$name];
   }
 }
-
-/*
- * Credits:
- *  - (1) Alistair pointed out that curl_multi_add_handle can return CURLM_CALL_MULTI_PERFORM on success.
- */
-?>

@@ -1,17 +1,46 @@
 <?php
-// CLASS person
-// Handles CRUD for persons
-// Requires function "clean" to sanitize string
-
+/**
+ * Person class
+ */
+/**
+ * Person management for QuePiensas
+ * 
+ * It takes care of all CRUD operations on people
+ * @author Alejandro U. Alvarez
+ * @version 1.0
+ * @package Users
+ */
 class Person{
-	// Variables
+	/**
+	 * Person ID
+	 */
 	var $pid;
+	/**
+	 * Facebook ID, if the person is verified
+	 */
 	var $fbid;
+	/**
+	 * Person name
+	 */
 	var $name;
+	/**
+	 * Number of visits
+	 */
 	var $visits;
+	/**
+	 * Number of comments
+	 */
 	var $comments;
+	/**
+	 * Location
+	 */
 	var $location;
 	
+	/**
+	 * Person constructor
+	 * @param int Person ID
+	 * @param stirng Name
+	 */
 	function Person($pid,$name=false){
 		global $sess;
 		// Constructor
@@ -29,6 +58,10 @@ class Person{
 		if($pid > 0) $this->pid = $pid;
 		$sess->debug('Finished constructor: PID='.$this->pid.', Name='.$this->name);
 	}
+	/**
+	 * Check if a person exists
+	 * @return boolean Whether the person exists
+	 */
 	function exists(){
 		if($this->pid == 0) return false;
 		global $sess, $db;
@@ -40,7 +73,16 @@ class Person{
 		if($id==$this->pid) return true;
 		return false; 
 	}
-	// Guardar comentario. Devuelve un array con la ID del comentario y el comentario
+	
+	/**
+	 * Store new comment for the person
+	 * @param string Comment text
+	 * @param int ID of comment to which this one is replying, 0 if new comment
+	 * @param string Commenter name
+	 * @param string Commenter email
+	 * @param int Identification mode (See User::sendPM)
+	 * @return array [Comment ID, Comment text] or false
+	 */
 	function post($msg,$rep,$name,$email,$ident){
 		if($this->pid==0) return false;
 		global $sess, $db,$user;
@@ -71,6 +113,13 @@ class Person{
 		}
 		return array($cid,$msg);
 	}
+	
+	/**
+	 * Create a new person
+	 * @param string Person name
+	 * @param boolean Check if person already exists
+	 * @return int New person ID or false
+	 */
 	function create($name,$check=false){
 		global $sess, $db,$user;
 		if(!($db instanceof DB)) $db = $sess->db();
@@ -84,6 +133,11 @@ class Person{
 		$sess->debug('Creada persona pid='.$pid);
 		return $pid;
 	}
+	
+	/**
+	 * Get Person data: Name, facebook ID, visits, city, region, contry
+	 * @return true
+	 */
 	function getData(){
 		global $sess, $db;
 		$sess->debug('Person::getData() $this->pid = '.$this->pid);
@@ -105,6 +159,10 @@ class Person{
 		$this->location['country'] = $data->country;
 		return true;	
 	}
+	/**
+	 * Adds a visit to the current person
+	 * @return boolean Whether the visit was added
+	 */
 	function addVisit(){
 		if($this->pid == 0) return false;
 		global $sess, $db;
@@ -114,6 +172,11 @@ class Person{
 		}
 		return $db->execute('UPDATE personas SET visits = visits+1 WHERE id = \''.$this->pid.'\' LIMIT 1');
 	}
+	/**
+	 * Add a point of relationship between the current user and the current person
+	 * @param int Ammount of relationship to add, defaults to 1
+	 * @return boolean Whether the relationship was added
+	 */
 	function addRelation($count=1){
 		if($this->pid == 0) return false;
 		global $sess, $db, $user;

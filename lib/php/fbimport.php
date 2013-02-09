@@ -1,4 +1,8 @@
 <?php
+/** 
+ * Facebook Friend import script
+ * it should run inside a cron job
+ */
 ini_set('display_errors','On');
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
                            EL IMPORTADOR

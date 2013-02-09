@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Person</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Database.html"><i class="icon-folder-open"></i> Database</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
+<li><a href="../packages/Files.html"><i class="icon-folder-open"></i> Files</a></li>
+<li><a href="../packages/Security.html"><i class="icon-folder-open"></i> Security</a></li>
+<li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
+<li><a href="../packages/Social.html"><i class="icon-folder-open"></i> Social</a></li>
+<li><a href="../packages/Users.html"><i class="icon-folder-open"></i> Users</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">81</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_Person" title="Person :: Person constructor"><span class="description">Person constructor</span><pre>Person()</pre></a></li>
+<li class="method public "><a href="#method_addRelation" title="addRelation :: Add a point of relationship between the current user and the current person"><span class="description">Add a point of relationship between the current user and the current person</span><pre>addRelation()</pre></a></li>
+<li class="method public "><a href="#method_addVisit" title="addVisit :: Adds a visit to the current person"><span class="description">Adds a visit to the current person</span><pre>addVisit()</pre></a></li>
+<li class="method public "><a href="#method_create" title="create :: Create a new person"><span class="description">Create a new person</span><pre>create()</pre></a></li>
+<li class="method public "><a href="#method_exists" title="exists :: Check if a person exists"><span class="description">Check if a person exists</span><pre>exists()</pre></a></li>
+<li class="method public "><a href="#method_getData" title="getData :: Get Person data: Name, facebook ID, visits, city, region, contry"><span class="description">Get Person data: Name, facebook ID, visits, city, region, contry</span><pre>getData()</pre></a></li>
+<li class="method public "><a href="#method_post" title="post :: Store new comment for the person"><span class="description">Store new comment for the person</span><pre>post()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul>
+<li class="property public "><a href="#property_comments" title="$comments :: Number of comments"><span class="description"></span><pre>$comments</pre></a></li>
+<li class="property public "><a href="#property_fbid" title="$fbid :: Facebook ID, if the person is verified"><span class="description"></span><pre>$fbid</pre></a></li>
+<li class="property public "><a href="#property_location" title="$location :: Location"><span class="description"></span><pre>$location</pre></a></li>
+<li class="property public "><a href="#property_name" title="$name :: Person name"><span class="description"></span><pre>$name</pre></a></li>
+<li class="property public "><a href="#property_pid" title="$pid :: Person ID"><span class="description"></span><pre>$pid</pre></a></li>
+<li class="property public "><a href="#property_visits" title="$visits :: Number of visits"><span class="description"></span><pre>$visits</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Person"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Person.html">Person</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Person management for QuePiensas</p>
+<div class="details">
+<div class="long_description"><p>It takes care of all CRUD operations on people</p></div>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="">Alejandro U. Alvarez</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>1.0</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/Users.html">Users</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_Person"></a><div class="element clickable method public method_Person" data-toggle="collapse" data-target=".method_Person .collapse">
+<h2>Person constructor</h2>
+<pre>Person(int $pid, \stirng $name) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pid</h4>
+<code>int</code><p>Person ID</p></div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>\stirng</code><p>Name</p></div>
+</div></div>
+</div>
+<a id="method_addRelation"></a><div class="element clickable method public method_addRelation" data-toggle="collapse" data-target=".method_addRelation .collapse">
+<h2>Add a point of relationship between the current user and the current person</h2>
+<pre>addRelation(int $count) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$count</h4>
+<code>int</code><p>Ammount of relationship to add, defaults to 1</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether the relationship was added</div>
+</div></div>
+</div>
+<a id="method_addVisit"></a><div class="element clickable method public method_addVisit" data-toggle="collapse" data-target=".method_addVisit .collapse">
+<h2>Adds a visit to the current person</h2>
+<pre>addVisit() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether the visit was added</div>
+</div></div>
+</div>
+<a id="method_create"></a><div class="element clickable method public method_create" data-toggle="collapse" data-target=".method_create .collapse">
+<h2>Create a new person</h2>
+<pre>create(string $name, boolean $check) : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Person name</p></div>
+<div class="subelement argument">
+<h4>$check</h4>
+<code>boolean</code><p>Check if person already exists</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>int</code>New person ID or false</div>
+</div></div>
+</div>
+<a id="method_exists"></a><div class="element clickable method public method_exists" data-toggle="collapse" data-target=".method_exists .collapse">
+<h2>Check if a person exists</h2>
+<pre>exists() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether the person exists</div>
+</div></div>
+</div>
+<a id="method_getData"></a><div class="element clickable method public method_getData" data-toggle="collapse" data-target=".method_getData .collapse">
+<h2>Get Person data: Name, facebook ID, visits, city, region, contry</h2>
+<pre>getData() : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_post"></a><div class="element clickable method public method_post" data-toggle="collapse" data-target=".method_post .collapse">
+<h2>Store new comment for the person</h2>
+<pre>post(string $msg, int $rep, string $name, string $email, int $ident) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$msg</h4>
+<code>string</code><p>Comment text</p></div>
+<div class="subelement argument">
+<h4>$rep</h4>
+<code>int</code><p>ID of comment to which this one is replying, 0 if new comment</p></div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Commenter name</p></div>
+<div class="subelement argument">
+<h4>$email</h4>
+<code>string</code><p>Commenter email</p></div>
+<div class="subelement argument">
+<h4>$ident</h4>
+<code>int</code><p>Identification mode (See User::sendPM)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>[Comment ID, Comment text] or false</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_comments"> </a><div class="element clickable property public property_comments" data-toggle="collapse" data-target=".property_comments .collapse">
+<h2></h2>
+<pre>$comments </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_fbid"> </a><div class="element clickable property public property_fbid" data-toggle="collapse" data-target=".property_fbid .collapse">
+<h2></h2>
+<pre>$fbid </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_location"> </a><div class="element clickable property public property_location" data-toggle="collapse" data-target=".property_location .collapse">
+<h2></h2>
+<pre>$location </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_name"> </a><div class="element clickable property public property_name" data-toggle="collapse" data-target=".property_name .collapse">
+<h2></h2>
+<pre>$name </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_pid"> </a><div class="element clickable property public property_pid" data-toggle="collapse" data-target=".property_pid .collapse">
+<h2></h2>
+<pre>$pid </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_visits"> </a><div class="element clickable property public property_visits" data-toggle="collapse" data-target=".property_visits .collapse">
+<h2></h2>
+<pre>$visits </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-02-09T14:13:47+01:00.<br></footer></div>
+</div>
+</body>
+</html>

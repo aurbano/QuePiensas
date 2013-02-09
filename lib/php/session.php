@@ -1,4 +1,7 @@
 <?php
+/**
+ * Main file, should be included everywhere where Users are tracked
+ */
 ini_set('display_errors','Off');
 session_start();
 date_default_timezone_set('Europe/Madrid');
@@ -10,25 +13,47 @@ include('lib/php/getip.php');
 include('lib/php/fb.class.php');
 include('lib/php/twitter.php');
 
+/** 
+ * Session management class, include whenever you need authenticated users
+ * 
+ * This class handles most of the site important operations, it should be included
+ * in all dynamic pages. If the site was to be put in maintenance this file will ensure
+ * that all pages where it is included display the maintenance page instead.
+ * @author Alejandro U. Alvarez
+ * @version 2.0
+ * @package Session
+ */
 class Session{
-   var $url;          // The page url current being viewed
-   var $referrer;     // Last recorded site page viewed
-   var $curPage;	  // Current page
-   var $mtStart;	  // Start of page load, to calculate load speed
-   var $home;		  // Home directory
-   var $user;
-   var $dbH;		  // Database handler
-   
-   var $maintenance = false; // Esto pone Que Piensas en MODO mantenimiento
+	/** The page url current being viewed
+	 */
+	var $url; 
+	/** Last recorded site page viewed
+	 */
+	var $referrer;
+	/** The current page name
+	 */
+	var $curPage;
+	/** Start of page load, to calculate load speed
+	 */
+	var $mtStart;
+	/** Home directory
+	 */
+	var $home;
+	/** User object handler
+	 */
+	var $user;
+	/** Database handle
+	 */
+	var $dbH;
+   /** Put entire site in maintenance mode
+	 */
+	var $maintenance = false;
    
    /**
-    * Note: referrer should really only be considered the actual
-    * page referrer in process.php, any other time it may be
-    * inaccurate.
-	* For DJs Music this doesn't actually work as expected because it is always index. It must be fixed in the future
-    */
-
-   /* Class constructor */
+	 * Session constructor
+	 *
+	 * It stores the appropriate values in most of the class attributes
+	 */
 	function Session(){
 		// Arregla problemas de includes
 		set_include_path(substr(dirname(__FILE__),0,38));
@@ -92,13 +117,20 @@ class Session{
 		$this->debug('<pre>'.print_r($_SESSION,true).'</pre>');
 	}
    
+   /**
+    * Create a new Database connection
+	* @return object Database connection object
+	*/
    function db(){
    		global $db;
 		if(!$this->dbH) $this->dbH = new DB('djsmusic_piensas','localhost','djsmusic_quepien','6Flw98cciCc1');
 		return $this->dbH;
    }
    
-   // TWITTER STUFF
+  /**
+    * Create a new Twitter connection
+	* @return object Twitter object
+	*/
    function twitter(){
 	    if($this->logged()){
 			$twitter = new EpiTwitter('***REMOVED***','***REMOVED***',$_SESSION['logged']['oauth_token'],$_SESSION['logged']['oauth_secret']);
@@ -107,6 +139,11 @@ class Session{
 		return $twitter;  
    }
    
+   /**
+    * Set a new secret value, used for cookie management
+	* @param int User ID
+	* @return boolean Whether the new secret code was updated
+	*/
    function setSecret($usid){
 		// Assign a secret code to user
 		$db = $this->db();
@@ -114,6 +151,11 @@ class Session{
 		return $db->execute('UPDATE users SET secret = \''.$this->token($usid).'\' WHERE id = \''.$usid.'\' LIMIT 1');
    }
    
+   /**
+    * Get the current secret code
+	* @param int User ID
+	* @return string Secret code
+	*/
    function getSecret($usid){
 		// Assign a secret code to user
 		$db = $this->db();
@@ -121,32 +163,46 @@ class Session{
    }
    
    /**
-    * generateRandStr - Generates a string made up of randomized
-    * letters (lower and upper case) and digits, the length
-    * is a specified parameter.
+    * Generates a string made up of randomized letters (lower and upper case) and digits
+	* @param int Length of random string
+	* @return string Randomly generated string
     */
-   function generateRandStr($length){
-      $randstr = "";
-      for($i=0; $i<$length; $i++){
-         $randnum = mt_rand(0,61);
-         if($randnum < 10){
-            $randstr .= chr($randnum+48);
-         }else if($randnum < 36){
-            $randstr .= chr($randnum+55);
-         }else{
-            $randstr .= chr($randnum+61);
-         }
-      }
-      return $randstr;
-   }
+	function generateRandStr($length){
+		$randstr = "";
+		for($i=0; $i<$length; $i++){
+			$randnum = mt_rand(0,61);
+			if($randnum < 10){
+				$randstr .= chr($randnum+48);
+			}else if($randnum < 36){
+				$randstr .= chr($randnum+55);
+			}else{
+				$randstr .= chr($randnum+61);
+			}
+		}
+		return $randstr;
+	}
+	/**
+	 * Cleans an input string, only leaving alphanumeric characters
+	 * @param string Input text
+	 * @return string Cleaned text
+	 */
 	function clean($input){
 		return preg_replace("/[^A-Za-z0-9\s\s+\]\[-]/",'',trim(rtrim($input)));
 	}
-	
+	/**
+	 * Set a new message, either error or informative
+	 *
+	 * The Message will be displayed on the next page load
+	 * @param string The message to be stored
+	 */
 	function set_msg($msg){
 		$_SESSION['msg'] .= '<li>'.$msg.'</li>';	
 	}
 	
+	/**
+	 * Displays stored messages using a Fancybox
+	 * @see Session:set_msg
+	 */
 	function msg(){
 		// Muestra la cadena guardada en msg
 		if($_SESSION['msg']){
@@ -155,6 +211,11 @@ class Session{
 		}
 	}
 	
+	/**
+	 * Create a debug file
+	 * @param string Last message before creating the file
+	 * @return true
+	 */
 	function createDebugFile($msg=false){
 		global $db, $user;
 		if(!($db instanceof DB)) $db = $this->db();
@@ -191,6 +252,14 @@ class Session{
 		return true;
 	}
 	
+	/**
+	 * Store a debug message, including a full backtrace of the debug function call
+	 * @param string Message to be added
+	 * @param boolean Whether you want the debug window to appear after storing this message
+	 * @param boolean Whether the debug window should appear with display:none
+	 * @param boolean Whether to call die() after displaying the debug information
+	 * @return true
+	 */
 	function debug($msg,$display=false,$hidden=true,$die=false){
 		global $user;
 		if(!$_SESSION['debug']) return false;
@@ -234,10 +303,20 @@ class Session{
 		}
 		return true;
 	}
+	/**
+	 * Unset a given cookie
+	 * @param string Cookie name
+	 */
 	function unsetCookie($name){
 		setcookie($name, '', time()-3600);	
 	}
-	function login($email,$pass,$usid=false){
+	/**
+	 * Logs a user in, this should be called instead of directly accesing the Auth method
+	 * @param string User email
+	 * @param string User password
+	 * @return boolean Whether the login was successful
+	 */
+	function login($email,$pass){
 		// Esta funcion entra por $auth y genera las variables de sesion/cookies necesarias
 		global $auth;
 		$this->debug('Function: login');
@@ -261,19 +340,27 @@ class Session{
 		$this->debug('Login failed');
 		return false;
 	}
+	/**
+	 * Register a new user, this should be called instead of directly accesing the Auth method
+	 * @param string User email
+	 * @param string User name
+	 * @param string Password
+	 * @param boolean Whether the email has already been checked
+	 * @return boolean Whether the registration was successful
+	 */
 	function register($email,$name,$pass,$checkedEmail=false){
 		global $auth;
 		// User & Pass are validated in Auth
 		return $auth->register($email,$name,$pass,$checkedEmail);
-		/* Ya no, hay que verificar la cuenta!
-		if($usid){
-			$this->setSecret($usid);
-			return $this->loginUser($usid,$email);
-		}*/
-		return false;
 	}
+	/**
+	 * Setup all variables to login user
+	 * @access private
+	 * @param int User ID
+	 * @param string User email address
+	 * @return true
+	 */
 	function loginUser($usid,$email=false){
-		// Setup all variables to login user:
 		// Session variables:
 		$_SESSION['logged'] = true;
 		$_SESSION['user']['id'] = $usid;
@@ -281,11 +368,21 @@ class Session{
 		$this->sessionCookie(1,$usid); // Store cookie	
 		return true;	
 	}
+	/**
+	 * Generate a new security token
+	 * @access private
+	 * @param int User ID
+	 * @param string Random seed to be used
+	 * @return string Random token (From sha1)
+	 */
 	function token($usid,$seed=''){
 		$this->debug('Function token, Usid='.$usid.'; Seed='.$seed);
 		if(!$usid) $usid = $_SESSION['user']['id'];
 		return sha1($usid.'/_qp()%+'.$seed);
 	}
+	/**
+	 * Log current user out
+	 */
 	function logout(){
 		global $fb;
 		if(!($fb instanceof FB)) $fb = new FB;
@@ -294,10 +391,13 @@ class Session{
 		$this->unsetCookie('qpu');	
 		$fb->facebook->destroySession();
 	}
+	/**
+	 * Generate or check session cookie, depending on the mode
+	 * @param int If mode=1 it generates a new cookie, if mode=2 it checks the current cookie
+	 * @param int User ID to be used
+	 * @return boolean Whether everything is OK
+	 */
 	function sessionCookie($mode=1,$usid=false){
-		// Esta funcion genera una cookie
-		// y tambien la comprueba, son el modo 1 y 2
-		// respectivamente.
 		if($mode==1 && $usid>0){
 			$token = $this->getSecret($usid);
 			return setcookie('qpu',$token,time()+12*30*24*60*60,'/','.quepiensas.es',false, true);
@@ -315,6 +415,12 @@ class Session{
 		}
 		return false;
 	}
+	/**
+	 * Checks if a variable is valid for the type
+	 * @param var Whatever you want to check
+	 * @param string Type to be checked agains: [email, boolean, float, int, ip, regexp, url]
+	 * @return boolean Whether the variable is of that type
+	 */
 	function valid($what,$type){
 		// Usage: if($data = $sess->valid($data,'type'))
 		$validate = array('email','boolean','float','int','ip','regexp','url');
@@ -327,9 +433,17 @@ class Session{
 		if(strlen($clean[$type])>0) return eval('return filter_var(\''.$what.'\', FILTER_SANITIZE_'.strtoupper($clean[$type]).');');
 		return true;
 	}
+	/**
+	 * Check if current user is logged in
+	 * @return boolean Whether the user is logged in
+	 */
 	function logged(){
 		return $_SESSION['logged'];
 	}
+	/**
+	 * Create a new user, if there is a user session variable it creates from there.
+	 * @return object User object
+	 */
 	function user(){
 		global $fb;
 		// Generate the user object

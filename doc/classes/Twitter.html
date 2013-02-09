@@ -1,0 +1,479 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Twitter</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Database.html"><i class="icon-folder-open"></i> Database</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
+<li><a href="../packages/Files.html"><i class="icon-folder-open"></i> Files</a></li>
+<li><a href="../packages/Security.html"><i class="icon-folder-open"></i> Security</a></li>
+<li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
+<li><a href="../packages/Social.html"><i class="icon-folder-open"></i> Social</a></li>
+<li><a href="../packages/Users.html"><i class="icon-folder-open"></i> Users</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">81</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_Twitter" title="Twitter :: Twitter constructor"><span class="description">Twitter constructor</span><pre>Twitter()</pre></a></li>
+<li class="method public "><a href="#method_addTWuser" title="addTWuser :: Update or Insert data for a Twitter user (Using REPLACE)"><span class="description">Update or Insert data for a Twitter user (Using REPLACE)</span><pre>addTWuser()</pre></a></li>
+<li class="method public "><a href="#method_checkTWuser" title="checkTWuser :: Check if TW user is on database"><span class="description">Check if TW user is on database</span><pre>checkTWuser()</pre></a></li>
+<li class="method public "><a href="#method_get" title="get :: Get an attribute"><span class="description">Get an attribute</span><pre>get()</pre></a></li>
+<li class="method public "><a href="#method_getDB" title="getDB :: Get data from Database cache"><span class="description">Get data from Database cache</span><pre>getDB()</pre></a></li>
+<li class="method public "><a href="#method_getFromTwitter" title="getFromTwitter :: Get data from Twitter"><span class="description">Get data from Twitter</span><pre>getFromTwitter()</pre></a></li>
+<li class="method public "><a href="#method_init" title="init :: Start up the Twitter API and authorize user if credentials available"><span class="description">Start up the Twitter API and authorize user if credentials available</span><pre>init()</pre></a></li>
+<li class="method public "><a href="#method_loadFromSession" title="loadFromSession :: Loads a Twitter account from session, authorizing it if possible"><span class="description">Loads a Twitter account from session, authorizing it if possible</span><pre>loadFromSession()</pre></a></li>
+<li class="method public "><a href="#method_logged" title="logged :: Determine whether user has logged in Twitter"><span class="description">Determine whether user has logged in Twitter</span><pre>logged()</pre></a></li>
+<li class="method public "><a href="#method_loginLink" title="loginLink :: Get Twitter login link"><span class="description">Get Twitter login link</span><pre>loginLink()</pre></a></li>
+<li class="method public "><a href="#method_loginUser" title="loginUser :: Get account ID from access tokens"><span class="description">Get account ID from access tokens</span><pre>loginUser()</pre></a></li>
+<li class="method public "><a href="#method_name" title="name :: Get Twitter name"><span class="description">Get Twitter name</span><pre>name()</pre></a></li>
+<li class="method public "><a href="#method_pic" title="pic :: Get Twitter profile picture"><span class="description">Get Twitter profile picture</span><pre>pic()</pre></a></li>
+<li class="method public "><a href="#method_set" title="set :: Set an attribute"><span class="description">Set an attribute</span><pre>set()</pre></a></li>
+<li class="method public "><a href="#method_updateDB" title="updateDB :: Update DB cache (Fields &amp; values can be arrays)"><span class="description">Update DB cache (Fields &amp; values can be arrays)</span><pre>updateDB()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul>
+<li class="property public "><a href="#property_twid" title="$twid :: Twitter account ID"><span class="description"></span><pre>$twid</pre></a></li>
+<li class="property public "><a href="#property_twitter" title="$twitter :: Twitter API object"><span class="description"></span><pre>$twitter</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_appid" title="$appid :: Twitter App ID"><span class="description"></span><pre>$appid</pre></a></li>
+<li class="property protected "><a href="#property_name" title="$name :: Twitter user name"><span class="description"></span><pre>$name</pre></a></li>
+<li class="property protected "><a href="#property_oauth_secret" title="$oauth_secret :: TwitterOAuth_Secret"><span class="description"></span><pre>$oauth_secret</pre></a></li>
+<li class="property protected "><a href="#property_oauth_token" title="$oauth_token :: Twitter OAuth_Token"><span class="description"></span><pre>$oauth_token</pre></a></li>
+<li class="property protected "><a href="#property_pic" title="$pic :: Twitter currently used picture"><span class="description"></span><pre>$pic</pre></a></li>
+<li class="property protected "><a href="#property_pic_bigger" title="$pic_bigger :: Twitter profile picture, original size"><span class="description"></span><pre>$pic_bigger</pre></a></li>
+<li class="property protected "><a href="#property_pic_normal" title="$pic_normal :: Twitter profile picture, normal size"><span class="description"></span><pre>$pic_normal</pre></a></li>
+<li class="property protected "><a href="#property_secret" title="$secret :: Twitter App secret"><span class="description"></span><pre>$secret</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Twitter"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Twitter.html">Twitter</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Twitter abstraction layer class.</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="">Alejandro U. Alvarez</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>2.0</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/Social.Twitter.html">Social</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Twitter</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_Twitter"></a><div class="element clickable method public method_Twitter" data-toggle="collapse" data-target=".method_Twitter .collapse">
+<h2>Twitter constructor</h2>
+<pre>Twitter(int $twid) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$twid</h4>
+<code>int</code><p>Twitter account ID</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether it was created</div>
+</div></div>
+</div>
+<a id="method_addTWuser"></a><div class="element clickable method public method_addTWuser" data-toggle="collapse" data-target=".method_addTWuser .collapse">
+<h2>Update or Insert data for a Twitter user (Using REPLACE)</h2>
+<pre>addTWuser(string $oauth, string $oauth_secret, boolean $checked) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$oauth</h4>
+<code>string</code><p>OAuth value</p></div>
+<div class="subelement argument">
+<h4>$oauth_secret</h4>
+<code>string</code><p>OAuth_secret value</p></div>
+<div class="subelement argument">
+<h4>$checked</h4>
+<code>boolean</code><p>Whether the user has already been checked</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_checkTWuser"></a><div class="element clickable method public method_checkTWuser" data-toggle="collapse" data-target=".method_checkTWuser .collapse">
+<h2>Check if TW user is on database</h2>
+<pre>checkTWuser(int $twid) : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$twid</h4>
+<code>int</code><p>[Optional] Twitter account ID</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>int</code>QuePiensas user ID if found, false otherwise</div>
+</div></div>
+</div>
+<a id="method_get"></a><div class="element clickable method public method_get" data-toggle="collapse" data-target=".method_get .collapse">
+<h2>Get an attribute</h2>
+<pre>get(string $what, boolean $obtain) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$what</h4>
+<code>string</code><p>Attribute name</p></div>
+<div class="subelement argument">
+<h4>$obtain</h4>
+<code>boolean</code><p>Whether to obtain the value from Twitter or the Database</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Attribute value</div>
+</div></div>
+</div>
+<a id="method_getDB"></a><div class="element clickable method public method_getDB" data-toggle="collapse" data-target=".method_getDB .collapse">
+<h2>Get data from Database cache</h2>
+<pre>getDB(string $what) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$what</h4>
+<code>string</code><p>Data to be fetched</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Data from DB, false if not available</div>
+</div></div>
+</div>
+<a id="method_getFromTwitter"></a><div class="element clickable method public method_getFromTwitter" data-toggle="collapse" data-target=".method_getFromTwitter .collapse">
+<h2>Get data from Twitter</h2>
+<pre>getFromTwitter(string $what) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$what</h4>
+<code>string</code><p>Data to be fetched</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Data from Twitter, false if not available</div>
+</div></div>
+</div>
+<a id="method_init"></a><div class="element clickable method public method_init" data-toggle="collapse" data-target=".method_init .collapse">
+<h2>Start up the Twitter API and authorize user if credentials available</h2>
+<pre>init() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a id="method_loadFromSession"></a><div class="element clickable method public method_loadFromSession" data-toggle="collapse" data-target=".method_loadFromSession .collapse">
+<h2>Loads a Twitter account from session, authorizing it if possible</h2>
+<pre>loadFromSession() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_logged"></a><div class="element clickable method public method_logged" data-toggle="collapse" data-target=".method_logged .collapse">
+<h2>Determine whether user has logged in Twitter</h2>
+<pre>logged() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Twitter session state</div>
+</div></div>
+</div>
+<a id="method_loginLink"></a><div class="element clickable method public method_loginLink" data-toggle="collapse" data-target=".method_loginLink .collapse">
+<h2>Get Twitter login link</h2>
+<pre>loginLink() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Login link or # if not available</div>
+</div></div>
+</div>
+<a id="method_loginUser"></a><div class="element clickable method public method_loginUser" data-toggle="collapse" data-target=".method_loginUser .collapse">
+<h2>Get account ID from access tokens</h2>
+<pre>loginUser() : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>int</code>Twitter account ID or false</div>
+</div></div>
+</div>
+<a id="method_name"></a><div class="element clickable method public method_name" data-toggle="collapse" data-target=".method_name .collapse">
+<h2>Get Twitter name</h2>
+<pre>name() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Twitter name</div>
+</div></div>
+</div>
+<a id="method_pic"></a><div class="element clickable method public method_pic" data-toggle="collapse" data-target=".method_pic .collapse">
+<h2>Get Twitter profile picture</h2>
+<pre>pic(string $size) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$size</h4>
+<code>string</code><p>Image type: normal or bigger</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>User profile pic</div>
+</div></div>
+</div>
+<a id="method_set"></a><div class="element clickable method public method_set" data-toggle="collapse" data-target=".method_set .collapse">
+<h2>Set an attribute</h2>
+<pre>set(string $what, string $data, boolean $updateDB) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$what</h4>
+<code>string</code><p>Attribute name</p></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>string</code><p>Attribute value</p></div>
+<div class="subelement argument">
+<h4>$updateDB</h4>
+<code>boolean</code><p>Whether to update the Database</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Attribute value</div>
+</div></div>
+</div>
+<a id="method_updateDB"></a><div class="element clickable method public method_updateDB" data-toggle="collapse" data-target=".method_updateDB .collapse">
+<h2>Update DB cache (Fields &amp; values can be arrays)</h2>
+<pre>updateDB(array $fields, array $values) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$fields</h4>
+<code>array</code><p>Fields to be updated, it can also be a string to update only one field</p></div>
+<div class="subelement argument">
+<h4>$values</h4>
+<code>array</code><p>Values, in the same format as the fields</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether the operation was successful</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_twid"> </a><div class="element clickable property public property_twid" data-toggle="collapse" data-target=".property_twid .collapse">
+<h2></h2>
+<pre>$twid </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_twitter"> </a><div class="element clickable property public property_twitter" data-toggle="collapse" data-target=".property_twitter .collapse">
+<h2></h2>
+<pre>$twitter </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_appid"> </a><div class="element clickable property protected property_appid" data-toggle="collapse" data-target=".property_appid .collapse">
+<h2></h2>
+<pre>$appid </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_name"> </a><div class="element clickable property protected property_name" data-toggle="collapse" data-target=".property_name .collapse">
+<h2></h2>
+<pre>$name </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_oauth_secret"> </a><div class="element clickable property protected property_oauth_secret" data-toggle="collapse" data-target=".property_oauth_secret .collapse">
+<h2></h2>
+<pre>$oauth_secret </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_oauth_token"> </a><div class="element clickable property protected property_oauth_token" data-toggle="collapse" data-target=".property_oauth_token .collapse">
+<h2></h2>
+<pre>$oauth_token </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_pic"> </a><div class="element clickable property protected property_pic" data-toggle="collapse" data-target=".property_pic .collapse">
+<h2></h2>
+<pre>$pic </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_pic_bigger"> </a><div class="element clickable property protected property_pic_bigger" data-toggle="collapse" data-target=".property_pic_bigger .collapse">
+<h2></h2>
+<pre>$pic_bigger </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_pic_normal"> </a><div class="element clickable property protected property_pic_normal" data-toggle="collapse" data-target=".property_pic_normal .collapse">
+<h2></h2>
+<pre>$pic_normal </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_secret"> </a><div class="element clickable property protected property_secret" data-toggle="collapse" data-target=".property_secret .collapse">
+<h2></h2>
+<pre>$secret </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-02-09T14:13:47+01:00.<br></footer></div>
+</div>
+</body>
+</html>

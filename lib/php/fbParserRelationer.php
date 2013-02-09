@@ -1,6 +1,8 @@
 <?php
-// Parsea los amigos importados de Facebook de {fbimport
-// Crea nuevas personas si hace falta y nuevas relaciones
+/**
+ * Parsea los amigos importados de Facebook de {fbimport
+ * Crea nuevas personas si hace falta y nuevas relaciones
+ */
 ini_set('display_errors','On');
 $_GET['db'] = 'noerrorfie';
 include('db.php');

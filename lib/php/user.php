@@ -1,29 +1,87 @@
 <?php
-/** USER class
+/**
+ * This file features the User class
+ */
+ 
+/**
+ * User class, generate a User object for every user you want to interact with
+ *
  * It will hold all info about current user
- * and ensure consistency. Also take care of cache
+ * and ensure consistency. Also take care of cache.
+ *
+ * @author	Alejandro U. Alvarez
+ * @version	1.1
+ * @package	Users
  */
 class User{
 	
-	// Use g() or get() to access user attributes
+	/**
+	 * User ID
+	 * @var User ID, 0 if the user is not logged in
+	 * @access public
+	 */
 	var		$id;
+	/**
+	 * Facebook ID
+	 * @var User ID, 0 if not linked
+	 * @access private
+	 */
 	private $fbuser;
+	/**
+	 * Twitter ID
+	 * @var User ID, 0 if not linked
+	 * @access private
+	 */
 	private $twuser;
+	/**
+	 * User Name
+	 * @var User ID, 0 if the user is not logged in
+	 * @access private
+	 */
 	private $name;
+	/**
+	 * User description
+	 * @var Description
+	 * @access private
+	 */
 	private $bio;
+	/**
+	 * Profile pic src
+	 * @var Profile pic src if set
+	 * @access private
+	 */
 	private $pic;
+	/**
+	 * User ID
+	 * @var What picture the user wants displayed
+	 * @access private
+	 */
 	private $usePic;
+	/**
+	 * User email
+	 * @var User email address
+	 * @access private
+	 */
 	private $email;
+	/**
+	 * The date in UNIX timestamp when the user first appeared
+	 * @var Join time
+	 * @access private
+	 */
 	private $jtime;
+	/**
+	 * Last time in UNIX timestamp that the user was active
+	 * @var Last time the user was active
+	 * @access private
+	 */
 	private $ltime;
 	
 	/**
-	 *	User constructor, builds an object containing a user with
-	 *	all methods for interacting with it
-	 *	@param	id		Required, set to 0 if you want an anonymous user.
-	 *	@param	name	User name
-	 *	@param	email	User email
-	 *	@return	User object
+	 *	User constructor, builds an object containing a user with all methods for interacting with it
+	 *	@param	int		Required, set to 0 if you want an anonymous user.
+	 *	@param	string	User name
+	 *	@param	string	User email
+	 *	@return	object	User object
 	 */
 	function User($id,$name=false,$email=false){
 		if($id>0){
@@ -61,9 +119,9 @@ class User{
 	
 	/**
 	 *	Return a user attribute. It also manages cache through Session variables
-	 *	@param	what	Attribute to be returned
-	 *	@param	db		Whether you want to pull the attribute from the database
-	 *	@return	The value if found, false otherwise
+	 *	@param	string	Attribute to be returned
+	 *	@param	boolean	Whether you want to pull the attribute from the database
+	 *	@return	string	The value if found, false otherwise
 	 */
 	function g($what,$db=true){
 		// Get data from session
@@ -78,7 +136,9 @@ class User{
 	}
 	
 	/**
-	 *	Same as g() above
+	 * Same as g() above
+	 * @param string Attribute to get
+	 * @see	g
 	 */
 	function get($what){
 		return $this->g($what);	
@@ -86,7 +146,7 @@ class User{
 	
 	/**
 	 *	Checks if user has picture uploaded
-	 *	@return true if user has uploaded a pic, false otherwise
+	 *	@return boolean True if user has uploaded a pic, false otherwise
 	 */
 	function hasPic(){
 		return file_exists('img/user/uploads/'.$this->id.'.gif');
@@ -94,8 +154,8 @@ class User{
 	
 	/**
 	 *	Returns the associated picture for the current user
-	 *	@param	type	Image type: profile or square
-	 *	@return	The image full src
+	 *	@param	string	Image type: profile or square
+	 *	@return	string	The image full src
 	 */
 	function pic($type='profile'){
 		// Devuelve la ruta a la imagen
@@ -161,11 +221,11 @@ class User{
 	
 	/**
 	 *	Setter for user attributes
-	 *	@param	what		Attribute to set
-	 *	@param	new			New value to be assigned
-	 *	@param	updateDB	Whether to update the database
-	 *	@param	clean		Whether to strip html tags and escape the string
-	 *	@return	The same thing that was passed to new
+	 *	@param	string	Attribute to set
+	 *	@param	string	New value to be assigned
+	 *	@param	boolean	Whether to update the database
+	 *	@param	boolean	Whether to strip html tags and escape the string
+	 *	@return	string	The same thing that was passed to new
 	 */
 	function set($what,$new,$updateDB=false,$clean=true){
 		if($updateDB){
@@ -189,13 +249,23 @@ class User{
 		}
 	}
 	
-	// Function now, guarda algo solo para esta sesion
+	/**
+	 * Function now, guarda algo solo para esta sesion
+	 * @param	string	Attribute to set
+	 * @param	string	Value for that attribute
+	 */
 	function now($what,$value){
 		$this->$what = $_SESSION['user'][$what] = $value;
 	}
-	// Get geolocation for user IP
-	// Returns an array 0->Country 1->Region 2->City
-	// It's called from getLoc() below
+	/**
+	 * Get geolocation for user IP
+	 *
+	 * Returns an array 0->Country 1->Region 2->City
+	 * It's called from getLoc() below
+	 * @param string IP address to locate
+	 * @access private
+	 * @return array [country, region, city, lat, lng]
+	 */
 	private function locate($ip){
 		$fp = @fopen('http://www.ipaddresslocation.org/ip-address-locator.php', 'r', false, stream_context_create(array('http' => array('method' => 'POST','content' => http_build_query(array('ip'=>$ip)) ))));
 		if(!$fp)  return false;
@@ -216,10 +286,11 @@ class User{
 	}
 	/**
 	 * Gets location for a given user ID
-	 * alternatively you can pass another IP address
-	 *	@param	usid	User id whose location you want
-	 *	@param	ip		Alternative IP to check
-	 *	@return	Array with user location [country, region, city, lat, lng]
+	 *
+	 * Alternatively you can pass another IP address
+	 * @param	int	User id whose location you want
+	 * @param	string	Alternative IP to check
+	 * @return	array	Array with user location [country, region, city, lat, lng]
 	 */
 	function getLoc($usid,$ip=false){
 		// First check in session:
@@ -265,14 +336,15 @@ class User{
 	}
 	/**
 	 * Returns location of user, if available
-	 * type determines what data to return
-	 * 0 = Country
-	 * 1 = Region
-	 * 2 = City
-	 * 3 = Lat
-	 * 4 = Lng
-	 * @param	type	Check the values above
-	 * @return	The location type requested or false if not available
+	 *
+	 * Type determines what data to return
+	 *	0 = Country
+	 *	1 = Region
+	 *	2 = City
+	 *	3 = Lat
+	 *	4 = Lng
+	 * @param	int	Check the values above
+	 * @return	string	The location type requested or false if not available
 	 */
 	function location($type=1){
 		if(isset($_SESSION['user']['loc'])){
@@ -284,6 +356,7 @@ class User{
 	}
 	/**
 	 * Sends private message to user, from current user
+	 *
 	 * All variables are checked within this function
 	 *	STATUS GUIDE
 	 *		0 -> Just sent, unread
@@ -297,12 +370,12 @@ class User{
 	 *		1 ->	Private		Public
 	 *		2 ->	Public		Private
 	 *		3 ->	Private		Private
-	 * @param	to		User ID of receiver
-	 * @param	msg		Message content, no need to clean it
-	 * @param	thread	Thread ID, or 0 if PM is not a reply
-	 * @param	ident	Check description above
-	 * @param	com		If the message is in reply to a comment, the ID of the comment
-	 * @return	ID of the sent PM or false if something failed
+	 * @param	int	User ID of receiver
+	 * @param	string	Message content, no need to clean it
+	 * @param	int	Thread ID, or 0 if PM is not a reply
+	 * @param	int	Check description above
+	 * @param	int	If the message is in reply to a comment, the ID of the comment
+	 * @return	int	ID of the sent PM or false if something failed
 	 */
 	function sendPM($to,$msg,$thread=0,$ident=0,$com=0){
 		global $sess, $db,$user;
@@ -323,9 +396,10 @@ class User{
 	}
 	/**
 	 * Set PM to read status. If message is part of a thread
-	 * it sets the status to read for the whole thread.
-	 * @param	thread	ID of the thread if PM is a reply
-	 * @return	Whether status was set
+	 *
+	 * It sets the status to read for the whole thread.
+	 * @param	int	ID of the thread if PM is a reply
+	 * @return	boolean	Whether status was set
 	 */
 	function updatePMstatus($thread){	
 		// Updates Thread to READ status
@@ -349,17 +423,18 @@ class User{
 	}
 	/**
 	 * Check whether a user has been located
-	 * @return true if user has location, false otherwise
+	 * @return boolean	true if user has location, false otherwise
 	 */
 	function hasLoc(){
 		return isset($_SESSION['user']['loc']);
 	}
 	/**
-	 * Link given facebook ID to the current user
-	 * if no ID is provided it checks whether there is
+	 * Link given facebook ID to the current user.
+	 *
+	 * If no ID is provided it checks whether there is
 	 * a logged in facebook account
-	 * @param	fbid	Facebook account ID, if false it will use currently logged fb account
-	 * @return	Whether the account was linked
+	 * @param	int	Facebook account ID, if false it will use currently logged fb account
+	 * @return	boolean	Whether the account was linked
 	 */
 	function linkFB($fbid=false){
 		global $sess, $db, $fb;
@@ -381,7 +456,7 @@ class User{
 	}
 	/**
 	 * Unlink Facebook account from the current user
-	 * @return	Whether the account was unlinked
+	 * @return	boolean	Whether the account was unlinked
 	 */
 	function unlinkFB(){
 		if(!$this->fb()) return true;
@@ -401,10 +476,11 @@ class User{
 		return $this->set('fbuser',0,true);
 	}
 	/** 
-	 * link given Twitter account ID to the current user
-	 * it also checks whether it has already been linked
-	 * @param	twid	Twitter user ID, if false it will use currently logged in twitter account
-	 * @return	Whether the account was linked
+	 * link given Twitter account ID to the current user.
+	 *
+	 * It also checks whether it has already been linked
+	 * @param	int	Twitter user ID, if false it will use currently logged in twitter account
+	 * @return	boolean	Whether the account was linked
 	 */
 	function linkTW($twid=false){
 		global $sess, $db, $tw;
@@ -426,8 +502,8 @@ class User{
 		return $this->set('twuser',$twid,true);
 	}
 	/**
-	 * unlinkTW for the current user
-	 * @return	Whether the account was unlinked
+	 * Unlink Twitter account for the current user
+	 * @return	boolean	Whether the account was unlinked
 	 */
 	function unlinkTW(){
 		if(!$this->tw()) return true;
@@ -446,7 +522,7 @@ class User{
 	}
 	/**
 	 * Check if user has Facebook linked
-	 * @return	Facebook account ID or false if not linked
+	 * @return	int	Facebook account ID or false if not linked
 	 */
 	function fb(){
 		$fb = $this->g('fbuser',true);
@@ -457,7 +533,7 @@ class User{
 	}
 	/**
 	 * Check if user has Twitter linked
-	 * @return	Twitter account ID or false if not linked
+	 * @return	int	Twitter account ID or false if not linked
 	 */
 	function tw(){
 		$tw = $this->g('twuser',true);

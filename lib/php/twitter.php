@@ -1,26 +1,67 @@
 <?php
-// Twitter Connection class
-// By Alejandro U. Alvarez
-// Version 2
-// Requires SESSION class for debugging
+/**
+ * Twitter abstraction layer
+ */
 
+/**
+ * Include Twitter API
+ */
 include('EpiCurl.php');
 include('EpiOAuth.php');
 include('EpiTwitter.php');
 
+/**
+ * Twitter abstraction layer class.
+ * @author Alejandro U. Alvarez
+ * @version 2.0
+ * @package Social
+ * @subpackage Twitter
+ */
 class Twitter{
+	/** Twitter API object
+	 */
 	var $twitter;
+	/** Twitter account ID
+	 */
 	var $twid = false;
+	/** Twitter App ID
+	 * @access protected
+	 */
 	protected $appid = 'RUIPLnk0zQGnA20iUnzVUw';
+	/** Twitter App secret
+	 * @access protected
+	 */
 	protected $secret = 'c28YlpEb8ca5Uku0nJWHScxJNJK0EJaN07SlFpEcA8';
+	/** Twitter user name
+	 * @access protected
+	 */
 	protected $name;
+	/** Twitter profile picture, normal size
+	 * @access protected
+	 */
 	protected $pic_normal;
+	/** Twitter profile picture, original size
+	 * @access protected
+	 */
 	protected $pic_bigger;
+	/** Twitter currently used picture
+	 * @access protected
+	 */
 	protected $pic;
+	/** Twitter OAuth_Token
+	 * @access protected
+	 */
 	protected $oauth_token;
+	/** TwitterOAuth_Secret
+	 * @access protected
+	 */
 	protected $oauth_secret;
 	
-	// Constructor
+	/**
+	 * Twitter constructor
+	 * @param int Twitter account ID
+	 * @return boolean Whether it was created
+	 */
 	function Twitter($twid=false){
 		// First: Load from Session
 		global $sess;
@@ -35,7 +76,10 @@ class Twitter{
 		return $this->init();
 	}
 	
-	// Start up Twitter API
+	/**
+	 * Start up the Twitter API and authorize user if credentials available
+	 * @return boolean
+	 */
 	function init(){
 		global $sess;
 		$sess->debug('Twitter Constructor');		
@@ -54,6 +98,9 @@ class Twitter{
 		}
 	}
 	
+	/** 
+	 * Loads a Twitter account from session, authorizing it if possible
+	 */
 	function loadFromSession(){
 		global $sess;
 		// Loads FB data from Session
@@ -65,7 +112,12 @@ class Twitter{
 		}
 	}
 	
-	// Update DB cache (Fields & values can be arrays)
+	/**
+	 * Update DB cache (Fields & values can be arrays)
+	 * @param array Fields to be updated, it can also be a string to update only one field
+	 * @param array Values, in the same format as the fields
+	 * @return boolean Whether the operation was successful
+	 */
 	function updateDB($fields,$values){
 		// Build update query
 		if(!$this->twid || $this->twid<1) return false;
@@ -87,7 +139,12 @@ class Twitter{
 		return $db->execute('UPDATE `twitter` SET '.$update.' WHERE `twid`= \''.$this->twid.'\'');
 	}
 	
-	// Load data from DB cache
+	/**
+	 * Get data from Database cache
+	 * @param string Data to be fetched
+	 * @access private
+	 * @return string Data from DB, false if not available
+	 */
 	function getDB($what=false){
 		// Carga los datos de la base de datos
 		// Para disponer de ellos si no has iniciado sesion
@@ -108,7 +165,12 @@ class Twitter{
 		
 		if($what) return $this->$what;
 	}
-	
+	/**
+	 * Get data from Twitter
+	 * @param string Data to be fetched
+	 * @access private
+	 * @return string Data from Twitter, false if not available
+	 */
 	function getFromTwitter($what){
 		if(!$this->logged()) return false;
 		global $sess;
@@ -123,6 +185,12 @@ class Twitter{
 		return false;
 	}
 	
+	/**
+	 * Get an attribute
+	 * @param string Attribute name
+	 * @param boolean Whether to obtain the value from Twitter or the Database
+	 * @return string Attribute value
+	 */
 	function get($what,$obtain=true){
 		if(isset($_SESSION['twitter'][$what]) && strlen($_SESSION['twitter'][$what])>0) return $this->set($what,$_SESSION['twitter'][$what]);
 		if(!$obtain) return $this->$what;
@@ -131,6 +199,13 @@ class Twitter{
 		return $this->getDB($what);
 	}
 	
+	/**
+	 * Set an attribute
+	 * @param string Attribute name
+	 * @param string Attribute value
+	 * @param boolean Whether to update the Database
+	 * @return string Attribute value
+	 */
 	function set($what,$data,$updateDB=false){
 		  $this->$what = $_SESSION['twitter'][$what] = $data;
 		if(!$updateDB) return $this->$what;
@@ -139,6 +214,10 @@ class Twitter{
 		return $this->$what;
 	}
 	
+	/**
+	 * Get Twitter name
+	 * @return string Twitter name
+	 */
 	function name(){
 		if(!$this->name){
 			$this->set('name',$this->getFromTwitter('screen_name'));
@@ -147,6 +226,12 @@ class Twitter{
 		}
 		return $this->name;	
 	}
+	
+	/**
+	 * Get Twitter profile picture
+	 * @param string Image type: normal or bigger
+	 * @return string User profile pic
+	 */
 	function pic($size=false){
 		global $sess;
 		switch($size){
@@ -170,7 +255,10 @@ class Twitter{
 		}
 	}
 	
-	// Determine whether user has logged in Facebook
+	/**
+	 * Determine whether user has logged in Twitter
+	 * @return boolean Twitter session state
+	 */
 	function logged(){
 		global $sess, $user;
 		try{  
@@ -184,7 +272,10 @@ class Twitter{
 		return false;
 	}
 	
-	// Get account ID from tokens
+	/**
+	 * Get account ID from access tokens
+	 * @return int Twitter account ID or false
+	 */
 	function loginUser(){
 		global $sess, $user;
 		try{
@@ -203,7 +294,11 @@ class Twitter{
 		return false;	
 	}
 	
-	// Check if twitter ID is asigned to a user
+	/**
+	 * Check if TW user is on database
+	 * @param int [Optional] Twitter account ID
+	 * @return int QuePiensas user ID if found, false otherwise
+	 */
 	function checkTWuser($twid=false){
 		global $sess, $db;
 		if(!($sess instanceof Session)) return false;
@@ -217,7 +312,13 @@ class Twitter{
 		return $usid;
 	}
 	
-	// Link TWuser to a QuePiensas user
+	/**
+	 * Update or Insert data for a Twitter user (Using REPLACE)
+	 * @param string OAuth value
+	 * @param string OAuth_secret value
+	 * @param boolean Whether the user has already been checked
+	 * @return true
+	 */
 	function addTWuser($oauth, $oauth_secret, $checked=false){
 		global $sess, $db;
 		if(!($sess instanceof Session)) return false;
@@ -236,7 +337,10 @@ class Twitter{
 		return true;
 	}
 	
-	// Return Twitter login link
+	/**
+	 * Get Twitter login link
+	 * @return string Login link or # if not available
+	 */
 	function loginLink(){
 		try{
 			$ret = $this->twitter->getAuthenticateUrl();

@@ -1,4 +1,10 @@
 <?php
+/**
+ *  Assync OAuth
+ *  @author Jaisen Mathai <jaisen@jmathai.com>
+ * @package Social
+ * @subpackage Twitter
+ */
 class EpiOAuth
 {
   public $version = '1.0';

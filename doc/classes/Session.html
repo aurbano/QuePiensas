@@ -1,0 +1,509 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Session</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Database.html"><i class="icon-folder-open"></i> Database</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
+<li><a href="../packages/Files.html"><i class="icon-folder-open"></i> Files</a></li>
+<li><a href="../packages/Security.html"><i class="icon-folder-open"></i> Security</a></li>
+<li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
+<li><a href="../packages/Social.html"><i class="icon-folder-open"></i> Social</a></li>
+<li><a href="../packages/Users.html"><i class="icon-folder-open"></i> Users</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">81</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_Session" title="Session :: Session constructor"><span class="description">Session constructor</span><pre>Session()</pre></a></li>
+<li class="method public "><a href="#method_clean" title="clean :: Cleans an input string, only leaving alphanumeric characters"><span class="description">Cleans an input string, only leaving alphanumeric characters</span><pre>clean()</pre></a></li>
+<li class="method public "><a href="#method_createDebugFile" title="createDebugFile :: Create a debug file"><span class="description">Create a debug file</span><pre>createDebugFile()</pre></a></li>
+<li class="method public "><a href="#method_db" title="db :: Create a new Database connection"><span class="description">Create a new Database connection</span><pre>db()</pre></a></li>
+<li class="method public "><a href="#method_debug" title="debug :: Store a debug message, including a full backtrace of the debug function call"><span class="description">Store a debug message, including a full backtrace of the debug function call</span><pre>debug()</pre></a></li>
+<li class="method public "><a href="#method_generateRandStr" title="generateRandStr :: Generates a string made up of randomized letters (lower and upper case) and digits"><span class="description">Generates a string made up of randomized letters (lower and upper case) and digits</span><pre>generateRandStr()</pre></a></li>
+<li class="method public "><a href="#method_getSecret" title="getSecret :: Get the current secret code"><span class="description">Get the current secret code</span><pre>getSecret()</pre></a></li>
+<li class="method public "><a href="#method_logged" title="logged :: Check if current user is logged in"><span class="description">Check if current user is logged in</span><pre>logged()</pre></a></li>
+<li class="method public "><a href="#method_login" title="login :: Logs a user in, this should be called instead of directly accesing the Auth method"><span class="description">Logs a user in, this should be called instead of directly accesing the Auth method</span><pre>login()</pre></a></li>
+<li class="method public "><a href="#method_loginUser" title="loginUser :: Setup all variables to login user"><span class="description">Setup all variables to login user</span><pre>loginUser()</pre></a></li>
+<li class="method public "><a href="#method_logout" title="logout :: Log current user out"><span class="description">Log current user out</span><pre>logout()</pre></a></li>
+<li class="method public "><a href="#method_msg" title="msg :: Displays stored messages using a Fancybox"><span class="description">Displays stored messages using a Fancybox</span><pre>msg()</pre></a></li>
+<li class="method public "><a href="#method_register" title="register :: Register a new user, this should be called instead of directly accesing the Auth method"><span class="description">Register a new user, this should be called instead of directly accesing the Auth method</span><pre>register()</pre></a></li>
+<li class="method public "><a href="#method_sessionCookie" title="sessionCookie :: Generate or check session cookie, depending on the mode"><span class="description">Generate or check session cookie, depending on the mode</span><pre>sessionCookie()</pre></a></li>
+<li class="method public "><a href="#method_setSecret" title="setSecret :: Set a new secret value, used for cookie management"><span class="description">Set a new secret value, used for cookie management</span><pre>setSecret()</pre></a></li>
+<li class="method public "><a href="#method_set_msg" title="set_msg :: Set a new message, either error or informative"><span class="description">Set a new message, either error or informative</span><pre>set_msg()</pre></a></li>
+<li class="method public "><a href="#method_token" title="token :: Generate a new security token"><span class="description">Generate a new security token</span><pre>token()</pre></a></li>
+<li class="method public "><a href="#method_twitter" title="twitter :: Create a new Twitter connection"><span class="description">Create a new Twitter connection</span><pre>twitter()</pre></a></li>
+<li class="method public "><a href="#method_unsetCookie" title="unsetCookie :: Unset a given cookie"><span class="description">Unset a given cookie</span><pre>unsetCookie()</pre></a></li>
+<li class="method public "><a href="#method_user" title="user :: Create a new user, if there is a user session variable it creates from there."><span class="description">Create a new user, if there is a user session variable it creates from there.</span><pre>user()</pre></a></li>
+<li class="method public "><a href="#method_valid" title="valid :: Checks if a variable is valid for the type"><span class="description">Checks if a variable is valid for the type</span><pre>valid()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul>
+<li class="property public "><a href="#property_curPage" title="$curPage :: The current page name"><span class="description"></span><pre>$curPage</pre></a></li>
+<li class="property public "><a href="#property_dbH" title="$dbH :: Database handle"><span class="description"></span><pre>$dbH</pre></a></li>
+<li class="property public "><a href="#property_home" title="$home :: Home directory"><span class="description"></span><pre>$home</pre></a></li>
+<li class="property public "><a href="#property_maintenance" title="$maintenance :: Put entire site in maintenance mode"><span class="description"></span><pre>$maintenance</pre></a></li>
+<li class="property public "><a href="#property_mtStart" title="$mtStart :: Start of page load, to calculate load speed"><span class="description"></span><pre>$mtStart</pre></a></li>
+<li class="property public "><a href="#property_referrer" title="$referrer :: Last recorded site page viewed"><span class="description"></span><pre>$referrer</pre></a></li>
+<li class="property public "><a href="#property_url" title="$url :: The page url current being viewed"><span class="description"></span><pre>$url</pre></a></li>
+<li class="property public "><a href="#property_user" title="$user :: User object handler"><span class="description"></span><pre>$user</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Session"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Session.html">Session</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Session management class, include whenever you need authenticated users</p>
+<div class="details">
+<div class="long_description"><p>This class handles most of the site important operations, it should be included
+in all dynamic pages. If the site was to be put in maintenance this file will ensure
+that all pages where it is included display the maintenance page instead.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="">Alejandro U. Alvarez</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>2.0</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/Session.html">Session</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_Session"></a><div class="element clickable method public method_Session" data-toggle="collapse" data-target=".method_Session .collapse">
+<h2>Session constructor</h2>
+<pre>Session() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>It stores the appropriate values in most of the class attributes</p></div></div></div>
+</div>
+<a id="method_clean"></a><div class="element clickable method public method_clean" data-toggle="collapse" data-target=".method_clean .collapse">
+<h2>Cleans an input string, only leaving alphanumeric characters</h2>
+<pre>clean(string $input) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code>string</code><p>Input text</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Cleaned text</div>
+</div></div>
+</div>
+<a id="method_createDebugFile"></a><div class="element clickable method public method_createDebugFile" data-toggle="collapse" data-target=".method_createDebugFile .collapse">
+<h2>Create a debug file</h2>
+<pre>createDebugFile(string $msg) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$msg</h4>
+<code>string</code><p>Last message before creating the file</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_db"></a><div class="element clickable method public method_db" data-toggle="collapse" data-target=".method_db .collapse">
+<h2>Create a new Database connection</h2>
+<pre>db() : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>Database connection object</div>
+</div></div>
+</div>
+<a id="method_debug"></a><div class="element clickable method public method_debug" data-toggle="collapse" data-target=".method_debug .collapse">
+<h2>Store a debug message, including a full backtrace of the debug function call</h2>
+<pre>debug(string $msg, boolean $display, boolean $hidden, boolean $die) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$msg</h4>
+<code>string</code><p>Message to be added</p></div>
+<div class="subelement argument">
+<h4>$display</h4>
+<code>boolean</code><p>Whether you want the debug window to appear after storing this message</p></div>
+<div class="subelement argument">
+<h4>$hidden</h4>
+<code>boolean</code><p>Whether the debug window should appear with display:none</p></div>
+<div class="subelement argument">
+<h4>$die</h4>
+<code>boolean</code><p>Whether to call die() after displaying the debug information</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_generateRandStr"></a><div class="element clickable method public method_generateRandStr" data-toggle="collapse" data-target=".method_generateRandStr .collapse">
+<h2>Generates a string made up of randomized letters (lower and upper case) and digits</h2>
+<pre>generateRandStr(int $length) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$length</h4>
+<code>int</code><p>Length of random string</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Randomly generated string</div>
+</div></div>
+</div>
+<a id="method_getSecret"></a><div class="element clickable method public method_getSecret" data-toggle="collapse" data-target=".method_getSecret .collapse">
+<h2>Get the current secret code</h2>
+<pre>getSecret(int $usid) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$usid</h4>
+<code>int</code><p>User ID</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Secret code</div>
+</div></div>
+</div>
+<a id="method_logged"></a><div class="element clickable method public method_logged" data-toggle="collapse" data-target=".method_logged .collapse">
+<h2>Check if current user is logged in</h2>
+<pre>logged() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether the user is logged in</div>
+</div></div>
+</div>
+<a id="method_login"></a><div class="element clickable method public method_login" data-toggle="collapse" data-target=".method_login .collapse">
+<h2>Logs a user in, this should be called instead of directly accesing the Auth method</h2>
+<pre>login(string $email, string $pass) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$email</h4>
+<code>string</code><p>User email</p></div>
+<div class="subelement argument">
+<h4>$pass</h4>
+<code>string</code><p>User password</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether the login was successful</div>
+</div></div>
+</div>
+<a id="method_loginUser"></a><div class="element clickable method public method_loginUser" data-toggle="collapse" data-target=".method_loginUser .collapse">
+<h2>Setup all variables to login user</h2>
+<pre>loginUser(int $usid, string $email) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$usid</h4>
+<code>int</code><p>User ID</p></div>
+<div class="subelement argument">
+<h4>$email</h4>
+<code>string</code><p>User email address</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_logout"></a><div class="element clickable method public method_logout" data-toggle="collapse" data-target=".method_logout .collapse">
+<h2>Log current user out</h2>
+<pre>logout() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_msg"></a><div class="element clickable method public method_msg" data-toggle="collapse" data-target=".method_msg .collapse">
+<h2>Displays stored messages using a Fancybox</h2>
+<pre>msg() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\Session:set_msg</a></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_register"></a><div class="element clickable method public method_register" data-toggle="collapse" data-target=".method_register .collapse">
+<h2>Register a new user, this should be called instead of directly accesing the Auth method</h2>
+<pre>register(string $email, string $name, string $pass, boolean $checkedEmail) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$email</h4>
+<code>string</code><p>User email</p></div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>User name</p></div>
+<div class="subelement argument">
+<h4>$pass</h4>
+<code>string</code><p>Password</p></div>
+<div class="subelement argument">
+<h4>$checkedEmail</h4>
+<code>boolean</code><p>Whether the email has already been checked</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether the registration was successful</div>
+</div></div>
+</div>
+<a id="method_sessionCookie"></a><div class="element clickable method public method_sessionCookie" data-toggle="collapse" data-target=".method_sessionCookie .collapse">
+<h2>Generate or check session cookie, depending on the mode</h2>
+<pre>sessionCookie(int $mode, int $usid) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$mode</h4>
+<code>int</code><p>If mode=1 it generates a new cookie, if mode=2 it checks the current cookie</p>
+</div>
+<div class="subelement argument">
+<h4>$usid</h4>
+<code>int</code><p>User ID to be used</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether everything is OK</div>
+</div></div>
+</div>
+<a id="method_setSecret"></a><div class="element clickable method public method_setSecret" data-toggle="collapse" data-target=".method_setSecret .collapse">
+<h2>Set a new secret value, used for cookie management</h2>
+<pre>setSecret(int $usid) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$usid</h4>
+<code>int</code><p>User ID</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether the new secret code was updated</div>
+</div></div>
+</div>
+<a id="method_set_msg"></a><div class="element clickable method public method_set_msg" data-toggle="collapse" data-target=".method_set_msg .collapse">
+<h2>Set a new message, either error or informative</h2>
+<pre>set_msg(string $msg) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The Message will be displayed on the next page load</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$msg</h4>
+<code>string</code><p>The message to be stored</p></div>
+</div></div>
+</div>
+<a id="method_token"></a><div class="element clickable method public method_token" data-toggle="collapse" data-target=".method_token .collapse">
+<h2>Generate a new security token</h2>
+<pre>token(int $usid, string $seed) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$usid</h4>
+<code>int</code><p>User ID</p></div>
+<div class="subelement argument">
+<h4>$seed</h4>
+<code>string</code><p>Random seed to be used</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Random token (From sha1)</div>
+</div></div>
+</div>
+<a id="method_twitter"></a><div class="element clickable method public method_twitter" data-toggle="collapse" data-target=".method_twitter .collapse">
+<h2>Create a new Twitter connection</h2>
+<pre>twitter() : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>Twitter object</div>
+</div></div>
+</div>
+<a id="method_unsetCookie"></a><div class="element clickable method public method_unsetCookie" data-toggle="collapse" data-target=".method_unsetCookie .collapse">
+<h2>Unset a given cookie</h2>
+<pre>unsetCookie(string $name) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Cookie name</p></div>
+</div></div>
+</div>
+<a id="method_user"></a><div class="element clickable method public method_user" data-toggle="collapse" data-target=".method_user .collapse">
+<h2>Create a new user, if there is a user session variable it creates from there.</h2>
+<pre>user() : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>User object</div>
+</div></div>
+</div>
+<a id="method_valid"></a><div class="element clickable method public method_valid" data-toggle="collapse" data-target=".method_valid .collapse">
+<h2>Checks if a variable is valid for the type</h2>
+<pre>valid(\var $what, string $type) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$what</h4>
+<code>\var</code><p>Whatever you want to check</p></div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>Type to be checked agains: [email, boolean, float, int, ip, regexp, url]</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Whether the variable is of that type</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_curPage"> </a><div class="element clickable property public property_curPage" data-toggle="collapse" data-target=".property_curPage .collapse">
+<h2></h2>
+<pre>$curPage </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_dbH"> </a><div class="element clickable property public property_dbH" data-toggle="collapse" data-target=".property_dbH .collapse">
+<h2></h2>
+<pre>$dbH </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_home"> </a><div class="element clickable property public property_home" data-toggle="collapse" data-target=".property_home .collapse">
+<h2></h2>
+<pre>$home </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_maintenance"> </a><div class="element clickable property public property_maintenance" data-toggle="collapse" data-target=".property_maintenance .collapse">
+<h2></h2>
+<pre>$maintenance </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_mtStart"> </a><div class="element clickable property public property_mtStart" data-toggle="collapse" data-target=".property_mtStart .collapse">
+<h2></h2>
+<pre>$mtStart </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_referrer"> </a><div class="element clickable property public property_referrer" data-toggle="collapse" data-target=".property_referrer .collapse">
+<h2></h2>
+<pre>$referrer </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_url"> </a><div class="element clickable property public property_url" data-toggle="collapse" data-target=".property_url .collapse">
+<h2></h2>
+<pre>$url </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_user"> </a><div class="element clickable property public property_user" data-toggle="collapse" data-target=".property_user .collapse">
+<h2></h2>
+<pre>$user </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-02-09T14:13:47+01:00.<br></footer></div>
+</div>
+</body>
+</html>

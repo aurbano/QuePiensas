@@ -26,6 +26,9 @@ if (!function_exists('json_decode')) {
  * Thrown when an API call returns an exception.
  *
  * @author Naitik Shah <naitik@facebook.com>
+ * @author Facebook Inc
+ * @package Social
+ * @subpackage Facebook
  */
 class FacebookApiException extends Exception
 {
@@ -645,6 +648,7 @@ abstract class BaseFacebook
    * either logged in to Facebook or has granted an offline access permission.
    *
    * @param string $code An authorization code.
+   * @param string $redirect_uri URI where to redirect after authorization
    * @return mixed An access token exchanged for the authorization code, or
    *               false if an access token could not be generated.
    */

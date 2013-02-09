@@ -1,20 +1,45 @@
 <?php
-// Uploader class, by Alex
-// This class is meant to handle all kinds of file uploads
-// Images, music...
+/**
+ * File uploader
+ */
 
+/**
+ * A PHP file uploader, it includes many security checks although it is very minimalistic
+ *
+ * This Class allows you to very easily upload files. It checks filesize, generates a new name
+ * if you want, or uses whatever name you specify.
+ * @author Alejandro U. Alvarez
+ * @version 2.0
+ * @package Files
+ */
 class Uploader{
-	var $maxSize;
-	var $allowedExt;
-	var $fileInfo = array();
+	/** Max allowed size, in bytes
+	 */
+	private $maxSize;
+	/** Allowed extensions, CSV
+	 */
+	private $allowedExt;
+	/** File information array
+	 */
+	private $fileInfo = array();
 	
-	// $allowedExt is a comma separated list of exts Ej. 'gif,png,jpeg'
+	/**
+	 * Class constructor, use it to set the maximum size and the allowed extensions
+	 * @param int Maximum size in bytes
+	 * @param string Comma separated list of allowed extensions. Ex. 'gif,png,jpeg'
+	 */
 	function Uploader($maxSize,$allowedExt){
 		$this->maxSize = $maxSize;
 		$this->allowedExt = $allowedExt;
 	}
 	
-	function check($uploadName){
+	/**
+	 * Check whether the uploaded file meets the requirements
+	 * @param string Name used in the file upload HTML field
+	 * @return boolean Whether the file is valid
+	 * @access private
+	 */
+	private function check($uploadName){
 		global $sess;
 		if(isset($_FILES[$uploadName])){
 			$this->fileInfo['ext'] = substr(strrchr($_FILES[$uploadName]["name"], '.'), 1);
@@ -58,6 +83,17 @@ class Uploader{
 		return false; //Either form not submitted or file/s not found
 	}
 	
+	/** 
+	 * Upload the file, call directly after the constructor
+	 *
+	 * If any errors appear during the file upload it will call Session:set_msg() to notify the user
+	 * and then return false;
+	 * If the file name already exists it will change it to a random name, until its not taken
+	 * @param string Upload field name
+	 * @param stirng Directory where uploaded files should be stored
+	 * @param string File name to store it with, leave blank if you want a random name
+	 * @return boolean Whether the file could be uploaded.
+	 */
 	function upload($name,$dir,$fname=false){
 		global $sess;
 		if(!is_dir($dir)){

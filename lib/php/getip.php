@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * IP detection functions
+ */
+ 
+/**
+ * Get first part of the IP address
+ * @param string IP address
+ * @access private
+ */
 function ip_first($ips) {
   if (($pos = strpos($ips, ',')) != false) {
     return substr($ips, 0, $pos);
@@ -8,6 +16,11 @@ function ip_first($ips) {
   }
 }
 
+/**
+ * Check if an IP address is valid
+ * @access private
+ * @param string IP address
+ */
 function ip_valid($ips) {
   if (isset($ips)) {
     $ip    = ip_first($ips);
@@ -22,6 +35,9 @@ function ip_valid($ips) {
   return false;
 }
 
+/**
+ * Get user IP address
+ */
 function ip() {
   /*$check = array(
     'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR',

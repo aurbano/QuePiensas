@@ -1,29 +1,47 @@
 <?php
-  /** A PHP class to access MySQL database with convenient methods
-    * in an object oriented way, and with a powerful debug system.\n
-    * Licence:  LGPL \n
-    * Web site: http://slaout.linux62.org/
-    * @version  1.0
-    * @author   S&eacute;bastien Lao&ucirc;t (slaout@linux62.org)
-    */
-  class DB
-  {
-    /** Put this variable to true if you want ALL queries to be debugged by default:
-      */
+/**
+ * Database abstraction layer
+ */
+ 
+  /**
+   *A PHP class to access MySQL database with convenient methods
+   * in an object oriented way, and with a powerful debug system.\n
+   * Licence: 	LGPL \n
+   * Web site:	http://slaout.linux62.org/
+   * @version	2.0
+   * @author	Sebastien Laout (slaout@linux62.org)
+   * @author	Alejandro U. Alvarez
+   * @package	Database
+   */
+  class DB{
+    /**
+	 * Put this variable to true if you want ALL queries to be debugged by default:
+     */
     var $defaultDebug = false;
 
-    /** INTERNAL: The start time, in miliseconds.
-      */
+    /**
+	 * INTERNAL: The start time, in miliseconds.
+	 * @access private
+     */
     var $mtStart;
-    /** INTERNAL: The number of executed queries.
-      */
+    /**
+	 * INTERNAL: The number of executed queries.
+	 * @access private
+     */
     var $nbQueries;
-    /** INTERNAL: The last result ressource of a query().
-      */
+    /**
+	 * INTERNAL: The last result ressource of a query().
+     * @access private
+	 */
     var $lastResult;
 
-    /** Connect to a MySQL database to be able to use the methods below.
-      */
+    /**
+	 * Connect to a MySQL database to be able to use the methods below.
+	 * @param string Database to connect
+	 * @param string Database server
+	 * @param string Username
+	 * @param string Password
+     */
     function DB($base, $server, $user, $pass)
     {
       $this->mtStart    = $this->getMicroTime();
@@ -37,11 +55,12 @@
       mysql_select_db($base)               or die('Database connexion not possible.');
     }
 
-    /** Query the database.
-      * @param $query The query.
-      * @param $debug If true, it output the query and the resulting table.
-      * @return The result of the query, to use with fetchNextObject().
-      */
+    /**
+	 * Query the database.
+     * @param $query The query.
+     * @param $debug If true, it output the query and the resulting table.
+     * @return The result of the query, to use with fetchNextObject().
+     */
     function query($query, $debug = -1)
     {
       $this->nbQueries++;
@@ -55,6 +74,7 @@
       * Should be used for INSERT, UPDATE, DELETE...
       * @param $query The query.
       * @param $debug If true, it output the query and the resulting table.
+	  * @return Query status
       */
     function execute($query, $debug = -1)
     {
@@ -215,8 +235,10 @@
     }
     /** Internal function to output a query for debug purpose.\n
       * Should be followed by a call to debugResult() or an echo of "</div>".
-      * @param $query The SQL query to debug.
-      * @param $reason The reason why this function is called: "Default Debug", "Debug" or "Error".
+      * @param string The SQL query to debug.
+      * @param string The reason why this function is called: "Default Debug", "Debug" or "Error".
+	  * @param boolean Whether it should return or echo the debugger results
+	  * @return string If $return is set to true
       */
     function debugQuery($query, $reason = "Debug", $return = false)
     {
@@ -230,6 +252,7 @@
     /** Internal function to output a table representing the result of a query, for debug purpose.\n
       * Should be preceded by a call to debugQuery().
       * @param $result The resulting table of the query.
+	  * @access private
       */
     function debugResult($result)
     {
