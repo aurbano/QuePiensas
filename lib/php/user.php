@@ -1,5 +1,5 @@
 <?php
-/* USER class
+/** USER class
  * It will hold all info about current user
  * and ensure consistency. Also take care of cache
  */
@@ -17,7 +17,7 @@ class User{
 	private $jtime;
 	private $ltime;
 	
-	/*
+	/**
 	 *	User constructor, builds an object containing a user with
 	 *	all methods for interacting with it
 	 *	@param	id		Required, set to 0 if you want an anonymous user.
@@ -59,7 +59,7 @@ class User{
 		}
 	}
 	
-	/*
+	/**
 	 *	Return a user attribute. It also manages cache through Session variables
 	 *	@param	what	Attribute to be returned
 	 *	@param	db		Whether you want to pull the attribute from the database
@@ -77,14 +77,14 @@ class User{
 		return $this->set($what,stripslashes($db->queryUniqueValue('SELECT '.$what.' FROM users WHERE id = \''.$this->id.'\'')));
 	}
 	
-	/*
+	/**
 	 *	Same as g() above
 	 */
 	function get($what){
 		return $this->g($what);	
 	}
 	
-	/*
+	/**
 	 *	Checks if user has picture uploaded
 	 *	@return true if user has uploaded a pic, false otherwise
 	 */
@@ -92,7 +92,7 @@ class User{
 		return file_exists('img/user/uploads/'.$this->id.'.gif');
 	}
 	
-	/*
+	/**
 	 *	Returns the associated picture for the current user
 	 *	@param	type	Image type: profile or square
 	 *	@return	The image full src
@@ -159,7 +159,7 @@ class User{
 		}
 	}
 	
-	/*
+	/**
 	 *	Setter for user attributes
 	 *	@param	what		Attribute to set
 	 *	@param	new			New value to be assigned
@@ -214,7 +214,7 @@ class User{
 		$c = preg_match('@Longitude:</i> <b>(.*)</b>@',$e[0],$data[4]);
 		return array($data[0][1],$data[1][1],$data[2][1],$data[3][1],$data[4][1]);
 	}
-	/*
+	/**
 	 * Gets location for a given user ID
 	 * alternatively you can pass another IP address
 	 *	@param	usid	User id whose location you want
@@ -263,7 +263,7 @@ class User{
 			}
 		}
 	}
-	/*
+	/**
 	 * Returns location of user, if available
 	 * type determines what data to return
 	 * 0 = Country
@@ -282,7 +282,7 @@ class User{
 			return $loc[$type];
 		}
 	}
-	/*
+	/**
 	 * Sends private message to user, from current user
 	 * All variables are checked within this function
 	 *	STATUS GUIDE
@@ -321,7 +321,7 @@ class User{
 			return $db->lastInsertedId();
 		else return false;
 	}
-	/*
+	/**
 	 * Set PM to read status. If message is part of a thread
 	 * it sets the status to read for the whole thread.
 	 * @param	thread	ID of the thread if PM is a reply
@@ -347,14 +347,14 @@ class User{
 		if($nextStatus) $db->execute('UPDATE msg SET status = \''.$nextStatus.'\' WHERE (`thread` = \''.$thread.'\' OR `id` = \''.$thread.'\')  AND `to`=\''.$user->id.'\' AND `status` = \''.$status.'\'');
 		return true;
 	}
-	/*
+	/**
 	 * Check whether a user has been located
 	 * @return true if user has location, false otherwise
 	 */
 	function hasLoc(){
 		return isset($_SESSION['user']['loc']);
 	}
-	/*
+	/**
 	 * Link given facebook ID to the current user
 	 * if no ID is provided it checks whether there is
 	 * a logged in facebook account
@@ -379,7 +379,7 @@ class User{
 		}
 		return $this->set('fbuser',$fbid,true);
 	}
-	/*
+	/**
 	 * Unlink Facebook account from the current user
 	 * @return	Whether the account was unlinked
 	 */
@@ -400,7 +400,7 @@ class User{
 		$fb->facebook->destroySession();
 		return $this->set('fbuser',0,true);
 	}
-	/* 
+	/** 
 	 * link given Twitter account ID to the current user
 	 * it also checks whether it has already been linked
 	 * @param	twid	Twitter user ID, if false it will use currently logged in twitter account
@@ -425,7 +425,7 @@ class User{
 		}
 		return $this->set('twuser',$twid,true);
 	}
-	/*
+	/**
 	 * unlinkTW for the current user
 	 * @return	Whether the account was unlinked
 	 */
@@ -444,7 +444,7 @@ class User{
 		unset($this->twuser);
 		return $this->set('twuser',0,true);
 	}
-	/*
+	/**
 	 * Check if user has Facebook linked
 	 * @return	Facebook account ID or false if not linked
 	 */
@@ -455,7 +455,7 @@ class User{
 		if(strlen($fb)>0 && $fb!=='0' && $fb!==0) return $fb;
 		return false;
 	}
-	/*
+	/**
 	 * Check if user has Twitter linked
 	 * @return	Twitter account ID or false if not linked
 	 */
