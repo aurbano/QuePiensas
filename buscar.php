@@ -25,12 +25,17 @@ if($id){ header('Location: /'.$id); die(); }
 // MYSQL DISTANCE
 include('lib/php/distance.php');
 if(!$_SESSION['debug']){
-	$people = $db->query('SELECT personas.id, personas.name, location.region, '.distance($user->getLoc($user->id())).', (MATCH(personas.name) AGAINST(\''.$person.'\')) AS score FROM personas, users, location WHERE users.ip = location.ip AND personas.usid = users.id AND MATCH(personas.name) AGAINST(\''.$person.'\') > '.$smin.' ORDER BY distance, score DESC LIMIT 0,5');
+	//$people = $db->query('SELECT personas.id, personas.name, location.region, '.distance($user->getLoc($user->id())).', (MATCH(personas.name) AGAINST(\''.$person.'\')) AS score FROM personas, users, location WHERE users.ip = location.ip AND personas.usid = users.id AND MATCH(personas.name) AGAINST(\''.$person.'\') > '.$smin.' ORDER BY distance, score DESC LIMIT 0,5');
+	// No distance
+	$people = $db->query('SELECT personas.id, personas.name, location.region, (MATCH(personas.name) AGAINST(\''.$person.'\')) AS score FROM personas, users, location WHERE users.ip = location.ip AND personas.usid = users.id AND MATCH(personas.name) AGAINST(\''.$person.'\') > '.$smin.' AND LENGTH(personas.name) - LENGTH(REPLACE(personas.name, \' \', \'\')) + 1 = \''.sizeof($parts).'\' ORDER BY score DESC LIMIT 5');
 	if($db->numRows($people)<1){ header('Location: /'.str_replace(' ','-',$person)); die(); }
 }else{
 	// Unlimited query:
-	//$people = $db->query('SELECT personas.id, personas.name, location.region, '.distance($user->getLoc($user->id())).', (MATCH(personas.name) AGAINST(\''.$person.'\')) AS score FROM personas, users, location WHERE users.ip = location.ip AND personas.usid = users.id AND MATCH(personas.name) AGAINST(\''.$person.'\') > '.$smin.' AND LENGTH(personas.name) - LENGTH(REPLACE(personas.name, \' \', \'\')) + 1 = \''.sizeof($parts).'\' ORDER BY distance, score DESC',true);
-	$people = $db->query('SELECT personas.id, personas.name, location.region, '.distance($user->getLoc($user->id())).', (MATCH(personas.name) AGAINST(\''.$person.'\')) AS score FROM personas, users, location WHERE users.ip = location.ip AND personas.usid = users.id ORDER BY distance, score DESC',true);
+	//$people = $db->query('SELECT personas.id, personas.name, location.region, '.distance($user->getLoc($user->id())).', (MATCH(personas.name) AGAINST(\''.$person.'\')) AS score FROM personas, users, location WHERE users.ip = location.ip AND personas.usid = users.id AND MATCH(personas.name) AGAINST(\''.$person.'\') > '.$smin.' AND LENGTH(personas.name) - LENGTH(REPLACE(personas.name, \' \', \'\')) + 1 = \''.sizeof($parts).'\' ORDER BY distance, score DESC');
+	//$people = $db->query('SELECT personas.id, personas.name, location.region, '.distance($user->getLoc($user->id())).', (MATCH(personas.name) AGAINST(\''.$person.'\')) AS score FROM personas, users, location WHERE users.ip = location.ip AND personas.usid = users.id ORDER BY distance, score DESC');
+	
+	// No distance
+	$people = $db->query('SELECT personas.id, personas.name, location.region, (MATCH(personas.name) AGAINST(\''.$person.'\')) AS score FROM personas, users, location WHERE users.ip = location.ip AND personas.usid = users.id AND MATCH(personas.name) AGAINST(\''.$person.'\') > '.$smin.' AND LENGTH(personas.name) - LENGTH(REPLACE(personas.name, \' \', \'\')) + 1 = \''.sizeof($parts).'\' ORDER BY score DESC LIMIT 10');
 }
 
 // Ordernar por distancia
