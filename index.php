@@ -239,7 +239,9 @@ background: url(img/form/greyBtn-bg-c.gif) white bottom repeat-x;
 <!--
 $(document).ready(function(){
 	<?php $sess->msg(); ?>
-	$('.fBox').fancybox();
+	$('.fBox').fancybox({
+		width : 650
+	});
 	$('.externalLogin').click(function(event){
 		event.preventDefault();
 		$('.hideOnAction').hide().after('<div style="margin-top: 55px; text-align: center; color:#3B86C5"><img src="http://static.quepiensas.es/img/load/transparent-circle-drip.gif" alt="Cargando..." /><p>Conectando</p></div>');
@@ -309,24 +311,26 @@ $(document).ready(function(){
         <div class="corner1"></div>
     	<div class="corner2"></div>
     </div>
-    <div id="loginBox" class="hideOnAction" style="width:300px">
-    <img src="http://static.quepiensas.es/img/body/logo-grey-transparent.png" border="0" />
-    <p>
-        <a class="fb social externalLogin" href="<?php echo $fb->fbLogin(); ?>" title="Inicia sesión con Facebook">
-        <img src="http://static.quepiensas.es/img/social/f.png" border="0" alt="f" /> Inicia sesión con Facebook</a>
-        <a class="tw social externalLogin" href="<?php echo $tw->loginLink(); ?>" title="Inicia sesión con Twitter">
-        <img src="http://static.quepiensas.es/img/social/t.png" border="0" alt="t" /> Inicia sesión con Twitter</a>
-    </p>
-    <hr style="border-bottom:none;" />
-    <form action="/do/ajax" name="loginForm" id="loginForm" method="post" enctype="multipart/form-data">
-        <div id="saveMsgError" class="errorMsg" style="display:none;"></div>
-        <label>Email:
-        <input type="text" name="email" id="email" class="loginInput" value="<?php echo $user->g('email'); ?>" /></label></label>
-        <label>Contraseña: <a style="float:right;" href="/do/forgot-pass">¿Olvidate tu contraseña?</a>
-        <input type="password" name="pass" id="pass" class="loginInput" /></label></label>
-        <input name="save" id="loginBtn" type="submit" value="Iniciar sesión"/>
-        <span id="aviso">¿No tienes cuenta? <a href="/do/register">Regístrate</a></span>
-    </form>
+    <div id="loginBox" class="hideOnAction" style="width:350px">
+		<div style="width:300px; margin:25px auto;">
+			<img src="http://static.quepiensas.es/img/body/logo-grey-transparent.png" border="0" />
+			<p>
+				<a class="fb social externalLogin" href="<?php echo $fb->fbLogin(); ?>" title="Inicia sesión con Facebook">
+				<img src="http://static.quepiensas.es/img/social/f.png" border="0" alt="f" /> Inicia sesión con Facebook</a>
+				<a class="tw social externalLogin" href="<?php echo $tw->loginLink(); ?>" title="Inicia sesión con Twitter">
+				<img src="http://static.quepiensas.es/img/social/t.png" border="0" alt="t" /> Inicia sesión con Twitter</a>
+			</p>
+			<hr style="border-bottom:none;" />
+			<form action="/do/ajax" name="loginForm" id="loginForm" method="post" enctype="multipart/form-data">
+				<div id="saveMsgError" class="errorMsg" style="display:none;"></div>
+				<label>Email:
+				<input type="text" name="email" id="email" class="loginInput" value="<?php echo $user->g('email'); ?>" /></label></label>
+				<label>Contraseña: <a style="float:right;" href="/do/forgot-pass">¿Olvidate tu contraseña?</a>
+				<input type="password" name="pass" id="pass" class="loginInput" /></label></label>
+				<input name="save" id="loginBtn" type="submit" value="Iniciar sesión"/>
+				<span id="aviso">¿No tienes cuenta? <a href="/do/register">Regístrate</a></span>
+			</form>
+		 </div>
     </div>
 </div>
 <?php if($_GET['xxx']){ echo '<div id="babe"></div>'; } ?>
