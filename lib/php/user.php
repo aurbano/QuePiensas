@@ -135,7 +135,6 @@ class User{
 		$db->execute('INSERT INTO `users` (`name`, `email`, `pass`, `ip`, `ltime`, `jtime`) VALUES (\''.$this->g('name').'\', \''.$this->g('email').'\', \'0\', '.$ip.', \''.time().'\', \''.time().'\');');
 		$this->set('id',$db->lastInsertedId());
 		$sess->debug('Created new user: ID='.$this->id);
-		die('{{{Generated new ID}}}');
 		return $this->id;
 	}
 	
