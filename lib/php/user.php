@@ -106,14 +106,12 @@ class User{
 				$this->set('id',$usid);
 				$this->set('ltime',time(),true);
 				$sess->debug('Loading user from SAME IP: ID='.$this->id);
-			}else{
-				// Create user mode
-				$ip = 'INET_ATON(\''.ip().'\')';
-				$db->execute('INSERT INTO `users` (`id`, `email`, `pass`, `ip`, `ltime`, `jtime`) VALUES (NULL, \'\', \'0\', '.$ip.', \''.time().'\', \''.time().'\');');
-				$this->set('id',$db->lastInsertedId());
-				$sess->debug('Created new user: ID='.$user->id());
 			}
-			$this->getLoc($this->id,ip());
+			// If the user doesn't exist, we will not assign it a new ID
+			// instead we will leave it as is, and create the ID on the fly when needed
+			// And probably the same for location, since it has to connect to an external server it would
+			// be better to get it via AJAX whenever it's needed.
+			// $this->getLoc($this->id,ip());
 		}
 	}
 	
@@ -126,6 +124,17 @@ class User{
 	 * @return int User ID
 	 */
 	function id(){
+		if($this->id > 0) return $this->id;
+		if(isset($_SESSION['user']['id']) && $_SESSION['user']['id'] > 0) return $this->id = $_SESSION['user']['id'];
+		// ID not available in Session
+		// Since there is no ID already defined, we can assume that the user is anonymous
+		// because logging in/registering actually sets an ID
+		global $sess;
+		$db = $sess->db();
+		$ip = 'INET_ATON(\''.ip().'\')';
+		$db->execute('INSERT INTO `users` (`name`, `email`, `pass`, `ip`, `ltime`, `jtime`) VALUES (\''.$this->g('name').'\', \''.$this->g('email').'\', \'0\', '.$ip.', \''.time().'\', \''.time().'\');');
+		$this->set('id',$db->lastInsertedId());
+		$sess->debug('Created new user: ID='.$this->id());
 		return $this->id;
 	}
 	
@@ -136,6 +145,8 @@ class User{
 	 *	@return	string	The value if found, false otherwise
 	 */
 	function g($what,$db=true){
+		// Special case for the ID
+		if($what=='id') return $this->id();
 		// Get data from session
 		if(isset($_SESSION['user'][$what]) && strlen($_SESSION['user'][$what])>0 && $_SESSION['user'][$what]) return $this->set($what,stripslashes($_SESSION['user'][$what]));
 		if(!$db) return false;
