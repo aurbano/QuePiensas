@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>No encontrado | Que Piensas</title>
+<title>Servidor sobrecargado | Que Piensas</title>
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="stylesheet" media="all" href="http://static.quepiensas.es/common.css" />
 <link rel="stylesheet" media="all" href="http://static.quepiensas.es/tipsy.css" />
