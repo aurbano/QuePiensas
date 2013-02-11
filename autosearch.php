@@ -1,9 +1,9 @@
 <?php
-/* BACKEND PARA EL AUTOCOMPLETE
-   Recibe los siguientes parametros GET:
-   	- term: contiene lo que se ha buscado
-   Espera la respuesta en formato JSON
-*/
+/**
+ * Autocomplete backend
+ * Receives the word in $_GET['term'];
+ * @author Alejandro U. Alvarez
+ */
 if(!$_GET['term'] || strlen($_GET['term'])<3) die(json_encode(array('status'=>'error')));
 include('lib/php/session.php');
 include('lib/php/style.php');
