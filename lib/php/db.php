@@ -7,4 +7,4 @@
  * or users. Mainly for administration pages
  */
 include('db.class.php');
-$db = new DB('djsmusic_piensas','localhost','djsmusic_quepiensas','6Flw98cciCc1');
+$db = new DB('djsmusic_piensas','localhost','djsmusic_quepien','6Flw98cciCc1');
