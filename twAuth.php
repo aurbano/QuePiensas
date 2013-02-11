@@ -22,6 +22,8 @@ if($_GET['oauth_token'] && $_GET['oauth_verifier'] && !$sess->logged()){
 		// Register user:
 		$usid = $auth->addUser($tw->name(),'',false,0,$tw->twid);
 		$sess->setSecret($usid);
+		// Set Twitter profile pic
+		$user->set('usePic',3,true);
 	}
 	if(is_numeric($usid) && $usid >0) $sess->loginUser($usid);
 	else $sess->set_msg('No ha sido posible iniciar sesion con Twitter');

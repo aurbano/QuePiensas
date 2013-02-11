@@ -116,21 +116,23 @@ class Auth{
 	 * @param string User name
 	 * @param string Email address
 	 * @param string Password
-	 * @param int Facebook account ID
+	 * @param int Facebook account ID (Use NULL)
 	 * @param int Twitter account ID
 	 * @regurn boolean Whether the account was created
 	 */
-	function addUser($name,$email,$pass=0,$fbuser=0,$twuser=0){
+	function addUser($name,$email,$pass=0,$fbuser='NULL',$twuser='NULL'){
 		global $db, $sess;
 		if(!($sess instanceof Session)) return false;
 		if(!($db instanceof DB)) $db = $sess->db();
 		if(strlen($pass)>0 && $pass !== '0') $pass = sha1(PRE.$pass.POST);
-		$reg = $db->execute('INSERT INTO `users` (`id`, `fbuser`, `twuser`, `name`, `email`, `pass`, `ltime`, `jtime`, `ip`) VALUES (NULL, \''.$fbuser.'\', \''.$twuser.'\', \''.$name.'\', \''.$email.'\', UNHEX(\''.$pass.'\'), \''.time().'\', \''.time().'\', INET_ATON(\''.ip().'\'));');
+		if($fbuser=='0' || $fbuser < 1) $fbuser = 'NULL';
+		if($twuser=='0' || $twuser < 1) $twuser = 'NULL';
+		$reg = $db->execute('INSERT INTO `users` (`id`, `fbuser`, `twuser`, `name`, `email`, `pass`, `ltime`, `jtime`, `ip`) VALUES (NULL, '.$fbuser.', '.$twuser.', \''.$name.'\', \''.$email.'\', UNHEX(\''.$pass.'\'), \''.time().'\', \''.time().'\', INET_ATON(\''.ip().'\'));');
 		$usid = $db->lastInsertedId();
 		if($usid>0){
 			// Send welcome PM
 			$msg = "Hola $name!\nBienvenido a Que Piensas, te saludo en nombre de todo el equipo! Siempre que tengas alguna duda podrás dirigirte a mi respondiendo a este privado. También puedes ponerte en contacto con soporte@quepiensas.es desde tu email\n\nEspero que disfrutes de la experiencia, y la compartas con tus amigos,\nUn abrazo";
-			$db->execute('INSERT INTO `msg` (`thread`,`from`,`to`,`msg`,`status`,`timestamp`) VALUES (\'\',\'1\',\''.$usid.'\',\''.$msg.'\',\'0\',\''.time().'\');');
+			$db->execute('INSERT INTO `msg` (`thread`,`from`,`to`,`msg`,`status`,`timestamp`) VALUES (\'\',\'1\',\''.$usid.'\',\''.$msg.'\',NULL,\''.time().'\');');
 		}
 		if($reg) return $usid;
 		return false;

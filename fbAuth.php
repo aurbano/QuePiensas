@@ -9,9 +9,11 @@ if(!$sess->logged() && $fb->logged()){
 		// Add new user:
 		$fb->addFBuser(true);
 		// Register user:
-		$usid = $auth->addUser($fb->name(),$fb->email(),false,$fb->fbid);
+		$usid = $auth->addUser($fb->name(),$fb->email(),'NULL',$fb->fbid);
 		$sess->setSecret($usid);
 		$newUser = true;
+		// Set Facebook profile pic
+		$user->set('usePic',2,true);
 	}
 	if(is_numeric($usid) && $usid >0) $sess->loginUser($usid);
 	else $sess->set_msg('No ha sido posible iniciar sesion con Facebook');
