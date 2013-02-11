@@ -46,17 +46,41 @@ RewriteEngine   On
 RewriteCond     %{REQUEST_FILENAME}     !-f
 RewriteCond     %{REQUEST_FILENAME}     !-d
 
-# and finally, the rewrite rules
-RewriteRule ^info/([A-Za-z-]+)/?$ /info.php?title=$1 [NC,QSA]
-RewriteRule ^user/([0-9]+)/?$ /user.php?id=$1 [NC,QSA]
-RewriteRule ^([0-9]+)/followers/?$ /personFollowers.php?id=$1 [NC,QSA]
-RewriteRule ^user/following/([0-9]+)/?$ /following.php?id=$1 [NC,QSA]
-RewriteRule ^invite/([0-9]+)/?$ /invitation.php?id=$1 [NC,QSA]
-RewriteRule ^verify/([0-9]+)/([A-Za-z0-9]+)/?$ /verify.php?id=$1&code=$2 [NC,QSA]
-RewriteRule ^reset/([0-9]+)/([A-Za-z0-9]+)/?$ /resetPass.php?id=$1&secret=$2 [NC,QSA]
-RewriteRule ^do/(.*)$ /$1.php [NC,QSA]
-RewriteRule ^http://maps.quepiensas.es/1/(.*)$ http://maps.google.com/maps/api/staticmap?center=$1&zoom=8&size=692x290&maptype=roadmap&sensor=false&style=feature:all%7Celement:geometry%7Clightness:70&style=feature:all%7Celement:labels%7Cvisibility:off&style=feature:landscape%7Chue:0xffffff%7Clightness:100 [NC,QSA]
-RewriteRule ^http://maps.quepiensas.es$ /maps.php [NC,QSA]
-RewriteRule ^http://img.quepiensas.es/errorDoc.php?e=([0-9]+)$ quepiensas.es/errorDoc.php?e=$1 [NC,QSA]
-RewriteRule ^([0-9]+)/?$ /persona.php?id=$1&var1=$2 [NC,QSA]
-RewriteRule ^([áéíóúñÁÉÍÓÚÑäëïöüÄËÏÖÜçÇA-Za-z-]+)/?$ /newPerson.php?person=$1 [L,NC,QSA]
+# Information pages
+	RewriteRule ^info/([A-Za-z-]+)/?$ /info.php?title=$1 [NC,QSA]
+	
+#Users
+	# Public profiles
+	RewriteRule ^user/([0-9]+)/?$ /user.php?id=$1 [NC,QSA]
+	# People the user follows
+	RewriteRule ^user/following/([0-9]+)/?$ /following.php?id=$1 [NC,QSA]
+	
+# Invitations
+	RewriteRule ^invite/([0-9]+)/?$ /invitation.php?id=$1 [NC,QSA]
+	
+# Session management
+	# Change password
+	RewriteRule ^reset/([0-9]+)/([A-Za-z0-9]+)/?$ /resetPass.php?id=$1&secret=$2 [NC,QSA]
+	# Account verification
+	RewriteRule ^verify/([0-9]+)/([A-Za-z0-9]+)/?$ /verify.php?id=$1&code=$2 [NC,QSA]
+	
+# Custom XML files
+	RewriteRule ^([A-Za-z0-9]+)\.xml$ /$ /generateXML.php?type=$1 [NC,QSA]
+	
+# Open normal PHP files
+	RewriteRule ^do/(.*)$ /$1.php [NC,QSA]
+	
+# Custom Maps
+	RewriteRule ^http://maps.quepiensas.es/1/(.*)$ http://maps.google.com/maps/api/staticmap?center=$1&zoom=8&size=692x290&maptype=roadmap&sensor=false&style=feature:all%7Celement:geometry%7Clightness:70&style=feature:all%7Celement:labels%7Cvisibility:off&style=feature:landscape%7Chue:0xffffff%7Clightness:100 [NC,QSA]
+	RewriteRule ^http://maps.quepiensas.es$ /maps.php [NC,QSA]
+	
+# Unkown user pic for 404 photos
+	RewriteRule ^http://img.quepiensas.es/errorDoc.php?e=([0-9]+)$ quepiensas.es/errorDoc.php?e=$1 [NC,QSA]
+	
+# People
+	# List of followers for a given person
+	RewriteRule ^([0-9]+)/followers/?$ /personFollowers.php?id=$1 [NC,QSA]
+	# Main rule for people
+	RewriteRule ^([0-9]+)/?$ /persona.php?id=$1&var1=$2 [NC,QSA]
+	# New person
+	RewriteRule ^([áéíóúñÁÉÍÓÚÑäëïöüÄËÏÖÜçÇA-Za-z-]+)/?$ /newPerson.php?person=$1 [L,NC,QSA]
