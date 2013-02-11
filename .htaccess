@@ -65,7 +65,7 @@ RewriteCond     %{REQUEST_FILENAME}     !-d
 	RewriteRule ^verify/([0-9]+)/([A-Za-z0-9]+)/?$ /verify.php?id=$1&code=$2 [NC,QSA]
 	
 # Custom XML files
-	RewriteRule ^([A-Za-z0-9]+)\.xml$ /$ /generateXML.php?type=$1 [NC,QSA]
+	RewriteRule ^([A-Za-z0-9]+)\.xml$ /generateXML.php?type=$1 [NC,QSA]
 	
 # Open normal PHP files
 	RewriteRule ^do/(.*)$ /$1.php [NC,QSA]
