@@ -56,6 +56,7 @@ include('lib/content/top.php');
 	<?php if($db->numRows($msg)>0){ while($a = $db->fetchNextObject($msg)){
 			$name = $a->fromName;
 			if($name == $user->g('name')) $name = $a->toName;
+			if(strlen($name)<1) $name = 'Anónimo';
 			$extract = stripslashes($a->msg);
 			if(strlen($extract)>50) $extract = substr($extract,0,50).'...';
 			$unread = 'read';
