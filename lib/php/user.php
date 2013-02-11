@@ -487,16 +487,18 @@ class User{
 		if(!($sess instanceof Session)) return false;
 		if(!($db instanceof DB)) $db = $sess->db();
 		if(!($fb instanceof FB)) $fb = new FB;
+		// Check if the user has at least one other login method
+		// available
 		if(!$this->tw() && !$this->g('email')){
-			// No puedes quedarte sin cuentas vinculadas
 			$sess->set_msg('Debes tener alguna cuenta vinculada siempre. Vincula Twitter o especifica una contraseña para poder desvincular Facebook');
 			return false;	
 		}
 		unset($_SESSION['user']['fbuser']);
-		unset($_SESSION['fb']);
+		unset($_SESSION['facebook']);
 		unset($this->fbuser);
 		$fb->facebook->destroySession();
-		return $this->set('fbuser',0,true);
+		// set($what,$new,$updateDB=false,$clean=true){
+		return $this->set('fbuser','NULL',true,false);
 	}
 	/** 
 	 * link given Twitter account ID to the current user.
