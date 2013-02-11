@@ -132,7 +132,7 @@ class Auth{
 		if($usid>0){
 			// Send welcome PM
 			$msg = "Hola $name!\nBienvenido a Que Piensas, te saludo en nombre de todo el equipo! Siempre que tengas alguna duda podrás dirigirte a mi respondiendo a este privado. También puedes ponerte en contacto con soporte@quepiensas.es desde tu email\n\nEspero que disfrutes de la experiencia, y la compartas con tus amigos,\nUn abrazo";
-			$db->execute('INSERT INTO `msg` (`thread`,`from`,`to`,`msg`,`status`,`timestamp`) VALUES (\'\',\'1\',\''.$usid.'\',\''.$msg.'\',NULL,\''.time().'\');');
+			$db->execute('INSERT INTO `msg` (`thread`,`from`,`to`,`msg`,`status`,`timestamp`) VALUES (NULL,\'1\',\''.$usid.'\',\''.$msg.'\',\'0\',\''.time().'\');');
 		}
 		if($reg) return $usid;
 		return false;

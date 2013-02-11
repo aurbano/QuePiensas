@@ -29,8 +29,9 @@ if($_GET['oauth_token'] && $_GET['oauth_verifier'] && !$sess->logged()){
 	else $sess->set_msg('No ha sido posible iniciar sesion con Twitter');
 	// Set bio if doesn't have one yet
 	if(strlen($user->g('bio'))<1){
+		$bio = $tw->getFromTwitter('description');
 		// 	Asignamos la bio de twitter
-		$user->set('bio',$tw->getFromTwitter('description'),true);
+		if(strlen($bio)>0) $user->set('bio',$bio,true);
 	}
 	$user->set('twuser',$tw->twid);
 }else if($sess->logged()){

@@ -261,7 +261,7 @@ class User{
 			}else if($clean){
 				$new = "'".trim(addslashes(htmlspecialchars(stripslashes($new),ENT_COMPAT,'UTF-8')) )."'";		
 			}
-			$change = $db->execute('UPDATE users SET '.$what.' = '.$new.', ltime = \''.time().'\', ip = INET_ATON(\''.ip().'\') WHERE id = '.$this->id.' LIMIT 1');
+			$change = $db->execute('UPDATE users SET '.$what.' = '.$new.', ltime = \''.time().'\', ip = INET_ATON(\''.ip().'\') WHERE id = '.$this->id().' LIMIT 1');
 			
 			$this->$what = $_SESSION['user'][$what] = $setNew;
 			return $new;

@@ -48,7 +48,7 @@
       $this->nbQueries  = 0;
       $this->lastResult = NULL;
       if(!@mysql_connect($server, $user, $pass)){
-		  include('lib/content/busy.php');
+		  include('/home8/djsmusic/public_html/quepiensas/lib/content/busy.php');
 		  die();
 	  }
 	  mysql_set_charset("utf8");
