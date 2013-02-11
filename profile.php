@@ -250,7 +250,7 @@ include('lib/content/top.php');
     	<h2 style="padding:0"><img src="http://static.quepiensas.es/img/social/twitter_32.png" align="absmiddle" /> Twitter</h2>
         <div style="clear:both;"></div>
         <div class="hideOnAjax">
-        <p>Actualmente tu cuenta está asociada a Twitter. Eso te permite ver comentarios sobre tus amigos e iniciar sesión con Twitter.</p>
+        <p>Actualmente tu cuenta está asociada a <a href="https://twitter.com/<?php echo $tw->name(); ?>">@<?php echo $tw->name(); ?></a>. Eso te permite ver comentarios sobre tus amigos e iniciar sesión con Twitter.</p>
         <p align="center"><a href="#unlinkTW" rel="tw" title="Mas adelante podras volver a vincularla desde tu perfil" class="unlink tooltip">Desvincular cuenta</a></p></div>
     </div>
     <?php } ?>
