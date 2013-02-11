@@ -11,11 +11,13 @@ if(!$sess->logged() && $fb->logged()){
 		// Register user:
 		$usid = $auth->addUser($fb->name(),$fb->email(),false,$fb->fbid);
 		$sess->setSecret($usid);
+		$newUser = true;
 	}
 	if(is_numeric($usid) && $usid >0) $sess->loginUser($usid);
 	else $sess->set_msg('No ha sido posible iniciar sesion con Facebook');
 	
 	$user->set('fbuser',$fb->fbid);
+	if($newUser) $user->set('usePic',2,true);
 	$fb->getFriends();
 }else if($sess->logged()){
 	if($user->fb()){ $sess->set_msg('Ya tenias Facebook vinculado'); }else{

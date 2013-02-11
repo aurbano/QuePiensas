@@ -37,12 +37,13 @@ if($content['cols']){ ?>
 }
 .col2 ul.links{
 	list-style:none;
-	margin:5px -15px;
+	margin:5px -15px 0 -15px;
 	padding:0;
 }
 .col2 ul.links li{
 	display:block;
 }
+.col2 ul.links li:last-child a{border-bottom:none;}
 .col2 ul.links li a{
 	display:block;
 	padding:6px 15px;
@@ -71,6 +72,13 @@ $(document).ready(function(){
 	}
 	footer()
 	$(window).resize(function(){ footer(); });
+	function footerCol(){
+		dist=($('#colRightWrap').height());
+		$('#mainWrap').css('min-height', dist);
+		$('#footer').css({'position':'static'});
+	}
+	footerCol();
+	$(window).scroll(function(){ footerCol(); });
 	$('.tooltip').tipsy({gravity: $.fn.tipsy.autoNS, delayIn: 300});
 	<?php if($content['fancybox']){ ?>$('.fBox').fancybox({maxWidth:600});<?php }
 		  if($sess instanceof Session) $sess->msg(); ?>
@@ -148,6 +156,9 @@ $(document).ready(function(){
             <label>Contraseña: <a style="float:right;" href="/do/forgot-pass">¿Olvidate tu contraseña?</a>
             <input type="password" name="pass" id="pass" class="loginInput" /></label></label>
             <input name="save" id="loginBtn" type="submit" value="Iniciar sesión"/>
+            <label style="font-size: 12px;">
+            	<input type="checkbox" style="position: relative; bottom: -2px; display:inline;">Recordar
+            </label>
             <span id="aviso">¿No tienes cuenta? <a href="/do/register">Regístrate</a></span>
         </form>
     </div>

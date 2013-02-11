@@ -32,7 +32,7 @@ $_SESSION['current'] = $id;
 // Inicio de base de datos
 $db=$sess->db();
 // Seguidores
-$followers = $db->query('SELECT users.id, users.name, users.bio, users.visits, (CASE usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',users.id,\'.gif\') WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser) WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic, (SELECT COUNT(*) FROM comments WHERE usid=users.id) as comments, (SELECT COUNT(*) FROM relations WHERE usid=users.id AND follow=1) as following FROM relations, users WHERE relations.pid='.$id.' AND relations.follow=1 AND relations.usid=users.id ORDER BY timestamp DESC LIMIT '.$limit);
+$followers = $db->query('SELECT users.id, users.name, users.bio, users.visits, (CASE usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',users.id,\'-square.png\') WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\') WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic, (SELECT COUNT(*) FROM comments WHERE usid=users.id) as comments, (SELECT COUNT(*) FROM relations WHERE usid=users.id AND follow=1) as following FROM relations, users WHERE relations.pid='.$id.' AND relations.follow=1 AND relations.usid=users.id ORDER BY timestamp DESC LIMIT '.$limit);
 
 	if($_GET['p']>0 && $db->numRows($followers)<1){
 		// Algun capullo metiendo una pagina manualmente que no existe

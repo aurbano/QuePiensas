@@ -1,14 +1,8 @@
 Options -Indexes
 Options -ExecCGI
-AddHandler cgi-script .php .php3 .php4 .phtml .pl .py .jsp .asp .htm .shtml .sh .cgi .html .jpeg
+AddHandler cgi-script .php .php3 .php4 .phtml .pl .py .jsp .asp .htm .shtml .sh .cgi .html
 
-<filesMatch "noimage.png">
-# Cache de 1 mes para la imagen de sin imagen
-ExpiresDefault A2629743
-Header append Cache-Control "public"
-</filesMatch>
-
-<filesMatch "\.(gif|png)$">
+<filesMatch "\.(gif|png|jpeg|jpg)$">
 FileETag None
 <ifModule mod_headers.c>
 Header unset ETag
@@ -18,14 +12,14 @@ Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
 </ifModule>
 </filesMatch>
 
-<Files ^(*.gif|*.png)>
+<Files ^(*.gif|*.png|*.jpg|*.jpeg)>
 order deny,allow
 deny from all
 </Files>
 
 # ErrorDocs
-ErrorDocument 400 /noimage.png
-ErrorDocument 401 /noimage.png
-ErrorDocument 403 /noimage.png
-ErrorDocument 404 /noimage.png
-ErrorDocument 500 /noimage.png
+ErrorDocument 400 /noimage.gif
+ErrorDocument 401 /noimage.gif
+ErrorDocument 403 /noimage.gif
+ErrorDocument 404 /noimage.gif
+ErrorDocument 500 /noimage.gif

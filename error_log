@@ -703,3 +703,15 @@ Stack trace:
 [14-May-2012 18:59:43] CSRF state token does not match one provided.
 [15-May-2012 20:42:20] CSRF state token does not match one provided.
 [27-May-2012 13:59:50] CSRF state token does not match one provided.
+[31-May-2012 22:54:34] CSRF state token does not match one provided.
+[26-Jun-2012 03:07:43] CSRF state token does not match one provided.
+[26-Jun-2012 03:08:34] CSRF state token does not match one provided.
+[09-Feb-2013 16:07:14] PHP Fatal error:  Call to undefined method User::id() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 262
+[09-Feb-2013 16:07:44] PHP Fatal error:  Call to undefined method User::id() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 262
+[09-Feb-2013 16:08:14] PHP Fatal error:  Call to undefined method User::id() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 262
+[09-Feb-2013 16:08:44] PHP Fatal error:  Call to undefined method User::id() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 262
+[09-Feb-2013 16:09:14] PHP Fatal error:  Call to undefined method User::id() in /home8/djsmusic/public_html/quepiensas/ajax.php on line 262
+[09-Feb-2013 16:15:48] PHP Fatal error:  Call to a member function id() on a non-object in /home8/djsmusic/public_html/quepiensas/lib/php/user.php on line 114
+[09-Feb-2013 16:18:19] PHP Warning:  uasort() [<a href='function.uasort'>function.uasort</a>]: The argument should be an array in /home8/djsmusic/public_html/quepiensas/buscar.php on line 71
+[09-Feb-2013 16:21:25] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/user.php:138) in /home8/djsmusic/public_html/quepiensas/buscar.php on line 29
+[09-Feb-2013 16:23:34] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home8/djsmusic/public_html/quepiensas/lib/php/user.php:138) in /home8/djsmusic/public_html/quepiensas/buscar.php on line 29

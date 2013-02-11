@@ -1,0 +1,40 @@
+/* CSS  */
+.col{
+	list-style:none;
+	margin:0;
+	padding:8px 0 0 0
+}
+
+.col li{
+	border-top:1px solid #ccc;
+}
+.col a{
+	display:block;
+	padding:8px 0 0 0;
+}
+
+.col .stats{
+	font:12px Arial, Helvetica, sans-serif;
+	color:#666 !important;
+	width: 90px;
+	padding:4px 5px;
+	text-transform: uppercase;
+	display: inline-block;
+	border-radius:5px;
+	margin:2px;
+}
+.col .stats:hover{
+	box-shadow:0 0 5px #ccc;
+	-moz-box-shadow:0 0 5px #ccc;
+	-webkit-box-shadow:0 0 5px #ccc;
+	text-decoration:none;
+	color:#06C;
+	background-color:#f2f2f2;
+}
+.col .stats font{
+	font-size:20px;
+	color:#000;
+	float:left;
+	display: block;
+	width: 90px;
+}
