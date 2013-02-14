@@ -344,7 +344,7 @@ class Twitter{
 	function loginLink(){
 		try{
 			$ret = $this->twitter->getAuthenticateUrl();
-		}catch(Exception $e){ $ret = '#';}
+		}catch(Exception $e){ echo '#error';}
 		return $ret;	
 	}
 };

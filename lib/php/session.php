@@ -135,7 +135,7 @@ class Session{
 	    if($this->logged()){
 			$twitter = new EpiTwitter('***REMOVED***','***REMOVED***',$_SESSION['logged']['oauth_token'],$_SESSION['logged']['oauth_secret']);
 		}else $twitter = new EpiTwitter('***REMOVED***','***REMOVED***');
-		$twitter->useAsynchronous(false);
+		$twitter->useAsynchronous(true);
 		return $twitter;  
    }
    
