@@ -1,8 +1,10 @@
 <?php
 /**
- *	Archivo de gestion de las llamadas de AJAX. Es decir, todas las respuestas que salgan de este archivo
- *  tienen que salir en XML, JSON, o un dato solo. No se puede redirigir con header.
- *  Las siguientes variables son necesarias:
+ * Form processing and AJAX handler
+ *
+ * Archivo de gestion de las llamadas de AJAX. Es decir, todas las respuestas que salgan de este archivo
+ * tienen que salir en XML, JSON, o un dato solo. No se puede redirigir con header.
+ * Las siguientes variables son necesarias:
  *  	- type: Que accion queremos hacer, debera estar presente en el switch
  *	Obligatoriamente se tiene que usar POST, ya que mejora la seguridad de la aplicacion
  */
