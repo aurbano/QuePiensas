@@ -280,6 +280,7 @@ class User{
 	function now($what,$value){
 		$this->$what = $_SESSION['user'][$what] = $value;
 	}
+	
 	/**
 	 * Get geolocation for user IP
 	 *
@@ -307,6 +308,7 @@ class User{
 		$c = preg_match('@Longitude:</i> <b>(.*)</b>@',$e[0],$data[4]);
 		return array($data[0][1],$data[1][1],$data[2][1],$data[3][1],$data[4][1]);
 	}
+	
 	/**
 	 * Gets location for a given user ID
 	 *
@@ -357,6 +359,7 @@ class User{
 			}
 		}
 	}
+
 	/**
 	 * Returns location of user, if available
 	 *
@@ -377,6 +380,7 @@ class User{
 			return $loc[$type];
 		}
 	}
+	
 	/**
 	 * Sends private message to user, from current user
 	 *
@@ -417,6 +421,7 @@ class User{
 			return $db->lastInsertedId();
 		else return false;
 	}
+	
 	/**
 	 * Set PM to read status. If message is part of a thread
 	 *
@@ -444,6 +449,7 @@ class User{
 		if($nextStatus) $db->execute('UPDATE msg SET status = \''.$nextStatus.'\' WHERE (`thread` = \''.$thread.'\' OR `id` = \''.$thread.'\')  AND `to`=\''.$user->id().'\' AND `status` = \''.$status.'\'');
 		return true;
 	}
+
 	/**
 	 * Check whether a user has been located
 	 * @return boolean	true if user has location, false otherwise
@@ -451,6 +457,7 @@ class User{
 	function hasLoc(){
 		return isset($_SESSION['user']['loc']);
 	}
+	
 	/**
 	 * Link given facebook ID to the current user.
 	 *
@@ -477,6 +484,7 @@ class User{
 		}
 		return $this->set('fbuser',$fbid,true);
 	}
+	
 	/**
 	 * Unlink Facebook account from the current user
 	 * @return	boolean	Whether the account was unlinked
@@ -500,6 +508,7 @@ class User{
 		$this->set('fbuser','NULL',true,false); // Store null
 		$this->set('fbuser',false,false,true);  // Use false
 	}
+	
 	/** 
 	 * link given Twitter account ID to the current user.
 	 *
@@ -526,6 +535,7 @@ class User{
 		}
 		return $this->set('twuser',$twid,true);
 	}
+	
 	/**
 	 * Unlink Twitter account for the current user
 	 * @return	boolean	Whether the account was unlinked
