@@ -209,6 +209,7 @@ switch($type){
 		if($db->numRows($msg)<1 && $com < 1) finish('No hay mas mensajes');
 		include('lib/php/linker.php');
 		include('lib/php/style.php'); // dispTime
+		include('lib/content/pmTemplates.php'); // Plantillas de privados
 		// Current user id
 		$usid = $user->id();
 		// XML headers
@@ -227,7 +228,7 @@ switch($type){
 				// Mostrarlo en plan XML
 				$curUser = 0;
 				if($a->from == $user->id()) $curUser = 1;
-				echo '<msg id="'.$a->id.'" color="'.colorID($a->from).'" type="msg" usid="'.$a->from.'" curUser="'.$curUser.'" user="'.$a->name.'" src="'.$a->pic.'"><timestamp>'.dispTimeHour($a->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(stripslashes($a->msg))).']]></content></msg>';
+				echo '<msg id="'.$a->id.'" color="'.colorID($a->from).'" type="msg" usid="'.$a->from.'" curUser="'.$curUser.'" user="'.$a->name.'" src="'.$a->pic.'"><timestamp>'.dispTimeHour($a->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(decodePM(stripslashes($a->msg)))).']]></content></msg>';
 				inResponse($a->com);
 			}
 		}
