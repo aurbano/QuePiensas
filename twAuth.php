@@ -23,6 +23,7 @@ if($_GET['oauth_token'] && $_GET['oauth_verifier'] && !$sess->logged()){
 		$usid = $auth->addUser($tw->name(),'',false,0,$tw->twid);
 		$sess->setSecret($usid);
 		// Set Twitter profile pic
+		$user->set('id',$usid);
 		$user->set('usePic',3,true);
 	}
 	if(is_numeric($usid) && $usid >0) $sess->loginUser($usid);
