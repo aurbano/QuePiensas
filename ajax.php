@@ -209,6 +209,8 @@ switch($type){
 		if($db->numRows($msg)<1 && $com < 1) finish('No hay mas mensajes');
 		include('lib/php/linker.php');
 		include('lib/php/style.php'); // dispTime
+		// Current user id
+		$usid = $user->id();
 		// XML headers
 		header("Content-type: text/xml");
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
@@ -218,8 +220,8 @@ switch($type){
 		if($com > 0) inResponse($com);
 		if($db->numRows($msg) > 0){
 			while($a = $db->fetchNextObject($msg)){
-				if($a->to !== $user->id() && $a->from !== $user->id()){
-					echo '<error>No puedes ver los privados de otra gente...</error>';
+				if($a->to - $usid !== 0 && $a->from - $usid !== 0){
+					echo '<error>No puedes ver los privados de otra gente... ['.$a->from.':'.$a->to.':'.$usid.']</error>';
 					break;
 				}
 				// Mostrarlo en plan XML
@@ -233,7 +235,7 @@ switch($type){
 		break;
 	case 'replyPM':
 		if(!$sess->logged()) finish('Fail');
-		if(!isset($_POST['th']) || !is_numeric($_POST['th']) || $_POST['th']<1) finish('Por favor intentalo mas tarde');
+		if(!isset($_POST['th']) || !$sess->valid($_POST['th'],'int') || $_POST['th']<1) finish('Por favor intentalo mas tarde');
 		$thread = addslashes($sess->valid($_POST['th'],'int'));
 		// Comprobamos que el usuario tiene derecho a responder
 		// El primer mensaje del thread debe ser de o para este usuario:
