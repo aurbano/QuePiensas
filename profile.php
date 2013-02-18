@@ -240,7 +240,7 @@ include('lib/content/top.php');
     	<h2 style="padding:0"><img src="http://static.quepiensas.es/img/social/facebook_32.png" align="absmiddle" /> Facebook</h2>
         <div style="clear:both;"></div>
         <div class="hideOnAjax">
-        <p>Actualmente tu cuenta está asociada a Facebook. Eso te permite ver comentarios sobre tus amigos e iniciar sesión con Facebook.</p>
+        <p>Tu cuenta está asociada al perfil de <a href="https://facebook.com/<?php echo $user->fb(); ?>"><?php echo $fb->name(); ?></a>. Eso te permite ver comentarios sobre tus amigos e iniciar sesión con Facebook.</p>
         <p align="center"><a href="#unlinkFB" rel="fb" title="Mas adelante podras volver a vincularla desde tu perfil" class="unlink tooltip">Desvincular cuenta</a></p></div>
     </div>
     <?php } ?>
