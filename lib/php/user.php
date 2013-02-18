@@ -490,15 +490,15 @@ class User{
 		// Check if the user has at least one other login method
 		// available
 		if(!$this->tw() && !$this->g('email')){
-			$sess->set_msg('Debes tener alguna cuenta vinculada siempre. Vincula Twitter o especifica una contraseña para poder desvincular Facebook');
+			$sess->set_msg('Debes tener alguna cuenta vinculada siempre. Vincula Twitter o <a href="/do/editar">especifica una contraseña</a> para poder desvincular Facebook');
 			return false;	
 		}
 		unset($_SESSION['user']['fbuser']);
 		unset($_SESSION['facebook']);
-		unset($this->fbuser);
 		$fb->facebook->destroySession();
 		// set($what,$new,$updateDB=false,$clean=true){
-		return $this->set('fbuser','NULL',true,false);
+		$this->set('fbuser','NULL',true,false); // Store null
+		$this->set('fbuser',false,false,true);  // Use false
 	}
 	/** 
 	 * link given Twitter account ID to the current user.
