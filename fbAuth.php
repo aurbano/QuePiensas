@@ -12,6 +12,8 @@ if(!$sess->logged() && $fb->logged()){
 		$usid = $auth->addUser($fb->name(),$fb->email(),'NULL',$fb->fbid);
 		$sess->setSecret($usid);
 		$newUser = true;
+		// Set user ID, avoid new is creation when using $user->set
+		$user->set('id',$usid);
 		// Set Facebook profile pic
 		$user->set('usePic',2,true);
 	}
