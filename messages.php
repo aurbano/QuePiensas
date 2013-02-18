@@ -12,8 +12,8 @@ include('lib/php/linker.php');
 // Inicio de base de datos
 $db=$sess->db();
 
+// Pagination
 $limit = 20;
-
 if($_GET['p']>0 && $sess->valid($_GET['p'],'int')){ $limit = $limit*$_GET['p'].',20'; }
 
 	// Privados
@@ -25,8 +25,7 @@ if($_GET['p']>0 && $sess->valid($_GET['p'],'int')){ $limit = $limit*$_GET['p'].'
 		die('La pagina '.$_GET['p'].' no tiene mensajes.');	
 	}
 
-// ----------------------------
-// Navegacion:
+// Pagination
 $back = false;
 $next = false;
 if($_GET['p']>0) $back = '<a href="?p='.($_GET['p']-1).'">&laquo; Anterior</a>';
@@ -67,7 +66,6 @@ include('lib/content/top.php');
 			//	1 ->	Private		Public
 			//	2 ->	Public		Private
 			//	3 ->	Private		Private
-			$from = '<a href="/user/'.$a->from.'" style="'.$linkStyle.'"><strong>'.$a->fromName.'</strong></a>';
 			$color = '';
 			if($user->g('usePic')==0) $color = colorID($a->from);
 			if($a->ident==2){
@@ -79,7 +77,21 @@ include('lib/content/top.php');
 			}
 			$linkStyle = '';
 			if($user->id() == $a->from) $linkStyle = 'color:#333';
-    		echo '<li id="'.$a->th.'"><a href="#showMsg" data-com="'.$a->com.'" class="header '.$unread.'" rel=""><span class="name">'.$name.'</span> <span class="count">('.$a->total.')</span> <span class="extract">'.$extract.'</span><span class="timestamp">'.dispTimeHour($a->timestamp).'</span></a><ul class="thread"><li><img src="'.$a->pic.'" width="50" style="background:'.$color.'" /><div class="header">'.$from.' <small>'.dispTimeHour($a->timestamp).'</small></div><div class="msgContent">'.nl2br(parse(stripslashes($a->msg))).'</div></li></ul></li>';
+			$from = '<a href="/user/'.$a->from.'" style="'.$linkStyle.'"><strong>'.$a->fromName.'</strong></a>';
+    		echo '<li id="'.$a->th.'">
+    			  	<a href="#showMsg" data-com="'.$a->com.'" class="header '.$unread.'" rel="">
+    			  		<span class="name">'.$name.'</span> <span class="count">('.$a->total.')</span>
+    			  		<span class="extract">'.$extract.'</span>
+    			  		<span class="timestamp">'.dispTimeHour($a->timestamp).'</span>
+    			  	</a>
+    			  	<ul class="thread">
+    			  		<li>
+    			  			<img src="'.$a->pic.'" width="50" style="background:'.$color.'" />
+    			  			<div class="header">'.$from.' <small>'.dispTimeHour($a->timestamp).'</small></div>
+    			  			<div class="msgContent">'.nl2br(parse(stripslashes($a->msg))).'</div>
+    			  		</li>
+    			  	</ul>
+    			  </li>';
      	  } }else{ echo '<div class="errorBox">No tienes mensajes privados</div>'; } ?>
     </ul>
     <div style="margin-top:20px; text-align:center"><?php echo $back.$middle.$next; ?></div>
@@ -100,7 +112,9 @@ include('lib/content/top.php');
         </div>
 	</div>
 </form></div></div>
-<div id="loadContainer" style="display:none;"><div class="loader" style="font-size:12px; color:#095CC4; text-align:center;"><img src="http://static.quepiensas.es/img/load/transparent-circle.gif" align="absmiddle" /> Cargando...</div></div>
+<div id="loadContainer" style="display:none;"><div class="loader" style="font-size:12px; color:#095CC4; text-align:center;">
+	<img src="http://static.quepiensas.es/img/load/transparent-circle.gif" align="absmiddle" /> Cargando...</div>
+</div>
    
 <p align="center"><a href="/do/profile">Volver a mi perfil</a></p>
 <?php 
