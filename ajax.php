@@ -253,7 +253,7 @@ switch($type){
 		}
 	case 'changeStatus':
 		if(!$sess->logged()) finish('Fail');
-		if(!isset($_POST['th']) || !is_numeric($_POST['th']) || $_POST['th']<1) finish('Por favor intentalo mas tarde');
+		if(!isset($_POST['th']) || !$sess->valid($_POST['th'],'int') || $_POST['th']<1) finish('Por favor intentalo mas tarde');
 		$thread = addslashes($sess->valid($_POST['th'],'int'));
 		$db = $sess->db();
 		if(!$user->updatePMstatus($thread)) finish('jajaja. NO');
