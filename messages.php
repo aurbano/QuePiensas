@@ -68,7 +68,8 @@ include('lib/content/top.php');
 			//	2 ->	Public		Private
 			//	3 ->	Private		Private
 			$from = '<a href="/user/'.$a->from.'" style="'.$linkStyle.'"><strong>'.$a->fromName.'</strong></a>';
-			$color = colorID($a->from);
+			$color = '';
+			if($user->g('usePic')==0) $color = colorID($a->from);
 			if($a->ident==2){
 				// From remains anonymous
 				$color = '#ccc';
