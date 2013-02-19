@@ -203,11 +203,14 @@ switch($type){
 				if($comment->usid == $user->id()) $curUser = 1;
 				$usid = 0;
 				$uname = 'Anonimo';
-				if($comment->ident = 1){
+				$color = '#ccc';
+				// ident = 1 => Public, 0 => Private
+				if($comment->ident == 1){
 					$usid = $comment->usid;
 					$uname = $comment->name;
+					$color = colorID($comment->usid);
 				}
-				echo '<msg id="'.$comment->id.'" type="comment" color="'.colorID($comment->usid).'" curUser="'.$curUser.'" src="'.$comment->pic.'" pname="'.$comment->pname.'" pid="'.$comment->pid.'" usid="'.$usid.'" uname="'.$uname.'"><timestamp>'.dispTimeHour($comment->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(stripslashes($comment->msg))).']]></content></msg>';
+				echo '<msg id="'.$comment->id.'" type="comment" color="'.$color.'" curUser="'.$curUser.'" src="'.$comment->pic.'" pname="'.$comment->pname.'" pid="'.$comment->pid.'" usid="'.$usid.'" uname="'.$uname.'"><timestamp>'.dispTimeHour($comment->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(stripslashes($comment->msg))).']]></content></msg>';
 			}
 			return true;
 		}
