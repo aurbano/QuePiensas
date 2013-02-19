@@ -85,12 +85,20 @@ switch($type){
 				// Mensaje privado
 				// Se envia al autor de $rid
 				$db = $sess->db();
-				$to = $db->queryUniqueValue('SELECT usid FROM comments WHERE id = \''.$rid.'\'');
-				if($to == $user->id()) finish('No puedes enviarte un mensaje privado a ti mismo!');
-				if(!$to) finish('No existe el usuario a quien respondes');
-				if($ident == 0) $ident = 2;
-				if($ident == 1) $ident = 0;
-				if($user->sendPM($to,$_POST['msg'],'NULL',$ident,$rid)){
+				$toData = $db->queryUniqueObject('SELECT usid, ident FROM comments WHERE id = \''.$rid.'\'');
+				if($toData->usid == $user->id()) finish('No puedes enviarte un mensaje privado a ti mismo!');
+				if(!$toData || $toData->usid<1) finish('No existe el usuario a quien respondes ('.$toData->usid.')');
+				// IDENT GUIDE
+				//	# ->	To			From
+				//	0 ->	Public		Public
+				//	1 ->	Private		Public
+				//	2 ->	Public		Private
+				//	3 ->	Private		Private
+				// $_POST['ident'] is From (0 is Public, 1 is Private)
+				// $toData->ident is To
+				// So the final ident is the sum of both.
+				$ident = $_POST['ident'] + $toData->ident;
+				if($user->sendPM($toData->usid,$_POST['msg'],'NULL',$ident,$rid)){
 					finish('',true,'/'.$_POST['pid'],array('time'=>'','name'=>'','pic'=>'','usid'=>'','id'=>''));
 				}else{
 					finish('No se pudo enviar el mensaje');

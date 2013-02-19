@@ -75,20 +75,20 @@ include('lib/content/top.php');
 			if($a->pic == 'http://img.quepiensas.es/noimage.png' && ($a->ident==0 || $a->ident==1)){
 				$color = colorID($a->from);
 			}
-			if($a->ident==2){
+			// Grey text for your name
+			$linkStyle = '';
+			if($user->id() == $a->from) $linkStyle = 'color:#333';
+			// Create from string
+			$from = '<a href="/user/'.$a->from.'" style="'.$linkStyle.'"><strong>'.$a->fromName.'</strong></a>';
+			if($a->ident >= 2){
 				// From remains anonymous
 				$color = '#ccc';
 				$a->pic = 'http://img.quepiensas.es/noimage.png';
 				$from = '<strong>Anónimo</strong>';	
 				$name = 'Anónimo';
 			}
-			// Grey text for your name
-			$linkStyle = '';
-			if($user->id() == $a->from) $linkStyle = 'color:#333';
 			// Fix thread for initial PMs
 			if(!$a->th || $a->th==0) $a->th = $a->id;
-			// Create from string
-			$from = '<a href="/user/'.$a->from.'" style="'.$linkStyle.'"><strong>'.$a->fromName.'</strong></a>';
 			// Display message
     		echo '<li id="'.$a->th.'">
     			  	<a href="#showMsg" data-com="'.$a->com.'" class="header '.$unread.'" rel="">

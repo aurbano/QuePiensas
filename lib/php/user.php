@@ -392,7 +392,7 @@ class User{
 	 *		3 -> Deleted by sender, read
 	 *		4 -> Deleted by receiver
 	 *	IDENT GUIDE
-	 *		# ->	To			Current User
+	 *		# ->	To			From
 	 *		0 ->	Public		Public
 	 *		1 ->	Private		Public
 	 *		2 ->	Public		Private
