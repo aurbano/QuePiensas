@@ -59,18 +59,18 @@ include('lib/content/top.php');
 			$name = $a->fromName;
 			// This uses the function decodePM, from pmTemplates
 			$a->msg = decodePM(stripslashes($a->msg));
-			if($name == $user->g('name')) $name = $a->toName;
 			if(strlen($name)<1) $name = 'Anónimo';
 			$extract = $a->msg;
 			if(strlen($extract)>50) $extract = substr($extract,0,50).'...';
 			$unread = 'read';
 			if($user->id() == $a->to &&($a->status == 0 || $a->status == 2)) $unread = 'unread';
-			// IDENT GUIDE
-			//	# ->	To			From
-			//	0 ->	Public		Public
-			//	1 ->	Private		Public
-			//	2 ->	Public		Private
-			//	3 ->	Private		Private
+			// ----- IDENT ------
+				// Use the binary system for Identification
+				$ident = str_pad(decbin($a->ident), 2, 0, STR_PAD_LEFT);
+				//$ident = decbin($a->ident);
+				$toIdent = $ident[0];
+				$fromIdent = $ident[1];
+			//
 			$color = '';
 			if($a->pic == 'http://img.quepiensas.es/noimage.png' && ($a->ident==0 || $a->ident==1)){
 				$color = colorID($a->from);
@@ -80,19 +80,23 @@ include('lib/content/top.php');
 			if($user->id() == $a->from) $linkStyle = 'color:#333';
 			// Create from string
 			$from = '<a href="/user/'.$a->from.'" style="'.$linkStyle.'"><strong>'.$a->fromName.'</strong></a>';
-			if($a->ident >= 2){
+			if($fromIdent == 0){
 				// From remains anonymous
 				$color = '#ccc';
 				$a->pic = 'http://img.quepiensas.es/noimage.png';
-				$from = '<strong>Anónimo</strong>';	
-				$name = 'Anónimo';
+				$from = '<strong>Anónimo</strong>';
+			}
+			// Name management
+			if($name == $user->g('name')){
+				$name = $a->toName;
+				if($toIdent == 0) $name = 'Anónimo';
 			}
 			// Fix thread for initial PMs
 			if(!$a->th || $a->th==0) $a->th = $a->id;
 			// Display message
     		echo '<li id="'.$a->th.'">
     			  	<a href="#showMsg" data-com="'.$a->com.'" class="header '.$unread.'" rel="">
-    			  		<span class="name">'.$name.'</span> <span class="count">('.$a->total.')</span>
+    			  		<span class="name">'.$name.' {'.$a->ident.':'.$fromIdent.'>'.$toIdent.'}</span> <span class="count">('.$a->total.')</span>
     			  		<span class="extract">'.$extract.'</span>
     			  		<span class="timestamp">'.dispTimeHour($a->timestamp).'</span>
     			  	</a>
@@ -115,10 +119,11 @@ include('lib/content/top.php');
     <div class="errorMsg" style="display:none"></div>
     <textarea name="msg" cols="6" rows="1" wrap="virtual" class="formNormal" placeholder="Responder..."></textarea>
     <div class="options">
-        <!--<label title="Comentar de manera Anonima" class="tooltip hoverLabel">
-            <input type="radio" name="ident" value="0" checked="checked" style="display:none !important;" />Anónimo</label>
-        <label title="Comentar como '.$user->g('name').'" class="tooltip">
-            <input type="radio" name="ident" value="1" style="display:none !important;" /><?php echo $user->g('name'); ?></label>-->
+    	<span class="replyPrivate">
+        <label title="Comentar de manera Anonima" class="tooltip hoverLabel">
+            <input type="radio" name="ident" value="0" checked="checked" style="display:none !important;" />Anónimo</label></span>
+        <label title="Comentar como <?php echo $user->g('name'); ?>" class="tooltip">
+            <input type="radio" name="ident" value="1" style="display:none !important;" /><?php echo $user->g('name'); ?></label>
         <div style="position:absolute; font-size:12px; top:3px; right:3px;">
         	<input name="save" type="submit" value="Enviar" class="btn btnBlue" />
         </div>

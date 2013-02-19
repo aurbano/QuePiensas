@@ -392,11 +392,13 @@ class User{
 	 *		3 -> Deleted by sender, read
 	 *		4 -> Deleted by receiver
 	 *	IDENT GUIDE
-	 *		# ->	To			From
-	 *		0 ->	Public		Public
-	 *		1 ->	Private		Public
-	 *		2 ->	Public		Private
-	 *		3 ->	Private		Private
+	 *		# ->	To				From
+	 *		0 ->	1-Private		1-Private
+	 *		1 ->	1-Private		0-Public
+	 *		2 ->	0-Public		1-Private
+	 *		3 ->	0-Public		0-Public
+	 * 	This method of using Ident allows for binary calculations, simplifying the system.
+	 * 
 	 * @param	int	User ID of receiver
 	 * @param	string	Message content, no need to clean it
 	 * @param	int	Thread ID, or 0 if PM is not a reply

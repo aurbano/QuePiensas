@@ -89,15 +89,17 @@ switch($type){
 				if($toData->usid == $user->id()) finish('No puedes enviarte un mensaje privado a ti mismo!');
 				if(!$toData || $toData->usid<1) finish('No existe el usuario a quien respondes ('.$toData->usid.')');
 				// IDENT GUIDE
-				//	# ->	To			From
-				//	0 ->	Public		Public
-				//	1 ->	Private		Public
-				//	2 ->	Public		Private
-				//	3 ->	Private		Private
+				//	# ->	To				From
+				//	0 ->	1-Private		1-Private
+				//	1 ->	1-Private		0-Public
+				//	2 ->	0-Public		1-Private
+				//	3 ->	0-Public		0-Public
 				// $_POST['ident'] is From (0 is Public, 1 is Private)
 				// $toData->ident is To
-				// So the final ident is the sum of both.
-				$ident = $_POST['ident'] + $toData->ident;
+				// The IDENT value is the binary representation of the combination {To|From}, so simply concatenate and pass to decimal
+				$string = intval($toData->ident.$_POST['ident']);
+				$ident = bindec($string); // Convert to decimal from binary
+				//finish('Ident code: To '.$toData->ident.', From:'.$_POST['ident'].': String='.$string.' Code='.$ident);
 				if($user->sendPM($toData->usid,$_POST['msg'],'NULL',$ident,$rid)){
 					finish('',true,'/'.$_POST['pid'],array('time'=>'','name'=>'','pic'=>'','usid'=>'','id'=>''));
 				}else{
