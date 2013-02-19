@@ -90,7 +90,7 @@ switch($type){
 				if(!$to) finish('No existe el usuario a quien respondes');
 				if($ident == 0) $ident = 2;
 				if($ident == 1) $ident = 0;
-				if($user->sendPM($to,$_POST['msg'],false,$ident,$rid)){
+				if($user->sendPM($to,$_POST['msg'],'NULL',$ident,$rid)){
 					finish('',true,'/'.$_POST['pid'],array('time'=>'','name'=>'','pic'=>'','usid'=>'','id'=>''));
 				}else{
 					finish('No se pudo enviar el mensaje');

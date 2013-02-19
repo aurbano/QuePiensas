@@ -404,12 +404,12 @@ class User{
 	 * @param	int	If the message is in reply to a comment, the ID of the comment
 	 * @return	int	ID of the sent PM or false if something failed
 	 */
-	function sendPM($to,$msg,$thread=0,$ident=0,$com=0){
+	function sendPM($to,$msg,$thread='NULL',$ident=0,$com=0){
 		global $sess, $db,$user;
 		if(!$sess->logged()) return false;
 		if(!($db instanceof DB)) $db = $sess->db();
 		if(!($db instanceof DB) || !($user instanceof User)) return false;
-		if(!$sess->valid($thread,'int')) $thread=0;
+		if(!$sess->valid($thread,'int')) $thread='NULL';
 		if(!($to = $sess->valid($to,'int'))) $to=0;
 		// Ahora guardamos el mensaje
 		if(!function_exists('clean')) include('style.php');
@@ -417,7 +417,7 @@ class User{
 		if(!$sess->valid($ident,'int')) $ident = 0;
 		if(!$sess->valid($com,'int') || $com < 0) $com = 0;
 		// Listos para guardar
-		if($db->execute('INSERT INTO `msg` (`com`, `thread`,`ident`,`from`,`to`,`msg`,`status`,`timestamp`) VALUES (\''.$com.'\', \''.$thread.'\',\''.$ident.'\',\''.$this->id.'\',\''.$to.'\',\''.$msg.'\',\'0\',\''.time().'\');'))
+		if($db->execute('INSERT INTO `msg` (`com`, `thread`,`ident`,`from`,`to`,`msg`,`status`,`timestamp`) VALUES (\''.$com.'\', '.$thread.',\''.$ident.'\',\''.$this->id.'\',\''.$to.'\',\''.$msg.'\',\'0\',\''.time().'\');'))
 			return $db->lastInsertedId();
 		else return false;
 	}
