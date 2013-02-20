@@ -112,7 +112,7 @@ include('lib/content/top.php');
 				$hisIdent = $toIdent;
 			}
 			$senderIdent = $fromIdent;
-			if($usid == $a->to) $senderIdent = $toIdent;
+			if($a->usid == $a->to) $senderIdent = $toIdent;
 				
 			// General Data
 			$name = $a->hisName;

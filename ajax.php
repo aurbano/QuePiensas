@@ -195,51 +195,50 @@ switch($type){
 		// Comprobamos que el usuario tiene derecho a ver estos
 		// Cargar y mostrar comentario "en respuesta"
 		function inResponse($com){
+			if($com < 1) return false;
 			global $db, $user;
-			if($com > 0){
-				// Message in reply to a comment, also should be the last one...
-				// Fetch comment and send it
-				$comment = $db->queryUniqueObject('
-								SELECT
-									personas.name AS pname,
-									comments.id, comments.msg, comments.pid, comments.timestamp, comments.ident,
-									comments.state, comments.spam, users.name, users.id AS usid,
-									(CASE users.usePic
-										WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
-										WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'-square.png\')
-										WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\')
-										WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser)
-									END) AS pic
-								FROM personas, comments, users
-								WHERE 
-									comments.id = '.$com.'
-									AND comments.usid = users.id
-									AND comments.pid = personas.id
-							');
-				
-				$curUser = 0;
-				if($comment->usid == $user->id()) $curUser = 1;
-				$usid = 0;
-				$uname = 'Anonimo';
-				$color = '#ccc';
-				// ident = 1 => Public, 0 => Private
-				if($comment->ident == 1){
-					$usid = $comment->usid;
-					$uname = $comment->name;
-					$color = colorID($comment->usid);
-				}
-				echo '<msg id="'.$comment->id.'" type="comment" color="'.$color.'" curUser="'.$curUser.'" src="'.$comment->pic.'" pname="'.$comment->pname.'" pid="'.$comment->pid.'" usid="'.$usid.'" uname="'.$uname.'">
-						<timestamp>'.dispTimeHour($comment->timestamp).'</timestamp>
-						<content><![CDATA['.nl2br(parse(stripslashes($comment->msg))).']]></content>
-					</msg>';
+			// Message in reply to a comment, also should be the last one...
+			// Fetch comment and send it
+			$comment = $db->queryUniqueObject('
+							SELECT
+								personas.name AS pname,
+								comments.id, comments.msg, comments.pid, comments.timestamp, comments.ident,
+								comments.state, comments.spam, users.name, users.id AS usid,
+								(CASE users.usePic
+									WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
+									WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'-square.png\')
+									WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\')
+									WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser)
+								END) AS pic
+							FROM personas, comments, users
+							WHERE 
+								comments.id = '.$com.'
+								AND comments.usid = users.id
+								AND comments.pid = personas.id
+						');
+			
+			$curUser = 0;
+			if($comment->usid == $user->id()) $curUser = 1;
+			$usid = 0;
+			$uname = 'Anonimo';
+			$color = '#ccc';
+			// ident = 1 => Public, 0 => Private
+			if($comment->ident == 1){
+				$usid = $comment->usid;
+				$uname = $comment->name;
+				$color = colorID($comment->usid);
 			}
+			echo '<msg id="'.$comment->id.'" type="comment" color="'.$color.'" curUser="'.$curUser.'" src="'.$comment->pic.'" pname="'.$comment->pname.'" pid="'.$comment->pid.'" usid="'.$usid.'" uname="'.$uname.'">
+					<timestamp>'.dispTimeHour($comment->timestamp).'</timestamp>
+					<content><![CDATA['.nl2br(parse(stripslashes($comment->msg))).']]></content>
+				</msg>';
 			return true;
 		}
 		if(!$user->updatePMstatus($thread)) finish('jajaja. NO');
 		// Pues ale, sacar mensajes
 		$msg = $db->query('
 			SELECT
-				msg.`id`, msgThread.`to`, msgThread.`from`, msgThread.`com`, msg.`msg`, msg.`timestamp`, msgThread.`status`, users.name,
+				msg.`id`, msg.usid, msgThread.`to`, msgThread.`from`, msgThread.`com`, msg.`msg`, msg.`timestamp`, msgThread.`status`, users.name,
 				(CASE users.usePic
 					WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
 					WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',users.id,\'-square.png\')
@@ -254,6 +253,25 @@ switch($type){
 			ORDER BY `msg`.timestamp DESC
 			LIMIT '.$limit
 		);
+		/*$msg = $db->query('
+			SELECT
+				msg.id, msg.tid AS th, msg.usid, msg.msg, msg.timestamp,
+				(SELECT COUNT(*) FROM msg WHERE msg.tid = th) AS total,
+				users.name, msgThread.`from`, msgThread.`to`, msgThread.`ident`, msgThread.`status`,
+				(CASE users.usePic
+					WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
+					WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',`msgThread`.`from`,\'-square.png\')
+					WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\')
+					WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic
+			FROM msgThread, (SELECT * FROM msg ORDER BY timestamp DESC) AS msg, users
+			WHERE
+				msg.tid = msgThread.tid
+				AND (`from` = '.$user->id().' OR `to` = '.$user->id().')
+				AND `usid` = users.id
+			GROUP BY msgThread.tid
+			ORDER BY timestamp DESC
+			LIMIT '.$limit
+		);*/
 		// XML headers
 		header("Content-type: text/xml");
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
@@ -266,17 +284,35 @@ switch($type){
 		// Current user id
 		$usid = $user->id();
 		echo '<messages>';
+		// Display requested com
 		if($com > 0) inResponse($com);
 		if($db->numRows($msg) > 0){
 			while($a = $db->fetchNextObject($msg)){
 				if($a->to - $usid !== 0 && $a->from - $usid !== 0){
-					echo '<error>No puedes ver los privados de otra gente... ['.$a->from.':'.$a->to.':'.$usid.']</error>';
+					echo '<error>No puedes ver los privados de otra gente.</error>';
 					break;
 				}
-				// Mostrarlo en plan XML
+				// Start preparing the variables
 				$curUser = 0;
-				if($a->from == $user->id()) $curUser = 1;
-				echo '<msg id="'.$a->id.'" color="'.colorID($a->from).'" type="msg" usid="'.$a->from.'" curUser="'.$curUser.'" user="'.$a->name.'" src="'.$a->pic.'"><timestamp>'.dispTimeHour($a->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(decodePM(stripslashes($a->msg)))).']]></content></msg>';
+				if($a->usid == $user->id()) $curUser = 1;
+				// Security
+				// Use the binary system for Identification
+				$ident = str_pad(decbin($a->ident), 2, 0, STR_PAD_LEFT);
+				$toIdent = $ident[0];
+				$fromIdent = $ident[1];
+				$senderIdent = $fromIdent;
+				if($a->usid == $a->to) $senderIdent = $toIdent;
+				// Color
+				$color = colorID($a->usid);
+				// Check ident
+				if($senderIdent==0){
+					$color = '#ccc';
+					$a->pic = 'http://img.quepiensas.es/noimage.png';
+					$a->name = 'Él';
+					if($usid == $a->usid) $a->name = 'Tú';
+					$a->usid = 0;
+				}
+				echo '<msg id="'.$a->id.'" color="'.$color.'" type="msg" usid="'.$a->usid.'" curUser="'.$curUser.'" user="'.$a->name.'" src="'.$a->pic.'"><timestamp>'.dispTimeHour($a->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(decodePM(stripslashes($a->msg)))).']]></content></msg>';
 				inResponse($a->com);
 			}
 		}
