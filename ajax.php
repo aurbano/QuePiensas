@@ -199,7 +199,23 @@ switch($type){
 			if($com > 0){
 				// Message in reply to a comment, also should be the last one...
 				// Fetch comment and send it
-				$comment = $db->queryUniqueObject('SELECT personas.name AS pname, comments.id, comments.msg, comments.pid, comments.timestamp, comments.ident, comments.state, comments.spam, users.name, users.id AS usid, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'-square.png\') WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\') WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM personas, comments, users WHERE comments.id = '.$com.' AND comments.usid = users.id AND comments.pid = personas.id');
+				$comment = $db->queryUniqueObject('
+								SELECT
+									personas.name AS pname,
+									comments.id, comments.msg, comments.pid, comments.timestamp, comments.ident,
+									comments.state, comments.spam, users.name, users.id AS usid,
+									(CASE users.usePic
+										WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
+										WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'-square.png\')
+										WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\')
+										WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser)
+									END) AS pic
+								FROM personas, comments, users
+								WHERE 
+									comments.id = '.$com.'
+									AND comments.usid = users.id
+									AND comments.pid = personas.id
+							');
 				
 				$curUser = 0;
 				if($comment->usid == $user->id()) $curUser = 1;
@@ -212,13 +228,15 @@ switch($type){
 					$uname = $comment->name;
 					$color = colorID($comment->usid);
 				}
-				echo '<msg id="'.$comment->id.'" type="comment" color="'.$color.'" curUser="'.$curUser.'" src="'.$comment->pic.'" pname="'.$comment->pname.'" pid="'.$comment->pid.'" usid="'.$usid.'" uname="'.$uname.'"><timestamp>'.dispTimeHour($comment->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(stripslashes($comment->msg))).']]></content></msg>';
+				echo '<msg id="'.$comment->id.'" type="comment" color="'.$color.'" curUser="'.$curUser.'" src="'.$comment->pic.'" pname="'.$comment->pname.'" pid="'.$comment->pid.'" usid="'.$usid.'" uname="'.$uname.'">
+						<timestamp>'.dispTimeHour($comment->timestamp).'</timestamp>
+						<content><![CDATA['.nl2br(parse(stripslashes($comment->msg))).']]></content>
+					</msg>';
 			}
 			return true;
 		}
 		if(!$user->updatePMstatus($thread)) finish('jajaja. NO');
 		// Pues ale, sacar mensajes
-		//$msg = $db->query('SELECT msg.`id`, msg.`to`, msg.`from`, msg.`com`, msg.`msg`, msg.`timestamp`, msg.`status`, users.name, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',users.id,\'-square.png\') WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\') WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM msg, users WHERE (msg.`thread` = \''.$thread.'\' OR msg.`id` = \''.$thread.'\') AND users.id = msg.from ORDER BY `msg`.timestamp DESC LIMIT '.$limit);
 		$msg = $db->query('
 			SELECT
 				msg.`id`, msgThread.`to`, msgThread.`from`, msgThread.`com`, msg.`msg`, msg.`timestamp`, msgThread.`status`, users.name,
@@ -294,9 +312,26 @@ switch($type){
 		if(!$sess->logged()) finish('Debes iniciar sesion');
 		// Buscamos privados no leidos:
 		$db = $sess->db();
-		$privs = $db->queryUniqueValue('SELECT COUNT(*) FROM msgThread WHERE `to` = \''.$user->id().'\' AND (`status`=0 OR `status`=2)');
+		$privs = $db->queryUniqueValue('
+			SELECT
+				COUNT(*)
+			FROM
+				msgThread
+			WHERE 
+				`to` = \''.$user->id().'\' 
+				AND (`status`=0 OR `status`=2)
+		');
 		// Respuestas no leidas
-		$new = $db->queryUniqueValue('SELECT COUNT(*) FROM (SELECT comments.id FROM comments, replies WHERE comments.id = replies.id AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$user->id().') AND comments.state=0) AS comments');
+		$new = $db->queryUniqueValue('
+			SELECT 
+				COUNT(*) 
+			FROM
+				(SELECT comments.id FROM comments, replies 
+			WHERE
+				comments.id = replies.id
+				AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$user->id().')
+				AND comments.state=0) AS comments
+		');
 		finish('',true,false,array('msgs'=>$privs,'nuevo'=>$new));
 	case 'loadComments':
 		// Loads new comments, depends on TL_TYPE and VAR
