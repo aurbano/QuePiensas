@@ -23,9 +23,9 @@ if($_GET['p']>0 && $sess->valid($_GET['p'],'int')){ $limit = $limit*$_GET['p'].'
 		SELECT
 			msg.id, msg.tid AS th, msg.usid, msg.msg, msg.timestamp,
 			(SELECT COUNT(*) FROM msg WHERE msg.tid = th) AS total,
-			(SELECT name FROM users WHERE id = msgThread.`to`) AS toName,
-			(SELECT name FROM users WHERE id = msgThread.`from`) AS fromName,
-			msgThread.`from`, msgThread.`to`, msgThread.`ident`, msgThread.`status`,
+			users.name, msgThread.`from`, msgThread.`to`, msgThread.`ident`, msgThread.`status`,
+			IF(`to` = \''.$user->id().'\',`from`,`to`) AS hisId,
+			(SELECT `name` FROM `users` WHERE `id` = `hisId`) AS hisName,
 			(CASE users.usePic
 				WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
 				WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',`msgThread`.`from`,\'-square.png\')
@@ -35,7 +35,7 @@ if($_GET['p']>0 && $sess->valid($_GET['p'],'int')){ $limit = $limit*$_GET['p'].'
 		WHERE
 			msg.tid = msgThread.tid
 			AND (`from` = '.$user->id().' OR `to` = '.$user->id().')
-			AND `from` = users.id
+			AND `usid` = users.id
 		GROUP BY msgThread.tid
 		ORDER BY timestamp DESC
 		LIMIT '.$limit);
@@ -77,47 +77,76 @@ include('lib/content/top.php');
 <div class="paddedContent" style="padding-top:0px;">
 	<ul class="messages">
 	<?php if($db->numRows($msg)>0){ while($a = $db->fetchNextObject($msg)){
-			$name = $a->fromName;
-			// This uses the function decodePM, from pmTemplates
+			
+			/**
+			 * 	STATUS GUIDE
+			 *		0 -> Just sent, unread
+			 *		1 -> Read
+			 *		2 -> Deleted by sender, unread
+			 *		3 -> Deleted by sender, read
+			 *		4 -> Deleted by receiver
+			 */
+			// Check if message has been deleted
+			if(($user->id() == $a->usid && ($a->status == 2 || $a->status == 3)) || ($user->id() !== $a->usid && $a->status == 4)){
+				// Message deleted
+				echo '<li>[Thread #'.$a->tid.' deleted]</li>';
+				continue;
+			}
+			// Message status
+			$unread = 'read';
+			if($user->id() !== $a->usid && ($a->status == 0 || $a->status == 2)){
+				// If you are the receiver
+				$unread = 'unread';
+			}
+				
+			// Use the binary system for Identification
+			$ident = str_pad(decbin($a->ident), 2, 0, STR_PAD_LEFT);
+			$toIdent = $ident[0];
+			$fromIdent = $ident[1];
+			// Convert to and from -> you and him
+			$yourIdent = $toIdent;
+			$hisIdent = $fromIdent;
+			// Check if it must be the other way around
+			if($user->id() == $a->from){
+				$yourIdent = $fromIdent;
+				$hisIdent = $toIdent;
+			}
+			$senderIdent = $fromIdent;
+			if($usid == $a->to) $senderIdent = $toIdent;
+				
+			// General Data
+			$name = $a->hisName;
+			if(strlen($name)<1 || $hisIdent==0) $name = 'Anónimo';
+			
+			// Formatting
 			$a->msg = decodePM(stripslashes($a->msg));
-			if(strlen($name)<1) $name = 'Anónimo';
 			$extract = $a->msg;
 			if(strlen($extract)>50) $extract = substr($extract,0,50).'...';
-			$unread = 'read';
-			if($user->id() == $a->to &&($a->status == 0 || $a->status == 2)) $unread = 'unread';
-			// ----- IDENT ------
-				// Use the binary system for Identification
-				$ident = str_pad(decbin($a->ident), 2, 0, STR_PAD_LEFT);
-				//$ident = decbin($a->ident);
-				$toIdent = $ident[0];
-				$fromIdent = $ident[1];
-			//
-			$color = '';
-			if($a->pic == 'http://img.quepiensas.es/noimage.png' && ($a->ident==0 || $a->ident==1)){
-				$color = colorID($a->from);
-			}
+			
 			// Grey text for your name
 			$linkStyle = '';
-			if($user->id() == $a->from) $linkStyle = 'color:#333';
-			// Create from string
-			$from = '<a href="/user/'.$a->from.'" style="'.$linkStyle.'"><strong>'.$a->fromName.'</strong></a>';
-			if($fromIdent == 0){
-				// From remains anonymous
-				$color = '#ccc';
+			if($a->usid == $user->id()) $linkStyle = 'color:#333';
+			
+			$from = '<a href="/user/'.$a->usid.'" style="'.$linkStyle.'"><strong>'.$a->name.'</strong></a>';
+			
+			if($senderIdent==0){
+				// Privatize the sender identity
+				$from = 'Él';
+				if($user->id() == $a->usid) $from = 'Tú';
+				$from .= ' en modo <strong>Anónimo</strong>';
 				$a->pic = 'http://img.quepiensas.es/noimage.png';
-				$from = 'Tú en modo <strong>Anónimo</strong>';
 			}
-			// Name management
-			if($name == $user->g('name')){
-				$name = $a->toName;
-				if($toIdent == 0) $name = 'Anónimo';
+			
+			$color = '';
+			if($a->pic == 'http://img.quepiensas.es/noimage.png'){
+				$color = '#ccc';
+				if($senderIdent==1) $color = colorID($a->from);
 			}
-			// Fix thread for initial PMs
-			if(!$a->th || $a->th==0) $a->th = $a->id;
+			
 			// Display message
     		echo '<li id="'.$a->th.'">
-    			  	<a href="#showMsg" data-com="'.$a->com.'" class="header '.$unread.'" rel="">
-    			  		<span class="name">'.$name.' {'.$a->ident.':'.$fromIdent.'>'.$toIdent.'}</span> <span class="count">('.$a->total.')</span>
+    			  	<a href="#showMsg" data-com="'.$a->com.'" data-ident='.$fromIdent.'" class="header '.$unread.'" rel="">
+    			  		<span class="name">'.$name.'</span> <span class="count">('.$a->total.')</span>
     			  		<span class="extract">'.$extract.'</span>
     			  		<span class="timestamp">'.dispTimeHour($a->timestamp).'</span>
     			  	</a>
