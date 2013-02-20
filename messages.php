@@ -105,7 +105,7 @@ include('lib/content/top.php');
 				// From remains anonymous
 				$color = '#ccc';
 				$a->pic = 'http://img.quepiensas.es/noimage.png';
-				$from = '<strong>Anónimo</strong>';
+				$from = 'Tú en modo <strong>Anónimo</strong>';
 			}
 			// Name management
 			if($name == $user->g('name')){
