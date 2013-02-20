@@ -451,14 +451,14 @@ class User{
 		if(!($db instanceof DB) || !($user instanceof User)) return false;
 		if(!($thread = $sess->valid($thread,'int'))) return false;
 		// Check permission and current status
-		$status = $db->queryUniqueObject('SELECT `status` FROM `msg` WHERE (`id` = \''.$thread.'\' OR `thread` = \''.$thread.'\') AND (`to` = \''.$user->id().'\' OR `from` = \''.$user->id().'\') ORDER BY id DESC');
+		$status = $db->queryUniqueObject('SELECT `status` FROM `msgThread` WHERE `tid` = \''.$thread.'\' AND (`to` = \''.$user->id().'\' OR `from` = \''.$user->id().'\') ORDER BY tid DESC');
 		if(!$status) return false;
 		$status = $status->status;
 		// Actualiza el status, si yo soy el 
 		$nextStatus = false;
 		if($status == 0) $nextStatus = 1;
 		if($status == 2) $nextStatus = 3;
-		if($nextStatus) $db->execute('UPDATE msg SET status = \''.$nextStatus.'\' WHERE (`thread` = \''.$thread.'\' OR `id` = \''.$thread.'\')  AND `to`=\''.$user->id().'\' AND `status` = \''.$status.'\'');
+		if($nextStatus) $db->execute('UPDATE msgThread SET status = \''.$nextStatus.'\' WHERE `tid` = \''.$thread.'\'  AND `to`=\''.$user->id().'\' AND `status` = \''.$status.'\' LIMIT 1');
 		return true;
 	}
 

@@ -221,7 +221,7 @@ switch($type){
 		//$msg = $db->query('SELECT msg.`id`, msg.`to`, msg.`from`, msg.`com`, msg.`msg`, msg.`timestamp`, msg.`status`, users.name, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',users.id,\'-square.png\') WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\') WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM msg, users WHERE (msg.`thread` = \''.$thread.'\' OR msg.`id` = \''.$thread.'\') AND users.id = msg.from ORDER BY `msg`.timestamp DESC LIMIT '.$limit);
 		$msg = $db->query('
 			SELECT
-				msg.`id`, msgThread.`to`, msgThread.`from`, msgThread.`com`, msg.`msg`, msg.`timestamp`, msg.`status`, users.name,
+				msg.`id`, msgThread.`to`, msgThread.`from`, msgThread.`com`, msg.`msg`, msg.`timestamp`, msgThread.`status`, users.name,
 				(CASE users.usePic
 					WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
 					WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',users.id,\'-square.png\')
@@ -236,17 +236,17 @@ switch($type){
 			ORDER BY `msg`.timestamp DESC
 			LIMIT '.$limit
 		);
-		if($db->numRows($msg)<1 && $com < 1) finish('No hay mas mensajes');
-		include('lib/php/linker.php');
-		include('lib/php/style.php'); // dispTime
-		include('lib/content/pmTemplates.php'); // Plantillas de privados
-		// Current user id
-		$usid = $user->id();
 		// XML headers
 		header("Content-type: text/xml");
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 		header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past (no cache)
 		echo '<?xml version="1.0"?>';
+		if($db->numRows($msg)<1 && $com < 1) die('<error>No hay mas mensajes</error>');
+		include('lib/php/linker.php');
+		include('lib/php/style.php'); // dispTime
+		include('lib/content/pmTemplates.php'); // Plantillas de privados
+		// Current user id
+		$usid = $user->id();
 		echo '<messages>';
 		if($com > 0) inResponse($com);
 		if($db->numRows($msg) > 0){
@@ -271,7 +271,7 @@ switch($type){
 		// Comprobamos que el usuario tiene derecho a responder
 		// El primer mensaje del thread debe ser de o para este usuario:
 		$db = $sess->db();
-		$info = $db->queryUniqueObject('SELECT `to`, `from` FROM `msg` WHERE `id` = \''.$thread.'\' AND (`to` = \''.$user->id().'\' OR `from` = \''.$user->id().'\')');
+		$info = $db->queryUniqueObject('SELECT `to`, `from` FROM `msgThread` WHERE `tid` = \''.$thread.'\' AND (`to` = \''.$user->id().'\' OR `from` = \''.$user->id().'\')');
 		if(!$info) finish('jajaja, NO.');
 		// ID del destinatario:
 		$to = $info->to;
