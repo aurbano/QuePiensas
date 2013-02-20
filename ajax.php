@@ -220,7 +220,7 @@ switch($type){
 			$curUser = 0;
 			if($comment->usid == $user->id()) $curUser = 1;
 			$usid = 0;
-			$uname = 'Anonimo';
+			$uname = 'Anónimo';
 			$color = '#ccc';
 			// ident = 1 => Public, 0 => Private
 			if($comment->ident == 1){
@@ -253,25 +253,6 @@ switch($type){
 			ORDER BY `msg`.timestamp DESC
 			LIMIT '.$limit
 		);
-		/*$msg = $db->query('
-			SELECT
-				msg.id, msg.tid AS th, msg.usid, msg.msg, msg.timestamp,
-				(SELECT COUNT(*) FROM msg WHERE msg.tid = th) AS total,
-				users.name, msgThread.`from`, msgThread.`to`, msgThread.`ident`, msgThread.`status`,
-				(CASE users.usePic
-					WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
-					WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',`msgThread`.`from`,\'-square.png\')
-					WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\')
-					WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic
-			FROM msgThread, (SELECT * FROM msg ORDER BY timestamp DESC) AS msg, users
-			WHERE
-				msg.tid = msgThread.tid
-				AND (`from` = '.$user->id().' OR `to` = '.$user->id().')
-				AND `usid` = users.id
-			GROUP BY msgThread.tid
-			ORDER BY timestamp DESC
-			LIMIT '.$limit
-		);*/
 		// XML headers
 		header("Content-type: text/xml");
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
@@ -285,7 +266,7 @@ switch($type){
 		$usid = $user->id();
 		echo '<messages>';
 		// Display requested com
-		if($com > 0) inResponse($com);
+		if($db->numRows($msg)<1 && $com > 0) inResponse($com);
 		if($db->numRows($msg) > 0){
 			while($a = $db->fetchNextObject($msg)){
 				if($a->to - $usid !== 0 && $a->from - $usid !== 0){

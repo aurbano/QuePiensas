@@ -23,7 +23,7 @@ if($_GET['p']>0 && $sess->valid($_GET['p'],'int')){ $limit = $limit*$_GET['p'].'
 		SELECT
 			msg.id, msg.tid AS th, msg.usid, msg.msg, msg.timestamp,
 			(SELECT COUNT(*) FROM msg WHERE msg.tid = th) AS total,
-			users.name, msgThread.`from`, msgThread.`to`, msgThread.`ident`, msgThread.`status`,
+			users.name, msgThread.`from`, msgThread.`to`, msgThread.`ident`, msgThread.`status`, msgThread.com,
 			IF(`to` = \''.$user->id().'\',`from`,`to`) AS hisId,
 			(SELECT `name` FROM `users` WHERE `id` = `hisId`) AS hisName,
 			(CASE users.usePic
