@@ -66,23 +66,175 @@ class Timeline{
 		//
 		switch($this->type){
 			case 0:
-				$this->query = 'SELECT comments.id, comments.pid, users.name, comments.usid, comments.msg, comments.timestamp, comments.state, comments.spam, comments.ident, comments.reply, (CASE usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\') WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser) WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM (SELECT  a.*, IF(b.rid IS NULL, a.id, b.rid ) AS reply FROM comments a LEFT OUTER JOIN replies b ON (b.id=a.id) WHERE pid='.$this->identifier.' ORDER BY reply DESC, a.id ASC) AS comments, users WHERE users.id = comments.usid LIMIT '.$limit;
+				$this->query = '
+					SELECT
+						comments.id,
+						comments.pid,
+						users.name,
+						comments.usid,
+						comments.msg,
+						comments.timestamp,
+						comments.state,
+						comments.spam,
+						comments.ident,
+						comments.reply,
+						(CASE usePic
+							WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
+							WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\')
+							WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser)
+							WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END)
+						AS pic
+					FROM
+						(SELECT
+							a.*, IF(b.rid IS NULL, a.id, b.rid ) AS reply
+						 FROM
+							comments a LEFT OUTER JOIN replies b ON (b.id=a.id)
+						WHERE pid='.$this->identifier.'
+					ORDER BY reply DESC, a.id ASC) AS comments, users
+					WHERE users.id = comments.usid
+					LIMIT '.$limit;
 				break;
 			case 1:
-				$this->query = 'SELECT personas.name AS pname, comments.msg, comments.usid, comments.id, comments.pid, comments.timestamp, comments.ident, comments.spam, comments.state FROM personas, comments WHERE comments.usid = '.$this->identifier.' AND comments.pid = personas.id ORDER BY comments.timestamp DESC LIMIT '.$limit;
+				$this->query = '
+					SELECT
+						personas.name AS pname,
+						comments.msg,
+						comments.usid,
+						comments.id,
+						comments.pid,
+						comments.timestamp,
+						comments.ident,
+						comments.spam,
+						comments.state
+					FROM
+						personas,
+						comments
+					WHERE
+						comments.usid = '.$this->identifier.'
+						AND comments.pid = personas.id
+					ORDER BY
+						comments.timestamp DESC
+					LIMIT '.$limit;
 				break;
 			case 2:
-				$this->query = 'SELECT personas.name AS pname, comments.id, comments.msg, comments.pid, comments.timestamp, comments.ident, comments.state, comments.spam, (SELECT rid FROM replies WHERE id = comments.id) AS rid, users.name, users.id AS usid, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\') WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser) WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM personas, comments, relations, users WHERE personas.id=relations.pid AND relations.usid = '.$this->identifier.' AND relations.follow=1 AND comments.usid = users.id AND comments.pid = personas.id  ORDER BY comments.timestamp DESC LIMIT '.$limit;
+				$this->query = '
+					SELECT
+						personas.name AS pname,
+						comments.id,
+						comments.msg,
+						comments.pid,
+						comments.timestamp,
+						comments.ident,
+						comments.state,
+						comments.spam,
+						(SELECT rid FROM replies WHERE id = comments.id) AS rid,
+						users.name,
+						users.id AS usid,
+						(CASE users.usePic
+							WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
+							WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\')
+							WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser)
+							WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser)
+						END) AS pic
+					FROM
+						personas, comments, relations, users
+					WHERE
+						personas.id=relations.pid
+						AND relations.usid = '.$this->identifier.'
+						AND relations.follow=1
+						AND comments.usid = users.id
+						AND comments.pid = personas.id
+					ORDER BY
+						comments.timestamp DESC
+					LIMIT '.$limit;
 				break;
 			case 3:
-				$this->query = 'SELECT personas.name AS pname, comments.id, comments.usid, comments.msg, comments.pid, comments.state, comments.spam, comments.timestamp, comments.ident FROM personas, comments WHERE comments.usid = '.$this->identifier.' AND comments.pid = personas.id AND ident=1 ORDER BY comments.timestamp DESC LIMIT '.$limit;
+				$this->query = '
+					SELECT
+						personas.name AS pname, 
+						comments.id, 
+						comments.usid, 
+						comments.msg, 
+						comments.pid, 
+						comments.state, 
+						comments.spam, 
+						comments.timestamp, 
+						comments.ident
+					FROM
+						personas, comments
+					WHERE 
+						comments.usid = '.$this->identifier.' 
+						AND comments.pid = personas.id 
+						AND ident=1 
+					ORDER BY 
+						comments.timestamp DESC 
+					LIMIT '.$limit;
 				break;
 			case 4:
 				//$this->query = 'SELECT personas.name AS pname, comments.id, comments.pid, comments.msg, comments.pid, comments.timestamp, comments.ident, comments.reply, comments.state, comments.spam, users.name, users.id AS usid, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\') WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser) WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM (SELECT  a.*, IF(b.rid IS NULL, a.id, b.rid ) AS reply FROM comments a LEFT OUTER JOIN replies b ON (b.id=a.id) WHERE a.id IN (SELECT IF(comments.usid = '.$this->identifier.',replies.id,replies.rid) FROM comments, replies WHERE comments.id = replies.id) ORDER BY reply DESC, a.id ASC) AS comments, users, personas WHERE comments.usid = users.id  AND comments.pid = personas.id LIMIT '.$limit;
-				$this->query = 'SELECT personas.name AS pname, comments.id, comments.pid, comments.msg, comments.pid, comments.timestamp, comments.ident, comments.state, comments.spam, users.name, users.id AS usid, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\') WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser) WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM (SELECT comments.* FROM comments, replies WHERE comments.id = replies.id AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$this->identifier.')) AS comments, users, personas WHERE comments.usid = users.id  AND comments.pid = personas.id ORDER BY comments.timestamp DESC LIMIT '.$limit;
+				$this->query = '
+					SELECT
+						personas.name AS pname,
+						comments.id,
+						comments.pid,
+						comments.msg,
+						comments.pid,
+						comments.timestamp,
+						comments.ident,
+						comments.state,
+						comments.spam,
+						users.name,
+						users.id AS usid,
+						(CASE users.usePic
+							WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
+							WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\')
+							WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser)
+							WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser)
+						END) AS pic
+					FROM
+						(SELECT
+							comments.*
+						FROM
+							comments, replies
+						WHERE
+							comments.id = replies.id
+							AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$this->identifier.')
+						) AS comments, users, personas
+					WHERE
+						comments.usid = users.id 
+						AND comments.pid = personas.id
+					ORDER BY
+						comments.timestamp DESC
+					LIMIT '.$limit;
 				break;
 			case 5:
-				$this->query = 'SELECT personas.name AS pname, comments.id, comments.msg, comments.pid, comments.timestamp, comments.ident, comments.state, comments.spam, users.name, users.id AS usid, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\') WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser) WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM personas, comments, users, replies WHERE comments.usid = users.id AND comments.pid = personas.id AND comments.id = '.$this->identifier.' GROUP BY comments.id ORDER BY comments.timestamp DESC LIMIT '.$limit;
+				$this->query = '
+					SELECT
+						personas.name AS pname,
+						comments.id,
+						comments.msg,
+						comments.pid,
+						comments.timestamp,
+						comments.ident,
+						comments.state,
+						comments.spam,
+						users.name,
+						users.id AS usid,
+						(CASE users.usePic
+							WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
+							WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\')
+							WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser)
+							WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser)
+						END) AS pic
+					FROM
+						personas, comments, users, replies
+					WHERE
+						comments.usid = users.id
+						AND comments.pid = personas.id
+						AND comments.id = '.$this->identifier.'
+					GROUP BY
+						comments.id ORDER BY comments.timestamp DESC
+					LIMIT '.$limit;
 				break;
 		}
 	}
@@ -162,11 +314,7 @@ class Timeline{
 			
 			if(function_exists('colorID')) $color = colorID($data->usid);
 			
-			if($data->ident=='0'){
-				$color = '#ccc';
-				$data->name = 'An&oacute;nimo';
-				$data->pic = 'http://img.quepiensas.es/noimage.png';
-			}
+			if($pic) $data->pic = $pic;
 			
 			// Determinamos lo que hay que mostrar en el "titulo"
 			switch($this->type){
@@ -193,9 +341,14 @@ class Timeline{
 					$title = $data->name;
 			}
 			
-			if($pic) $data->pic = $pic;
-			if(($data->ident=='0' && $this->type!==1) || !$data->pic) $data->pic = 'http://img.quepiensas.es/noimage.png';
-			if($data->ident == '1' && $data->pic !== 'http://img.quepiensas.es/noimage.png') $color = '#FFF';
+			if($data->ident=='0'){
+				$color = '#ccc';
+				$data->name = 'Anónimo';
+				$data->pic = 'http://img.quepiensas.es/noimage.png';
+			}
+
+			if(($data->ident=='0' && $this->type!=='1') || !$data->pic) $data->pic = 'http://img.quepiensas.es/noimage.png';
+			if(($data->ident == '1' || $data->type=='1') && $data->pic !== 'http://img.quepiensas.es/noimage.png') $color = '';
 			
 			// Color de la barra izquierda
 			$leftBar = colorID($data->usid);
