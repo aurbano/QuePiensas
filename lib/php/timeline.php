@@ -89,8 +89,9 @@ class Timeline{
 							a.*, IF(b.rid IS NULL, a.id, b.rid ) AS reply
 						 FROM
 							comments a LEFT OUTER JOIN replies b ON (b.id=a.id)
-						WHERE pid='.$this->identifier.'
-					ORDER BY reply DESC, a.id ASC) AS comments, users
+						WHERE
+							pid='.$this->identifier.'
+						ORDER BY reply DESC, a.id ASC) AS comments, users
 					WHERE users.id = comments.usid
 					LIMIT '.$limit;
 				break;
@@ -171,7 +172,6 @@ class Timeline{
 					LIMIT '.$limit;
 				break;
 			case 4:
-				//$this->query = 'SELECT personas.name AS pname, comments.id, comments.pid, comments.msg, comments.pid, comments.timestamp, comments.ident, comments.reply, comments.state, comments.spam, users.name, users.id AS usid, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',comments.usid,\'.gif\') WHEN 2 THEN (SELECT pic_square FROM facebook WHERE fbid = users.fbuser) WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM (SELECT  a.*, IF(b.rid IS NULL, a.id, b.rid ) AS reply FROM comments a LEFT OUTER JOIN replies b ON (b.id=a.id) WHERE a.id IN (SELECT IF(comments.usid = '.$this->identifier.',replies.id,replies.rid) FROM comments, replies WHERE comments.id = replies.id) ORDER BY reply DESC, a.id ASC) AS comments, users, personas WHERE comments.usid = users.id  AND comments.pid = personas.id LIMIT '.$limit;
 				$this->query = '
 					SELECT
 						personas.name AS pname,
@@ -316,6 +316,12 @@ class Timeline{
 			
 			if($pic) $data->pic = $pic;
 			
+			if($data->ident=='0'){
+				$color = '#ccc';
+				$data->name = 'Anónimo';
+				$data->pic = 'http://img.quepiensas.es/noimage.png';
+			}
+			
 			// Determinamos lo que hay que mostrar en el "titulo"
 			switch($this->type){
 				case 1:
@@ -339,12 +345,6 @@ class Timeline{
 				default:
 					// "{User}"
 					$title = $data->name;
-			}
-			
-			if($data->ident=='0'){
-				$color = '#ccc';
-				$data->name = 'Anónimo';
-				$data->pic = 'http://img.quepiensas.es/noimage.png';
 			}
 
 			if(($data->ident=='0' && $this->type!=='1') || !$data->pic) $data->pic = 'http://img.quepiensas.es/noimage.png';

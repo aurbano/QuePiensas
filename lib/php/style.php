@@ -45,7 +45,10 @@ function dispTimeHour($stime){
 	}else{
 		$days = array('','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
 		$mons = array('','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dec');
-		return date('j',$stime).' de '.$mons[date('n',$stime)].', '.date('H:i',$stime);
+		$date = date('j',$stime).' de '.$mons[date('n',$stime)];
+		if(date("Y",$stime) < date("Y")) $date .= ' '.date("Y",$stime);
+		$date .= ', '.date('H:i',$stime);
+		return $date;
 	}
 }
 
