@@ -17,8 +17,6 @@ $limit = 20;
 if($_GET['p']>0 && $sess->valid($_GET['p'],'int')){ $limit = $limit*$_GET['p'].',20'; }
 
 	// Privados
-	//$msg = $db->query('SELECT msg.`id`, msg.`com`, msg.`to`, msg.`from`, msg.`msg`, msg.status, msg.ident, IF(thread IS NULL OR thread = 0,msg.id,msg.thread) AS th, (SELECT COUNT(*) FROM msg WHERE msg.thread = th OR msg.id=th) AS total, (SELECT name FROM users WHERE id = msg.`to`) AS toName, (SELECT name FROM users WHERE id = msg.`from`) AS fromName, msg.timestamp, (CASE users.usePic WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\' WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',`msg`.`from`,\'-square.png\') WHEN 2 THEN CONCAT(\'http://graph.facebook.com/\',users.fbuser,\'/picture?type=square\') WHEN 3 THEN (SELECT pic FROM twitter WHERE twid = users.twuser) END) AS pic FROM (SELECT * FROM msg ORDER BY timestamp DESC) AS msg, users WHERE `users`.`id` = `from` AND (`from` = '.$user->id().' OR `to` = '.$user->id().') GROUP BY th ORDER BY timestamp DESC LIMIT '.$limit);
-	
 	$msg = $db->query('
 		SELECT
 			msg.id, msg.tid AS th, msg.usid, msg.msg, msg.timestamp,
