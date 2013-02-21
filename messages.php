@@ -143,7 +143,7 @@ include('lib/content/top.php');
 			
 			// Display message
     		echo '<li id="'.$a->th.'">
-    			  	<a href="#showMsg" data-com="'.$a->com.'" data-ident='.$fromIdent.'" class="header '.$unread.'" rel="">
+    			  	<a href="#showMsg" data-com="'.$a->com.'" data-ident="'.$fromIdent.'" class="header '.$unread.'" rel="">
     			  		<span class="name">'.$name.'</span> <span class="count">('.$a->total.')</span>
     			  		<span class="extract">'.$extract.'</span>
     			  		<span class="timestamp">'.dispTimeHour($a->timestamp).'</span>
@@ -169,8 +169,7 @@ include('lib/content/top.php');
     <div class="options">
     	<span class="replyPrivate">
         <label title="Comentar de manera Anonima" class="tooltip hoverLabel">
-            <input type="radio" name="ident" value="0" checked="checked" style="display:none !important;" />Anónimo</label></span>
-        <label title="Comentar como <?php echo $user->g('name'); ?>" class="tooltip">
+            <input type="radio" name="ident" value="0" checked="checked" style="display:none !important;" />Anónimo</label></span><label title="Comentar como <?php echo $user->g('name'); ?>" class="tooltip">
             <input type="radio" name="ident" value="1" style="display:none !important;" /><?php echo $user->g('name'); ?></label>
         <div style="position:absolute; font-size:12px; top:3px; right:3px;">
         	<input name="save" type="submit" value="Enviar" class="btn btnBlue" />
