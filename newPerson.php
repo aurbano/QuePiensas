@@ -42,6 +42,7 @@ include('lib/content/top.php');
         <div class="greyBox" id="opina">
             <form action="/ajax.php" id="addCommentForm" method="post" name="addCommentForm">
                 <input name="pid" id="pid" type="hidden" value="0" />
+                <input name="type" type="hidden" value="saveComment" />
                 <input name="pname" id="pname" type="hidden" value="<?php echo $person; ?>" />
                 <div class="errorMsg" style="display:none" id="saveMsgError"></div>
                 <label for="msg">Comentario:</label><textarea name="msg" id="msg" cols="6" rows="5" wrap="virtual" class="formNormal"></textarea>
