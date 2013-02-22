@@ -226,7 +226,8 @@ switch($type){
 			if($comment->ident == 1){
 				$usid = $comment->usid;
 				$uname = $comment->name;
-				$color = colorID($comment->usid);
+				$color = '';
+				if($comment->pic == 'http://img.quepiensas.es/noimage.png') $color = colorID($comment->usid);
 			}
 			echo '<msg id="'.$comment->id.'" type="comment" color="'.$color.'" curUser="'.$curUser.'" src="'.$comment->pic.'" pname="'.$comment->pname.'" pid="'.$comment->pid.'" usid="'.$usid.'" uname="'.$uname.'">
 					<timestamp>'.dispTimeHour($comment->timestamp).'</timestamp>
@@ -284,7 +285,8 @@ switch($type){
 				$senderIdent = $fromIdent;
 				if($a->usid == $a->to) $senderIdent = $toIdent;
 				// Color
-				$color = colorID($a->usid);
+				$color = '';
+				if($a->pic == 'http://img.quepiensas.es/noimage.png') $color = colorID($a->usid);
 				// Check ident
 				if($senderIdent==0){
 					$color = '#ccc';
