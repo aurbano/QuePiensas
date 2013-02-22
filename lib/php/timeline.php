@@ -183,6 +183,7 @@ class Timeline{
 						comments.ident,
 						comments.state,
 						comments.spam,
+						(SELECT rid FROM replies WHERE id = comments.id) AS rid,
 						users.name,
 						users.id AS usid,
 						(CASE users.usePic

@@ -40,10 +40,9 @@ include('lib/content/top.php');
 /* --------------------------------------------- */
 
 ?>
-<h1 style="border-bottom:#7dc3ff 1px solid;">Nuevo</h1>
+<h1 style="border-bottom:#7dc3ff 1px solid;">Interacciones</h1>
 <div class="paddedContent">
-	<p>Respuestas a tus comentarios</p>
-    <?php
+	<?php
     	$tl = new Timeline(4,$user->id());
 		$tl->displayTimeline();
 	?>
