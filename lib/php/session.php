@@ -66,10 +66,10 @@ class Session{
 		
 		$this->home = substr(dirname(__FILE__),0,38).'/';
 		if($this->maintenance){
-			$_GET['err'] = 666;
-			include($this->home.'errorDoc.php');
+			include($this->home.'lib/content/maintenance.php');
 			die();  
 		}
+		/*
 		//--------------- BETA PRIVADA ------------------
 		if(!$this->logged()){
 			// Comprobamos que no este en alguna seccion permitida
@@ -88,7 +88,7 @@ class Session{
 					die();
 				}
 			}
-		}
+		}*/
 		//-----------------------------------------------
 		
 		/* Debugger */
