@@ -46,11 +46,21 @@ include('lib/content/top.php');
                 <div class="errorMsg" style="display:none" id="saveMsgError"></div>
                 <label for="msg">Comentario:</label><textarea name="msg" id="msg" cols="6" rows="5" wrap="virtual" class="formNormal"></textarea>
                 <div style="margin:10px 10px 0 10px">
+                   <?php if(!$sess->logged()){ ?>
                     <label>Nombre:
                         <input name="name" id="name" type="text" value="<?php if($user->g('name')){ echo ucwords($user->g('name')); }else{ echo 'Anonimo'; } ?>" class="formNormal" /></label>
                     <label class="private">Email (Privado)
                     <input name="email" id="email" type="text" value="<?php if($user->g('email')){ echo $user->g('email'); }else{ echo 'Email...'; } ?>" class="formNormal" /></label>
-                  <input name="save" id="saveBtn" type="submit" value="Publicar" class="btn btnBlue" style="font-size:18px; padding:10px; position:absolute; bottom:15px; right:20px;" />
+                    <?php }else{ ?>
+                    <fieldset style="margin-right:100px;">
+                    	<legend>Comentar como:</legend>
+                        <ul style="list-style:none; margin:0; padding:0;">
+                        	<li><label><input type="radio" name="ident" value="0" checked="checked" style="display:inline-block;"/> Anónimo</label></li>
+                            <li><label style="color:rgb(17, 123, 221)"><input type="radio" name="ident" value="1" style="display:inline-block;"/> <?php echo $user->g('name'); ?></label></li>
+                        </ul>
+                     </fieldset>
+                    <?php } ?>
+                    <input name="save" id="saveBtn" type="submit" value="Publicar" class="btn btnBlue" style="font-size:18px; padding:10px; position:absolute; bottom:<?php if($sess->logged()){ echo 30; }else{ echo 15; } ?>px; right:20px;" />
                     <div style="background:#f5f5f5 url(http://static.quepiensas.es/img/body/greyBox-topFade.gif) 0 9px repeat-x;bottom: 15px;height: 50px;position: absolute;right: 15px;text-align: center;width: 100px; display:none" id="loader"><img src="http://static.quepiensas.es/img/load/transparent-circle.gif" alt="Cargando..." width="32" height="32" border="0" style="position:absolute; top:12px; left:30px;" /></div>
                 </div>
             </form>
