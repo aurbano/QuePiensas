@@ -294,8 +294,10 @@ switch($type){
 					$a->usid = 0;
 				}
 				echo '<msg id="'.$a->id.'" color="'.$color.'" type="msg" usid="'.$a->usid.'" curUser="'.$curUser.'" user="'.$a->name.'" src="'.$a->pic.'"><timestamp>'.dispTimeHour($a->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(decodePM(stripslashes($a->msg)))).']]></content></msg>';
-				inResponse($a->com);
+				// Comment for in reply to:
+				if($a->com > 0) $com = $a->com;
 			}
+			if($com>0) inResponse($com);
 		}
 		die('</messages>');
 		break;
@@ -303,17 +305,39 @@ switch($type){
 		if(!$sess->logged()) finish('Fail');
 		if(!isset($_POST['th']) || !$sess->valid($_POST['th'],'int') || $_POST['th']<1) finish('Por favor intentalo mas tarde');
 		$thread = addslashes($sess->valid($_POST['th'],'int'));
+		// Ident
+		$ident = 0;
+		if($_POST['ident']==1) $ident = 1;
 		// Comprobamos que el usuario tiene derecho a responder
 		// El primer mensaje del thread debe ser de o para este usuario:
 		$db = $sess->db();
-		$info = $db->queryUniqueObject('SELECT `to`, `from` FROM `msgThread` WHERE `tid` = \''.$thread.'\' AND (`to` = \''.$user->id().'\' OR `from` = \''.$user->id().'\')');
+		$info = $db->queryUniqueObject('SELECT `to`, `from`, `ident` FROM `msgThread` WHERE `tid` = \''.$thread.'\' AND (`to` = \''.$user->id().'\' OR `from` = \''.$user->id().'\')');
 		if(!$info) finish('jajaja, NO.');
 		// ID del destinatario:
 		$to = $info->to;
 		if($to == $user->id()) $to = $info->from;
+		// Build the new ident code, first check which bit to edit
+		$bit = 1;
+		if($user->id() == $info->to){
+			$bit = 0;
+		}
+		// Get decimal code of ident
+		$oldCode = $info->ident;
+		$code = decbin($info->ident);
+		if($code[$bit]==1 && $ident == 0)
+			finish('Una vez que das la cara no puedes esconderla.');
+		$code[$bit] = $ident;
+		// Back to binary
+		$code = bindec($code);
+		// Color
+		$color = '';
+		if($code[$bit]==1 && $user->pic()=='http://img.quepiensas.es/noimage.png'){
+			include('lib/php/style.php');
+			$color = colorID($user->id());
+		}
 		// A responder :D
-		if($pm = $user->sendPM($to,$_POST['msg'],$thread)){
-			finish('',true,'/do/messages',array('time'=>dispTimeHour(time()),'name'=>$user->g('name'),'pic'=>$user->pic(),'usid'=>$user->id(),'id'=>$pm,'msg'=>$_POST['msg']));
+		if($pm = $user->sendPM($to,$_POST['msg'],$thread,$code)){
+			finish('',true,'/do/messages',array('time'=>dispTimeHour(time()),'name'=>$user->g('name'),'pic'=>$user->pic(),'usid'=>$user->id(),'id'=>$pm,'msg'=>$_POST['msg'],'color'=>$color));
 		}else{
 			finish('No se pudo enviar el mensaje');
 		}

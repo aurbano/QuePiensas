@@ -418,8 +418,12 @@ class User{
 		$msg = clean($_POST['msg']); // De style.php
 		if(!$sess->valid($ident,'int')) $ident = 0;
 		if(!$sess->valid($com,'int') || $com < 0) $com = 0;
-		// Old system
-		//if($db->execute('INSERT INTO `msg` (`com`, `thread`,`ident`,`from`,`to`,`msg`,`status`,`timestamp`) VALUES (\''.$com.'\', '.$thread.',\''.$ident.'\',\''.$this->id.'\',\''.$to.'\',\''.$msg.'\',\'0\',\''.time().'\');'))
+		// We might have to update the ident code, in already existing threads
+		// so we should do it here
+		if($thread > 0 && $sess->valid($ident,'int') && $ident > 0){
+			// Update thread
+			$db->execute('UPDATE `msgThread` SET `ident` = '.$ident.' WHERE `tid` = '.$thread.' LIMIT 1');
+		}
 		if($thread=='NULL'){
 			// Hace falta crear un nuevo thread para los mensajes
 			$db->execute('INSERT INTO `msgThread` (`from`, `to`, `ident`, `status`, `com`) VALUES (\''.$this->id.'\',\''.$to.'\',\''.$ident.'\',\'0\',\''.$com.'\')');
