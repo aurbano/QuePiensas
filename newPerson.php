@@ -56,8 +56,8 @@ include('lib/content/top.php');
                     <fieldset style="margin-right:100px;">
                     	<legend>Comentar como:</legend>
                         <ul style="list-style:none; margin:0; padding:0;">
-                        	<li><label><input type="radio" name="ident" value="0" checked="checked" style="display:inline-block;"/> Anónimo</label></li>
-                            <li><label style="color:rgb(17, 123, 221)"><input type="radio" name="ident" value="1" style="display:inline-block;"/> <?php echo $user->g('name'); ?></label></li>
+                        	<li><label><input type="radio" name="ident" value="0" style="display:inline-block;"/> Anónimo</label></li>
+                            <li><label style="color:rgb(17, 123, 221)"><input type="radio" checked="checked" name="ident" value="1" style="display:inline-block;"/> <?php echo $user->g('name'); ?></label></li>
                         </ul>
                      </fieldset>
                     <?php } ?>
