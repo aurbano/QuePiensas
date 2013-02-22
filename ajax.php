@@ -238,7 +238,7 @@ switch($type){
 		// Pues ale, sacar mensajes
 		$msg = $db->query('
 			SELECT
-				msg.`id`, msg.usid, msgThread.`to`, msgThread.`from`, msgThread.`com`, msg.`msg`, msg.`timestamp`, msgThread.`status`, users.name,
+				msg.`id`, msg.usid, msgThread.`to`, msgThread.`from`, msgThread.`com`, msg.`msg`, msg.`timestamp`, msgThread.`status`, users.name, msgThread.ident,
 				(CASE users.usePic
 					WHEN 0 THEN \'http://img.quepiensas.es/noimage.png\'
 					WHEN 1 THEN CONCAT(\'http://img.quepiensas.es/\',users.id,\'-square.png\')
@@ -291,7 +291,7 @@ switch($type){
 					$a->pic = 'http://img.quepiensas.es/noimage.png';
 					$a->name = 'Él';
 					if($usid == $a->usid) $a->name = 'Tú';
-					$a->usid = 0;
+					$a->usid = 0; // If usid is 0 AJAX assumes ident = 0 
 				}
 				echo '<msg id="'.$a->id.'" color="'.$color.'" type="msg" usid="'.$a->usid.'" curUser="'.$curUser.'" user="'.$a->name.'" src="'.$a->pic.'"><timestamp>'.dispTimeHour($a->timestamp).'</timestamp><content><![CDATA['.nl2br(parse(decodePM(stripslashes($a->msg)))).']]></content></msg>';
 				// Comment for in reply to:
