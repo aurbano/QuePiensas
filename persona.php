@@ -165,8 +165,8 @@ include('lib/content/top.php');
                     <fieldset>
                     	<legend>Comentar como:</legend>
                         <ul>
-                        	<li><label><input type="radio" name="ident" value="0" checked="checked" /> Anónimo</label></li>
-                            <li><label><input type="radio" name="ident" value="1" /> <?php echo $user->g('name'); ?></label></li>
+                        	<li><label><input type="radio" name="ident" value="0" /> Anónimo</label></li>
+                            <li><label><input type="radio" name="ident" value="1" checked="checked"/> <?php echo $user->g('name'); ?></label></li>
                         </ul>
                      </fieldset>
                     <?php } ?>
