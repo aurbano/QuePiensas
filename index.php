@@ -16,6 +16,8 @@ if($sess->logged()){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Que piensas de mi?</title>
+<meta name="description" content="Descubre lo que la gente piensa de ti y publica tus opiniones sobre tus amigos" />
+<meta name="keywords" content="piensas, opinas, opinion, comentario, amigos, red, social, network, española" />
 <link rel="shortcut icon" href="http://static.quepiensas.es/favicon.ico" />
 <style type="text/css" media="all">
 body{

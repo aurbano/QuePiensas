@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $content['title']; ?> | Que Piensas</title>
+<meta name="keywords" content="opina, comentarios, opinion, <?php echo str_replace(' ',', ',strtolower($content['title'])); ?>" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="stylesheet" media="all" href="http://static.quepiensas.es/common.css" />
 <link rel="stylesheet" media="all" href="http://static.quepiensas.es/tipsy.css" />
