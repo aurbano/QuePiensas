@@ -24,9 +24,6 @@ include('lib/php/twitter.php');
  * @package Session
  */
 class Session{
-	/** The page url current being viewed
-	 */
-	var $url; 
 	/** Last recorded site page viewed
 	 */
 	var $referrer;
@@ -45,7 +42,10 @@ class Session{
 	/** Database handle
 	 */
 	var $dbH;
-   /** Put entire site in maintenance mode
+	/** Block bots and display CAPTCHA page
+	 */
+	var $captcha = false;
+	/** Put entire site in maintenance mode
 	 */
 	var $maintenance = false;
    
@@ -64,9 +64,17 @@ class Session{
 		$file = explode('.',$_SERVER["SCRIPT_NAME"]);
 		$this->curPage = $this->clean($file[0]);
 		
+		$this->captcha = $_SESSION['captcha'];
+		
 		$this->home = substr(dirname(__FILE__),0,38).'/';
+		// Maintenance
 		if($this->maintenance){
 			include($this->home.'lib/content/maintenance.php');
+			die();  
+		}
+		// Display CAPTCHA
+		if($this->captcha){
+			include($this->home.'stop.php');
 			die();  
 		}
 		/*
@@ -457,6 +465,21 @@ class Session{
 			// y que queden vinculados a una ip
 		}		
 		return $user;
+	}
+	
+	/**
+	 * Block current user and display CAPTCHA page
+	 */
+	function blockWithCAPTCHA(){
+		$this->captcha = $_SESSION['captcha'] = true;
+	}
+	
+	/**
+	 * Unblock current user and display CAPTCHA page
+	 */
+	function unblockWithCAPTCHA(){
+		$this->captcha = false;
+		unset($_SESSION['captcha']);
 	}
 };
 
