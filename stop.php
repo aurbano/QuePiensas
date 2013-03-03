@@ -1,5 +1,7 @@
 <?php
-include('lib/php/session.php');
+if(!($sess instanceof Session)){
+	include_once('lib/php/session.php');
+}
 
 $content['title'] = 'Alto';
 
@@ -17,6 +19,7 @@ if($_POST["recaptcha_response_field"] && $_POST["recaptcha_challenge_field"]){
 	$resp = recaptcha_check_answer ($privatekey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
 	if($resp->is_valid){
 		// Remove bot block
+		$sess->unblockWithCAPTCHA();
 		$next = '/';
 		if(isset($_POST['next']) && $_POST['next']!=='/do/stop' && strlen($_POST['next'])>0) $next = $_POST['next'];
 		header('Location: '.$next);
