@@ -158,9 +158,9 @@ include('lib/content/top.php');
                 	<div style="position:relative">
                 	<?php if(!$sess->logged()){ ?>
                     <label>Nombre:<br/>
-                        <input name="name" id="name" type="text" value="<?php if($user->g('name')){ echo ucwords($user->g('name')); }else{ echo 'Anonimo'; } ?>" class="formNormal" /></label>
+                        <input name="name" id="name" type="text" value="<?php if($user->g('name')){ echo ucwords($user->g('name')); }else{ echo 'Anonimo'; } ?>" placeholder="Nombre..." class="formNormal" /></label>
                     <label class="private">Email (Privado)<br/>
-                    <input name="email" id="email" type="text" value="<?php if($user->g('email')){ echo $user->g('email'); }else{ echo 'Email...'; } ?>" class="formNormal" /></label>
+                    <input name="email" id="email" type="text" value="<?php echo $user->g('email');  ?>" placeholder="Email..." class="formNormal" /></label>
                     <?php }else{ ?>
                     <fieldset>
                     	<legend>Comentar como:</legend>
