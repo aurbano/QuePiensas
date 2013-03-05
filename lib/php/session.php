@@ -73,7 +73,7 @@ class Session{
 			die();  
 		}
 		// Display CAPTCHA
-		if($this->captcha){
+		if($this->captcha && $this->curPage !== 'stop'){
 			include($this->home.'stop.php');
 			die();  
 		}
