@@ -358,6 +358,7 @@ class Session{
 				return $this->loginUser($login,$email);
 			}
 		}
+		$_SESSION['loginTries']++;
 		$this->debug('Login failed');
 		return false;
 	}

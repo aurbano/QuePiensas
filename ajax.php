@@ -134,6 +134,8 @@ switch($type){
 		// If cookie qp is already set, and is valid, user is logged in:
 		$sess->debug('AJAX: Case login, email and pass OK');
 		if($sess->logged()) finish('Ya has iniciado sesion');
+		// Check captcha block
+		if($_SESSION['captcha']) finish('reload');
 		if($sess->login($_POST['email'],$_POST['pass'])){
 			$sess->debug('Login ok');
 			finish('',true);
