@@ -260,12 +260,12 @@ $(document).ready(function(){
 	$('#loginForm').submit(function(event){
 		event.preventDefault();
 		if($('#email').val()=='' || $('#pass').val()==''){
-			$('#saveMsgError').text('Debes rellenar todos los campos').show();	
+			$('#loginMsgError').text('Debes rellenar todos los campos').show();	
 		}else{
 			// Un poco de diseño jaja
-			$('#saveMsgError').text('').hide();	
+			$('#loginMsgError').text('').hide();	
 			$('#loginBtn').attr('disabled','disabled');
-			$('.hideOnAction').hide().after('<div style="margin-top: 55px; text-align: center; color:#3B86C5"><img src="http://static.quepiensas.es/img/load/transparent-circle-drip.gif" alt="Cargando..." /><p>Iniciando sesión</p></div>');
+			$('.hideOnAction').hide().after('<div style="margin-top: 55px; text-align: center; color:#3B86C5" id="loginLoaderDiv"><img src="http://static.quepiensas.es/img/load/transparent-circle-drip.gif" alt="Cargando..." /><p>Iniciando sesión</p></div>');
 			// Vamos a empezar a enviar esto :)
 			$.post("/ajax.php", { type:'login', ajax:'true', email:$('#email').val(), pass:$('#pass').val() },
 				  function(data){
@@ -273,18 +273,20 @@ $(document).ready(function(){
 							if(data.done == 'false'){
 								// No se pudo guardar:
 								if(data.msg.length>0){
-									$('#saveMsgError').html(stripslashes(data.msg)).show();
+									$('#loginMsgError').html(stripslashes(data.msg)).show();
 								}else{
-									$('#saveMsgError').html('No ha sido posible guardar el mensaje, por favor int&eacute;ntalo m&aacute;s tarde.').show();
+									$('#loginMsgError').html('No ha sido posible guardar el mensaje, por favor int&eacute;ntalo m&aacute;s tarde.').show();
 								}
 								$('#loginBtn').removeAttr('disabled');
+								$('.hideOnAction').show();
+								$('#loginLoaderDiv').remove();
 							}else{
-								$('#loginForm').remove();
-								$('.paddedContent').html('<div style="text-align:center">Sesión iniciada: Abriendo perfil...</div>');
 								window.location = '/do/profile';
 							}
 						}else{
-							$('#saveMsgError').html('Ha ocurrido un error, intentelo de nuevo mas tarde').show();
+							$('#loginMsgError').html('Ha ocurrido un error, intentelo de nuevo mas tarde').show();
+							$('.hideOnAction').show();
+							$('#loginLoaderDiv').remove();
 						}
 				  }, "json");
 		}
@@ -326,7 +328,7 @@ $(document).ready(function(){
 				</p>
 				<hr style="border-bottom:none;" />
 				<form action="/do/ajax" name="loginForm" id="loginForm" method="post" enctype="multipart/form-data">
-					<div id="saveMsgError" class="errorMsg" style="display:none;"></div>
+					<div id="loginMsgError" class="errorMsg" style="display:none;"></div>
 					<label>Email:
 					<input type="text" name="email" id="email" class="loginInput" value="<?php echo $user->g('email'); ?>" /></label></label>
 					<label>Contraseña: <a style="float:right;" href="/do/forgot-pass">¿Olvidate tu contraseña?</a>
