@@ -77,6 +77,13 @@ class Session{
 			include($this->home.'stop.php');
 			die();  
 		}
+		if(!$this->logged()){
+			// Stored failed logins in order to
+			// display CAPTCHA after several failed logins
+			if(!isset($_SESSION['loginTries'])) $_SESSION['loginTries'] = 0;
+			else if($_SESSION['loginTries']==0) $_SESSION['loginTries'] = 1;
+		}
+		
 		/*
 		//--------------- BETA PRIVADA ------------------
 		if(!$this->logged()){
@@ -335,6 +342,12 @@ class Session{
 		if(!($auth instanceof Auth)){
 			$this->debug('Starting auth');
 			$auth = new Auth;	
+		}
+		// Check login tries
+		if($_SESSION['loginTries']<1 || $_SESSION['loginTries']>3){
+			// Too many logins or no logins at all (no cookies)
+			$this->blockWithCAPTCHA();
+			return false;
 		}
 		// User & Pass are validated in Auth
 		$login = $auth->login($email,$pass);
