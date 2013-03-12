@@ -171,18 +171,23 @@ switch($type){
 		break;
 	case 'follow':
 		if(!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id']<1) finish('Por favor intentalo mas tarde');
-		if($db->queryUniqueValue('SELECT follow FROM relations WHERE pid='.$_POST['id'].' AND usid='.$user->id())!==false){
-			$db->execute('UPDATE relations SET follow=1 WHERE pid='.$_POST['id'].' AND usid='.$user->id());
-		}else{
-			$db->execute('INSERT INTO relations (pid,usid,relation, follow, timestamp) VALUES ('.$_POST['id'].','.$user->id().',2,1,'.time().')');
-		}
+		if(!$sess->logged()) finish('Debes iniciar sesión para seguir');
+		$db = $sess->db();
+		$db->execute('
+			INSERT INTO
+				table (pid,usid,relation,follow,timestamp) 
+			VALUES
+				('.addslashes($_POST['id']).','.$user->id().',2,1,'.time().')
+			ON DUPLICATE KEY
+			UPDATE
+				follow = 1;');
 		finish('',true);
 		break;
 	case 'unfollow':
+		if(!$sess->logged()) finish('Debes iniciar sesión para dejar de seguir');
 		if(!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id']<1) finish('Por favor intentalo mas tarde');
-		else{
-			$db->execute('UPDATE relations SET follow=0 WHERE pid='.$_POST['id'].' AND usid='.$user->id());
-		}
+		$db = $sess->db();
+		$db->execute('UPDATE relations SET follow=0 WHERE pid='.addslashes($_POST['id']).' AND usid='.$user->id());
 		finish('',true);
 		break;
 	case 'getMsg':
