@@ -118,6 +118,13 @@ $(document).ready(function(){
 	$('#loginBox .externalLogin').click(function(event){
 		event.preventDefault();
 		// Lo de stats es para desactivar el gif en el perfil
+		
+		if($(this).attr('href')=='#error'){
+			alert('Ha ocurrido un error, vamos a reiniciar tu sesión');
+			window.location = '/do/reset';
+			return;
+		}
+		
 		if(!$(this).hasClass('stats')){
 			$('.hideOnAction').hide().after('<div style="margin-top: 55px; text-align: center; color:#3B86C5"><img src="http://static.quepiensas.es/img/load/transparent-circle-drip.gif" alt="Cargando..." /><p>Conectando</p></div>');
 		}

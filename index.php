@@ -246,6 +246,11 @@ $(document).ready(function(){
 	});
 	$('.externalLogin').click(function(event){
 		event.preventDefault();
+		if($(this).attr('href')=='#error'){
+			alert('Ha ocurrido un error, vamos a reiniciar tu sesión');
+			window.location = '/do/reset';
+			return;
+		}
 		$('.hideOnAction').hide().after('<div style="margin-top: 55px; text-align: center; color:#3B86C5"><img src="http://static.quepiensas.es/img/load/transparent-circle-drip.gif" alt="Cargando..." /><p>Conectando</p></div>');
 		var url = $(this).attr('href');
 		var oauthWindow = window.open(url,'Conectando',"height=500,width=700,scrollTo,resizable=0,scrollbars=0,location=0");
