@@ -460,7 +460,7 @@ class Session{
 	 * @return boolean Whether the user is logged in
 	 */
 	function logged(){
-		if(isset($_SESSION['logged'])) return true;
+		if(!isset($_SESSION['logged'])) return false;
 		return $_SESSION['logged'];
 	}
 	/**

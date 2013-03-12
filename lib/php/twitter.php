@@ -109,7 +109,7 @@ class Twitter{
 		$attrs = array('name','pic_normal','pic_bigger','pic','oauth_token','oauth_secret');
 		for($i=0;$i<count($attrs);$i++){
 			if(!isset($_SESSION['twitter'][$attrs[$i]])) continue; 
-			if(strlen($_SESSION['twitter'][$attrs[$i]])>0) $this->$attrs[$i] = $_SESSION['twitter'][$attrs[$i]];	
+			else if(strlen($_SESSION['twitter'][$attrs[$i]])>0) $this->$attrs[$i] = $_SESSION['twitter'][$attrs[$i]];	
 		}
 	}
 	

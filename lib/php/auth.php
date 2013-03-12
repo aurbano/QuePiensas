@@ -120,22 +120,36 @@ class Auth{
 	 * @param int Twitter account ID
 	 * @regurn boolean Whether the account was created
 	 */
-	function addUser($name,$email,$pass=0,$fbuser='NULL',$twuser='NULL'){
+	function addUser($name,$email='NULL',$pass=0,$fbuser='NULL',$twuser='NULL'){
 		global $db, $sess;
 		if(!($sess instanceof Session)) return false;
 		if(!($db instanceof DB)) $db = $sess->db();
 		if(strlen($pass)>0 && $pass !== '0') $pass = sha1(PRE.$pass.POST);
 		if($fbuser=='0' || $fbuser < 1) $fbuser = 'NULL';
 		if($twuser=='0' || $twuser < 1) $twuser = 'NULL';
-		$reg = $db->execute('INSERT INTO `users` (`id`, `fbuser`, `twuser`, `name`, `email`, `pass`, `ltime`, `jtime`, `ip`) VALUES (NULL, '.$fbuser.', '.$twuser.', \''.$name.'\', \''.$email.'\', UNHEX(\''.$pass.'\'), \''.time().'\', \''.time().'\', INET_ATON(\''.ip().'\'));');
+		if(!$email || $email == '') $email = 'NULL';
+		$reg = $db->execute('INSERT INTO `users` (`id`, `fbuser`, `twuser`, `name`, `email`, `pass`, `ltime`, `jtime`, `ip`) VALUES (NULL, '.$fbuser.', '.$twuser.', \''.$name.'\', '.$email.', UNHEX(\''.$pass.'\'), \''.time().'\', \''.time().'\', INET_ATON(\''.ip().'\'));');
 		$usid = $db->lastInsertedId();
 		if($usid>0){
 			// Send welcome PM
-			$msg = "{[@101@]}";
-			$db->execute('INSERT INTO `msg` (`thread`,`from`,`to`,`msg`,`status`,`timestamp`) VALUES (NULL,\'1\',\''.$usid.'\',\''.$msg.'\',\'0\',\''.time().'\');');
+			$this->sendWelcomePM($usid);
 		}
 		if($reg) return $usid;
 		return false;
+	}
+	
+	/**
+	 * Send welcome PM
+	 * @param int User ID
+	 * @param string New password
+	 * @return boolean Whether the password was changed
+	 */
+	function sendWelcomePM($usid){
+		$db->execute('INSERT INTO `msgThread` (`from`, `to`, `ident`, `status`, `com`) VALUES (1,\''.$usid.'\',3,\'0\',0)');
+		$thread = $db->lastInsertedId();
+		$msg = "{[@101@]}";
+		$db->execute('INSERT INTO `msg` (`tid`,`usid`,`msg`,`timestamp`) VALUES ('.$thread.',1,\''.$msg.'\',\''.time().'\');');
+		return true;
 	}
 	
 	/**
