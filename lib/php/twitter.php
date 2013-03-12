@@ -107,7 +107,8 @@ class Twitter{
 		// To ensure session integrity, it depends on fbid
 		if(!isset($_SESSION['twitter'])) return false;
 		$attrs = array('name','pic_normal','pic_bigger','pic','oauth_token','oauth_secret');
-		for($i=0;$i<count($attrs);$i++){ 
+		for($i=0;$i<count($attrs);$i++){
+			if(!isset($_SESSION['twitter'][$attrs[$i]])) continue; 
 			if(strlen($_SESSION['twitter'][$attrs[$i]])>0) $this->$attrs[$i] = $_SESSION['twitter'][$attrs[$i]];	
 		}
 	}

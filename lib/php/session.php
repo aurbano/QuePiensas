@@ -277,7 +277,7 @@ class Session{
 	 */
 	function debug($msg,$display=false,$hidden=true,$die=false){
 		global $user;
-		if(!$_SESSION['debug']) return false;
+		if(!isset($_SESSION['debug']) || !$_SESSION['debug']) return false;
 		global $db;
 		if(!($db instanceof DB)) $db = $this->db();
 		$debugData = debug_backtrace();
@@ -460,6 +460,7 @@ class Session{
 	 * @return boolean Whether the user is logged in
 	 */
 	function logged(){
+		if(isset($_SESSION['logged'])) return true;
 		return $_SESSION['logged'];
 	}
 	/**
