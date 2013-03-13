@@ -12,11 +12,18 @@ if($_GET['oauth_token'] && $_GET['oauth_verifier'] && !$sess->logged()){
 		unset($tw);
 		$tw = new Twitter();
 		// Object should have now loaded with tokens
+		// it takes them from the session variables
 		$sess->debug('Logged twitter user: '.$tw->twid);
 		// Check if user is already in:
 		$usid = $tw->checkTWuser($tw->twid);
 		// Update Twitter data in DB
 		$tw->addTWuser($token->oauth_token,$token->oauth_token_secret);
+		if(!$tw->twid){
+			//$sess->debug('No hay ID',true,false,true);
+			echo 'No va. ostia';
+			die();
+			$sess->set_msg('No se ha podido iniciar sesión en Twitter, por favor inténtalo más tarde.');
+		}
 		if(!$usid){
 			// Register user:
 			$usid = $auth->addUser($tw->name(),false,false,0,$tw->twid);
@@ -28,11 +35,6 @@ if($_GET['oauth_token'] && $_GET['oauth_verifier'] && !$sess->logged()){
 		if(is_numeric($usid) && $usid >0) $sess->loginUser($usid);
 		else $sess->set_msg('No ha sido posible iniciar sesion con Twitter');
 		// Set bio if doesn't have one yet
-		if(strlen($user->g('bio'))<1){
-			$bio = $tw->getFromTwitter('description');
-			// 	Asignamos la bio de twitter
-			if(strlen($bio)>0) $user->set('bio',$bio,true);
-		}
 		$user->set('twuser',$tw->twid);
 	}catch(Exception $e){
 		die($e->getMessage());
@@ -65,6 +67,7 @@ if($_GET['oauth_token'] && $_GET['oauth_verifier'] && !$sess->logged()){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Que Piensas</title>
+<link rel="stylesheet" media="all" type="text/css" href="http://static.quepiensas.es/common.css" />
 <script type="text/javascript" language="javascript">
 <!--
 window.close();

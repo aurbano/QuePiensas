@@ -2,7 +2,7 @@
 /**
  * Main file, should be included everywhere where Users are tracked
  */
-ini_set('display_errors','Off');
+ini_set('display_errors','On');
 session_start();
 date_default_timezone_set('Europe/Madrid');
 
@@ -280,7 +280,7 @@ class Session{
 		if(!isset($_SESSION['debug']) || !$_SESSION['debug']) return false;
 		global $db;
 		if(!($db instanceof DB)) $db = $this->db();
-		$debugData = debug_backtrace();
+		$debugData = debug_backtrace(true,3);
 		$levels = sizeof($debugData);
 		for($i=0;$i<$levels;$i++){
 			$data = $debugData[$i];

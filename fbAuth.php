@@ -38,6 +38,7 @@ if(!$sess->logged() && $fb->logged()){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Que Piensas</title>
+<link rel="stylesheet" media="all" type="text/css" href="http://static.quepiensas.es/common.css" />
 <script type="text/javascript" language="javascript">
 <!--
 window.close();

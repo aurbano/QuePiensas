@@ -125,8 +125,8 @@ class Auth{
 		if(!($sess instanceof Session)) return false;
 		if(!($db instanceof DB)) $db = $sess->db();
 		if(strlen($pass)>0 && $pass !== '0') $pass = sha1(PRE.$pass.POST);
-		if($fbuser=='0' || $fbuser < 1) $fbuser = 'NULL';
-		if($twuser=='0' || $twuser < 1) $twuser = 'NULL';
+		if(!$fbuser || $fbuser=='0' || $fbuser < 1) $fbuser = 'NULL';
+		if(!$twuser || $twuser=='0' || $twuser < 1) $twuser = 'NULL';
 		if(!$email || $email == '') $email = 'NULL';
 		$reg = $db->execute('INSERT INTO `users` (`id`, `fbuser`, `twuser`, `name`, `email`, `pass`, `ltime`, `jtime`, `ip`) VALUES (NULL, '.$fbuser.', '.$twuser.', \''.$name.'\', '.$email.', UNHEX(\''.$pass.'\'), \''.time().'\', \''.time().'\', INET_ATON(\''.ip().'\'));');
 		$usid = $db->lastInsertedId();
@@ -145,6 +145,8 @@ class Auth{
 	 * @return boolean Whether the password was changed
 	 */
 	function sendWelcomePM($usid){
+		global $sess;
+		$db = $sess->db();
 		$db->execute('INSERT INTO `msgThread` (`from`, `to`, `ident`, `status`, `com`) VALUES (1,\''.$usid.'\',3,\'0\',0)');
 		$thread = $db->lastInsertedId();
 		$msg = "{[@101@]}";
