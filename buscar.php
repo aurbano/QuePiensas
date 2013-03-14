@@ -1,7 +1,7 @@
 <?php
 include('lib/php/session.php');
 // Procesa las busquedas y redirige a donde tiene que redirigir:
-if(!isset($_POST['search']) || strlen($_POST['search']) <= 4){
+if(!isset($_POST['search']) || strlen($_POST['search']) <= 4 || strtolower($_POST['search']) == 'nombre completo'){
 	header('Location: /');
 	die();
 }

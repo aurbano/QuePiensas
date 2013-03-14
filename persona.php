@@ -2,6 +2,7 @@
 include('lib/php/session.php');
 // Variables de la pagina
 if(!is_numeric($_GET['id'])){
+	$sess->set_msg('La persona que buscas no existe');
 	header('Location: /');
 	die('Wrong ID');
 }
@@ -17,7 +18,7 @@ include('lib/php/timeline.php');
 
 $persona = new Person($id);
 // Llamadas a la base de datos y comprobacion de si existe
-if(!$persona->getData()){ header('Location: /'); die('NO DATA'); }
+if(!$persona->getData()){ $sess->set_msg('La persona que buscas no existe'); header('Location: /'); die('NO DATA'); }
 
 // Anadimos una visita a la persona, solo si no es visita consecutiva
 if($_SESSION['current']!==$id){ $persona->addVisit(); }

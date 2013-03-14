@@ -128,6 +128,7 @@ class Auth{
 		if(!$fbuser || $fbuser=='0' || $fbuser < 1) $fbuser = 'NULL';
 		if(!$twuser || $twuser=='0' || $twuser < 1) $twuser = 'NULL';
 		if(!$email || $email == '') $email = 'NULL';
+		else $email = "'$email'";
 		$reg = $db->execute('INSERT INTO `users` (`id`, `fbuser`, `twuser`, `name`, `email`, `pass`, `ltime`, `jtime`, `ip`) VALUES (NULL, '.$fbuser.', '.$twuser.', \''.$name.'\', '.$email.', UNHEX(\''.$pass.'\'), \''.time().'\', \''.time().'\', INET_ATON(\''.ip().'\'));');
 		$usid = $db->lastInsertedId();
 		if($usid>0){

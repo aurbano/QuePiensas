@@ -8,8 +8,15 @@ if(!$sess->logged()){
 }
 
 // Lista de ID de comentarios que hace falta actualizar
+// Incluye menciones a tu persona, si las hay
 $db = $sess->db();
-$newMsgs = $db->query('SELECT comments.id FROM comments, replies WHERE comments.id = replies.id AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$user->id().') AND comments.state=0');
+if(!$user->fb()){
+	$newMsgs = $db->query('SELECT comments.id FROM comments, replies WHERE comments.id = replies.id AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$user->id().') AND comments.state=0');
+}else{
+	$newMsgs = $db->query('SELECT comments.id FROM comments, replies, personas WHERE personas.id = comments.pid AND personas.fbid = '.$user->fb().' AND comments.id = replies.id AND replies.rid IN (SELECT id FROM comments WHERE usid = '.$user->id().') AND comments.state=0');
+}
+
+
 if($db->numRows($newMsgs)>0){
 	// Create list
 	while($a = $db->fetchNextObject($newMsgs)){
