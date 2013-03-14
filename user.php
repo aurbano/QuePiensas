@@ -187,24 +187,7 @@ $loc = $user->getLoc($_GET['id'],$users->ip);
             <?php }else{ ?>
                 </div> 
             <?php } ?>
-            
-            <?php //TWITTER VINCULADO
-            if($users->twuser!=0) { ?> 
-                <a href="https://twitter.com/account/redirect_by_id?id=<? echo $users->twuser; ?>" title="Ver perfil de twitter" target="_new" 
-            <?php }else{ ?>
-                <div 
-            <?php } ?>
-                class="stats tooltip" style="width:196px; display:inline-block;">
-                <font id="twitter" class="vinc <?php if($users->twuser!=0) echo 'logged'; ?>"></font>
-                <?php if($users->twuser!=0) echo 'twitter vinculado';
-                else echo 'twitter no vinculado'; ?>
-            <?php if($users->twuser!=0) { ?> 
-                </a>
-            <?php }else{ ?>
-                </div>
-            <?php } ?>
-            
-       		<?php if($users->bio!='') { ?>
+            <?php if($users->bio!='') { ?>
             <fieldset><legend>Sobre mi</legend>
             <div style="color:#333;"><?php echo $users->bio; ?></div>
             </fieldset>

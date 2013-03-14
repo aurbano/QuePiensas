@@ -23,8 +23,6 @@ include('lib/content/top.php');
         <div style="text-align:center; margin:0 15px;">
            <a class="social fb externalLogin" href="<?php echo $fb->fbLogin(); ?>" title="Inicia sesión con Facebook">
             <img src="http://static.quepiensas.es/img/social/f.png" border="0" alt="f" /> Inicia sesión con Facebook</a>
-            <a class="social tw" href="<?php echo $tw->loginLink(); ?>" title="Inicia sesión con Twitter">
-            <img src="http://static.quepiensas.es/img/social/t.png" border="0" alt="t" /> Inicia sesión con Twitter</a>
         </div>
         <p align="center" style="font-size:10px; margin-top:5px; color:#777;">Al registrarte confirmas haber leido y aceptado nuestra <a href="/info/nota-legal">Nota Legal</a> y <a href="/info/privacidad">Politica de privacidad</a></p>
         <form action="/do/ajax" name="registerForm" id="registerForm" method="post" enctype="multipart/form-data">

@@ -133,8 +133,6 @@ $(document).ready(function(){
 	        <p>
 	            <a class="fb social externalLogin" href="<?php echo $fb->fbLogin(); ?>" title="Inicia sesión con Facebook">
 	            <img src="http://static.quepiensas.es/img/social/f.png" border="0" alt="f" /> Inicia sesión con Facebook</a>
-	            <a class="tw social externalLogin" href="<?php echo $tw->loginLink(); ?>" title="Inicia sesión con Twitter">
-	            <img src="http://static.quepiensas.es/img/social/t.png" border="0" alt="t" /> Inicia sesión con Twitter</a>
 	        </p>
 	        <hr style="border-bottom:none;" />
 	        <form action="/ajax.php" name="loginForm" id="loginForm" method="post" enctype="multipart/form-data">

@@ -211,11 +211,6 @@ include('lib/content/top.php');
                 <?php if($user->fb()) echo 'facebook vinculado';
                 else echo 'facebook no vinculado'; ?>
             </a>
-            <a class="stats <?php echo $twLoginClass; if($user->tw()){echo ' fBox ';} ?> tooltip" style="width:196px; display:inline-block;" href="<?php echo $twLogin; ?>" title="<?php echo $twTitle; ?> Twitter">
-                <font id="twitter" class="vinc <?php if($user->tw()) echo 'logged'; ?>"></font>
-                <?php if($user->tw()) echo 'twitter vinculado';
-                else echo 'twitter no vinculado'; ?>
-            </a>
             
             <div style="clear:both"></div>
             

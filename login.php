@@ -19,8 +19,6 @@ include('lib/content/top.php');
     <div style="text-align:center; margin:15px">
              <a class="social fb externalLogin" href="<?php echo $fb->fbLogin(); ?>" title="Inicia sesión con Facebook">
             <img src="http://static.quepiensas.es/img/social/f.png" border="0" alt="f" /> Inicia sesión con Facebook</a>
-            <a class="social tw" href="<?php echo $tw->loginLink(); ?>" title="Inicia sesión con Twitter">
-            <img src="http://static.quepiensas.es/img/social/t.png" border="0" alt="t" /> Inicia sesión con Twitter</a>
     </div>
     <form action="/do/ajax" name="loginForm" id="loginForm" method="post" enctype="multipart/form-data">
     <input name="ajax" id="ajax" type="hidden" value="false" />
