@@ -187,7 +187,7 @@
       */
     function debugAndDie($query){
 		// Generate a nice HTML message with an error description:
-		die(mysql_error());
+		/*
 		$debugData = debug_backtrace(true,4);
 		$levels = sizeof($debugData);
 		for($i=0;$i<$levels;$i++){
@@ -198,7 +198,7 @@
 				foreach($data['args'] as $value) $start .= $value.',';	
 			}
 			$start .= ')</p>';
-		}
+		}*/
 		global $user;
 		$userInfo = "<h3>User info:</h3><ul><li>ID: {$user->id()}</li></ul>";
 		$debugger = '<html><body><h1>Error SQL:</h1><p>'.$start.'</p><hr />'.$userInfo.'<hr />'.$this->debugQuery($query, "Error", true).'<p style=\"margin: 2px;\">'.mysql_error().'</p></div></body></html>';
