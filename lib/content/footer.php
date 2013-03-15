@@ -26,7 +26,7 @@ if($fullFooter){ ?>
         </div>
     <?php  } ?>
     </div> <!-- #mainWrap -->
-    <div id="footer">
+    <div id="footer" style="position:fixed; bottom:0; width:100%;">
         <div id="metaLink"><?php echo $links; ?> &bull; &copy; <a href="http://quepiensas.es">QuePiensas.es</a> (2009-2015) Todos los derechos reservados </div>
     </div>
 <?php } ?>

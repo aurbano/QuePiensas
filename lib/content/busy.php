@@ -10,18 +10,8 @@
 <script type="text/javascript" language="javascript">
 <!--
 $(document).ready(function(){
-	function footer(){
-		var offset = $('#footer').offset();
-		var footerHeight = $('#footer').height();
-		var height = window.innerHeight;
-		if(height-offset.top-footerHeight>0){
-			$('#footer').css({'position':'absolute', 'bottom':0, 'width':'100%'});	
-		}
-	}
-	footer()
-	$(window).resize(footer);
 	$('.tooltip').tipsy({gravity: $.fn.tipsy.autoNS, delayIn: 300});
-	});
+});
 -->
 </script>
 </head>
