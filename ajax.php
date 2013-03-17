@@ -362,14 +362,31 @@ switch($type){
 		if(!$sess->logged()) finish('Debes iniciar sesion');
 		// Buscamos privados no leidos:
 		$db = $sess->db();
+		/**
+			 * 	STATUS GUIDE
+			 *		0 -> Just sent, unread
+			 *		1 -> Read
+			 *		2 -> Deleted by sender, unread
+			 *		3 -> Deleted by sender, read
+			 *		4 -> Deleted by receiver
+			 */
 		$privs = $db->queryUniqueValue('
 			SELECT
 				COUNT(*)
 			FROM
-				msgThread
+				msg, msgThread
 			WHERE 
-				`to` = \''.$user->id().'\' 
-				AND (`status`=0 OR `status`=2)
+				msg.tid = msgThread.tid
+				AND msg.usid = msgThread.from
+				AND (
+					`to` = \''.$user->id().'\'
+					OR `from` = \''.$user->id().'\'
+				)
+				AND (
+					`status`=0
+					OR `status`=2
+				)
+			GROUP BY msg.tid
 		');
 		// Respuestas no leidas
 		$new = $db->queryUniqueValue('
