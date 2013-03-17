@@ -187,11 +187,6 @@
       */
     function debugAndDie($query){
 		// Generate a nice HTML message with an error description:
-<<<<<<< HEAD
-		
-=======
-		die(mysql_error());
->>>>>>> Fix minor bugs
 		$debugData = debug_backtrace(false);
 		$levels = sizeof($debugData);
 		$start = '';
