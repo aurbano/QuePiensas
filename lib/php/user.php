@@ -132,7 +132,9 @@ class User{
 		global $sess;
 		$db = $sess->db();
 		$ip = 'INET_ATON(\''.ip().'\')';
-		$db->execute('INSERT INTO `users` (`name`, `email`, `pass`, `ip`, `ltime`, `jtime`) VALUES (\''.$this->g('name').'\', \''.$this->g('email').'\', \'0\', '.$ip.', \''.time().'\', \''.time().'\');');
+		$email = 'NULL';
+		if($this->g('email') && strlen($this->g('email'))>0) $email = '\''.$this->g('email').'\'';
+		$db->execute('INSERT INTO `users` (`name`, `email`, `pass`, `ip`, `ltime`, `jtime`) VALUES (\''.$this->g('name').'\', '.$email.', \'0\', '.$ip.', \''.time().'\', \''.time().'\');');
 		$this->set('id',$db->lastInsertedId());
 		$sess->debug('Created new user: ID='.$this->id);
 		return $this->id;

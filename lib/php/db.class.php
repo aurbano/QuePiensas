@@ -187,12 +187,17 @@
       */
     function debugAndDie($query){
 		// Generate a nice HTML message with an error description:
+<<<<<<< HEAD
 		
+=======
+		die(mysql_error());
+>>>>>>> Fix minor bugs
 		$debugData = debug_backtrace(false);
 		$levels = sizeof($debugData);
+		$start = '';
 		for($i=0;$i<$levels;$i++){
 			$data = $debugData[$i];
-			$start = '<strong>['.basename($data['file']).' on line '.$data['line'].']</strong><p>From '.$data['class'].$data['type'].$data['function'].'(';
+			$start .= '<strong>['.basename($data['file']).' on line '.$data['line'].']</strong><p>From '.$data['class'].$data['type'].$data['function'].'(';
 			if($data['function']!=='debug' && $data['function']!=='include'){
 				// Print args
 				foreach($data['args'] as $value) $start .= $value.',';	
