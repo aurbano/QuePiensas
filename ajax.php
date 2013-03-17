@@ -175,9 +175,9 @@ switch($type){
 		$db = $sess->db();
 		$db->execute('
 			INSERT INTO
-				table (pid,usid,relation,follow,timestamp) 
+				relations (pid,usid,relation,follow,timestamp) 
 			VALUES
-				('.addslashes($_POST['id']).','.$user->id().',2,1,'.time().')
+				(\''.addslashes($_POST['id']).'\',\''.$user->id().'\',2,1,\''.time().'\')
 			ON DUPLICATE KEY
 			UPDATE
 				follow = 1;');
