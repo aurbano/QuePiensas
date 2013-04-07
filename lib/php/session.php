@@ -6,12 +6,12 @@ ini_set('display_errors','On');
 session_start();
 date_default_timezone_set('Europe/Madrid');
 
-include('lib/php/db.class.php');
-include('lib/php/auth.php');
-include('lib/php/user.php');
-include('lib/php/getip.php');
-include('lib/php/fb.class.php');
-include('lib/php/twitter.php');
+require('lib/php/db.class.php');
+require('lib/php/auth.php');
+require('lib/php/user.php');
+require('lib/php/getip.php');
+require('lib/php/fb.class.php');
+//require('lib/php/twitter.php');
 
 /** 
  * Session management class, include whenever you need authenticated users
@@ -64,7 +64,8 @@ class Session{
 		$file = explode('.',$_SERVER["SCRIPT_NAME"]);
 		$this->curPage = $this->clean($file[0]);
 		
-		$this->captcha = $_SESSION['captcha'];
+		if(!isset($_SESSION['captcha'])) $this->captcha = false;
+		else $this->captcha = $_SESSION['captcha'];
 		
 		$this->home = substr(dirname(__FILE__),0,38).'/';
 		// Maintenance
@@ -107,13 +108,17 @@ class Session{
 		//-----------------------------------------------
 		
 		/* Debugger */
-		if($_GET['debug']=='set') $_SESSION['debug'] = true;
-		if($_GET['debug']=='unset') unset($_SESSION['debug']);
+		if(isset($_GET['debug'])){
+			if($_GET['debug']=='set') $_SESSION['debug'] = true;
+			if($_GET['debug']=='unset') unset($_SESSION['debug']);
+		}
 		
 		if(isset($_SESSION['url'])){
 			$this->referrer = $_SESSION['url'];
-		}else{
+		}else if(isset($_SERVER['HTTP_REFERER'])){
 			$this->referrer = $_SERVER['HTTP_REFERER'];
+		}else{
+			$this->referrer = false;
 		}
 		
 		/* Session keeping via Cookie */
@@ -470,7 +475,7 @@ class Session{
 	function user(){
 		global $fb;
 		// Generate the user object
-		if($_SESSION['user']){
+		if($_SESSION['user'] && isset($_SESSION['user']['id'])){
 			$usid = $_SESSION['user']['id'];
 			$user = new User($usid);
 		}else{
@@ -503,5 +508,5 @@ $sess = new Session;
 $user = $sess->user();
 // Social networks
 $fb = new FB($user->fb());
-$tw = new Twitter($user->tw());
+//$tw = new Twitter($user->tw());
 $auth = new Auth;

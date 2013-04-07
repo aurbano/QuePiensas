@@ -7,7 +7,7 @@
  * Include the Facebook API
  */
 try{
-	include('facebook/facebook.php');
+	require_once('facebook/facebook.php');
 }catch(Exception $e){  }
 
 /**
