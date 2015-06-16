@@ -12,3 +12,5 @@ All of this code is probably useless, but just in case it's useful to anyone in 
 
 - - - -
 AGPLv3 LICENSE - http://quepiensas.es
+
+[![Analytics](https://ga-beacon.appspot.com/UA-3181088-16/quepiensas/readme)](https://github.com/aurbano)
